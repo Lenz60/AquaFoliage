@@ -42,8 +42,6 @@
 
 <footer>
     <!-- Remove the container if you want to extend the Footer to full width. -->
-
-
     <footer style="background-color: #deded5;">
         <div class="container p-4">
             <div class="row">
@@ -95,8 +93,6 @@
         </div>
         <!-- Copyright -->
     </footer>
-
-
     <!-- End of .container -->
 </footer>
 
