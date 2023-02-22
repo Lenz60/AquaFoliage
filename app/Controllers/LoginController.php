@@ -2,15 +2,14 @@
 
 namespace App\Controllers;
 
-use App\Models\LoginModel;
-
+use App\Models\UserModel;
 
 class LoginController extends BaseController
 {
 
     public function __construct()
     {
-        $this->loginModel = new LoginModel();
+        $this->userModel = new UserModel();
     }
     public function index()
     {
@@ -18,22 +17,30 @@ class LoginController extends BaseController
         return view('pages/login');
     }
 
-    // public function login()
-    // {
-    //     $data = [
-    //         'title' => 'Login',
-    //     ];
-
-    //     return view('pages/login', $data);
-    // }
-
-    public function saveLogin()
+    public function login()
     {
-        // dd($this->request->getVar());
-
+        //Validations
+        $validate = $this->validate([
+            'username' => [
+                'rules' => 'required|min_length[3]',
+                'errors' => [
+                    'required' => 'Please enter your username'
+                ]
+            ],
+            'password' => [
+                'rules' => 'required|min_length[3]',
+                'errors' => [
+                    'required' => 'Please enter your password'
+                ]
+            ],
+        ]);
+        if (!$validate) {
+            return view('/pages/login', ['validation' => $this->validator]);
+        }
+        $model = new UserModel();
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
-        $this->loginModel->login($username, $password);
+        $model->login($username, $password);
         return redirect()->to('/');
     }
 }
