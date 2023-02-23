@@ -5,13 +5,14 @@ namespace App\Models;
 use CodeIgniter\Model;
 use CodeIgniter\Exceptions;
 use CodeIgniter\Exceptions\PageNotFoundException;
-use CodeIgniter\HTTP\ResponseTrait;
+use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\Controller\HomeController;
 use Exception;
 use CodeIgniter\View\View;
 
 class UserModel extends Model
 {
+    use ResponseTrait;
     protected $table      = 'users';
     protected $primaryKey = 'id';
     protected $allowedFields = ['username', 'email', 'password'];
@@ -44,13 +45,29 @@ class UserModel extends Model
         $builder = $this->table('users');
         $data = $builder->where('username', $username)->first();
         if (!$data) {
-            throw new PageNotFoundException('Login Invalid.');
+            throw new PageNotFoundException('User Not Found.');
         } else {
+            $id = $data['id'];
             $pass = $data['password'];
             $encryptedPass = $model->encryptPass($password);
             if ($pass !== $encryptedPass) {
-                throw new PageNotFoundException('Login Invalid.');
+                throw new Exception("Passwords do not match");
             }
+            helper('jwt');
+            $token = createJWT($id, $username);
+            setcookie("COOKIE-SESSION", $token);
+            return $token;
+        }
+    }
+    public function checkAuth($id)
+    {
+        $model = new Usermodel();
+        $builder = $this->table('users');
+        $data = $builder->where("id", $id)->first();
+        if (!$data) {
+            throw new PageNotFoundException('Authentification failed.');
+        } else {
+            return $data;
         }
     }
 }
