@@ -35,6 +35,7 @@ $routes->get('/login', 'LoginController::index');
 $routes->post('/login', 'LoginController::login');
 $routes->get('/register', 'RegisterController::index');
 $routes->post('/register', 'RegisterController::register');
+$routes->get('/logout', 'LoginController::logout');
 
 /*
  * --------------------------------------------------------------------
