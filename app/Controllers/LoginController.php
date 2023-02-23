@@ -2,19 +2,24 @@
 
 namespace App\Controllers;
 
+use App\Filters\JwtFilter;
 use App\Models\UserModel;
+use CodeIgniter\API\ResponseTrait;
 
 class LoginController extends BaseController
 {
-
+    use ResponseTrait;
     public function __construct()
     {
         $this->userModel = new UserModel();
     }
     public function index()
     {
-
-        return view('pages/login');
+        if (!isset($_COOKIE['COOKIE-SESSION'])) {
+            return view('pages/login');
+        } else {
+            return redirect()->to('/');
+        }
     }
 
     public function login()
@@ -40,7 +45,13 @@ class LoginController extends BaseController
         $model = new UserModel();
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
-        $model->login($username, $password);
+        $token = $model->login($username, $password);
         return redirect()->to('/');
+    }
+    public function logout()
+    {
+        setcookie('COOKIE-SESSION', null);
+        return redirect()->to('/login');
+        // session_write_close();
     }
 }
