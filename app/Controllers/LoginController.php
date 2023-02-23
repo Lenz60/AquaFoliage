@@ -45,7 +45,7 @@ class LoginController extends BaseController
         $model = new UserModel();
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
-        $token = $model->login($username, $password);
+        $model->login($username, $password);
         return redirect()->to('/');
     }
     public function logout()
