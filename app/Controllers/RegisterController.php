@@ -13,9 +13,14 @@ class RegisterController extends BaseController
     }
     public function index()
     {
-        //Take Validation message from session
-        $validation = \Config\Services::validation();
-        return view('pages/register');
+
+        if (!isset($_COOKIE['COOKIE-SESSION'])) {
+            return view('pages\register');
+            //Take Validation message from session
+            $validation = \Config\Services::validation();
+        } else {
+            return redirect()->to('/');
+        }
     }
 
     public function register()
