@@ -3,7 +3,12 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>Hello World</h1>
+            <form method="GET" action="/logout">
+                <button type="submit" class="button">
+                    <h1>LOGOUT</h1>
+                </button>
+            </form>
+
             <p>This text here</p>
         </div>
     </div>
