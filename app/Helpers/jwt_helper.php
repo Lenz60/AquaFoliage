@@ -24,7 +24,7 @@ function validateJWT($token)
         $model->checkAuth($decodedToken->id);
     } catch (Exception $e) {
         setcookie('COOKIE-SESSION', null);
-        setcookie('COOKIE-EXPIRED', null);
+        setcookie('COOKIE-EXPIRED', true);
         return redirect()->to('/login');
         echo $e->getMessage();
     }

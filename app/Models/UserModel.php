@@ -56,7 +56,6 @@ class UserModel extends Model
             helper('jwt');
             $token = createJWT($id, $username);
             $expireCookie = time() + 604800;
-            setcookie("COOKIE-EXPIRED", false);
             setcookie("COOKIE-SESSION", $token, $expireCookie, '/', null, 'null', true);
             return $token;
         }

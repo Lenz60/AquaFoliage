@@ -63,7 +63,7 @@ class LoginController extends BaseController
 
             ];
             $model->addBlacklist($dataToken);
-            setcookie('COOKIE-EXPIRED', true);
+            setcookie('COOKIE-EXPIRED', null);
             setcookie('COOKIE-SESSION', null);
             return redirect()->to('/login');
         }

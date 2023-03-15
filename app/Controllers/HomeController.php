@@ -24,7 +24,7 @@ class HomeController extends BaseController
     public function expired()
     {
         setcookie('COOKIE-SESSION', null);
-        setcookie('COOKIE-EXPIRED', null);
-        return view('pages/login');
+        setcookie('COOKIE-EXPIRED', true);
+        return redirect()->to('/');
     }
 }

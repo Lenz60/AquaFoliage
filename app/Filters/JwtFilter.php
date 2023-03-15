@@ -16,6 +16,8 @@ class JwtFilter implements FilterInterface
         } else {
             //! Header check removed due to saving to cookie session
             // $header = $request->getServer('HTTP_AUTHORIZATION'); 
+            // setcookie("COOKIE-EXPIRED", true);
+            // setcookie("COOKIE-BLACKLISTED", false);
             try {
                 helper('jwt');
                 // $encodedToken = getJWT($header);
