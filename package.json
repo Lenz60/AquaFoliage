@@ -1,0 +1,29 @@
+{
+  "name": "aquafoliage",
+  "version": "1.0.0",
+  "description": "Aqua Foliage is web dedicated to aquascaper to find and review aquatic plant based on its characteristic of its own. The user also can leave some comments and tips on how to treat the plant based on their experiences. And user can add the plant to their collections",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lenz60/AquaFoliage.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lenz60/AquaFoliage/issues"
+  },
+  "homepage": "https://github.com/Lenz60/AquaFoliage#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "laravel-mix": "^6.0.49",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7"
+  }
+}

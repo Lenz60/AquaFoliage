@@ -2,6 +2,7 @@
 <?= $this->section('content'); ?>
 <?php $validation = \Config\Services::validation(); ?>
 <div class="container my-5">
+    <link rel="stylesheet" type="text/css" href="/css/app.css" />
     <form action="/login" method="POST">
         <?= csrf_field(); //*csrf secure 
         ?>
@@ -16,7 +17,7 @@
             <?= $validation->getError('password'); ?>
         </div>
         <div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">Submit</button>
             <label class="ms-5 "><a href="/register">Register</a></label>
         </div>
     </form>
