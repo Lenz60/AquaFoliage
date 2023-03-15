@@ -1,4 +1,12 @@
-<?= $this->extend('layout/template'); ?>
+<?php if (!isset($_COOKIE['COOKIE-EXPIRED'])) {
+    echo $this->extend('layout/template');
+} elseif (isset($_COOKIE['COOKIE-BLACKLISTED'])) {
+    echo $this->extend('layout/alert');
+} elseif ($_COOKIE['COOKIE-EXPIRED']) {
+    echo $this->extend('layout/alert');
+} else {
+    echo $this->extend('layout/alert');
+} ?>
 <?= $this->section('content'); ?>
 <?php $validation = \Config\Services::validation(); ?>
 <div class="container my-5">
