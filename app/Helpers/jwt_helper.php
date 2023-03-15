@@ -18,19 +18,16 @@ function validateJWT($token)
 {
     $model = new UserModel();
     $key = getenv('JWT_SECRET_CODE');
+    //? Check if the token is expired or not 
     try {
         $decodedToken = JWT::decode($token, new Key($key, 'HS256'));
+        $model->checkAuth($decodedToken->id);
     } catch (Exception $e) {
-        if ($e->getMessage() == "Token expired") {
-            return redirect()->to('/login');
-        } else {
-            return Services::response()->setJson([
-                'error' => $e->getMessage()
-            ])->setStatusCode(ResponseInterface::HTTP_UNAUTHORIZED);
-        }
+        setcookie('COOKIE-SESSION', null);
+        setcookie('COOKIE-EXPIRED', null);
+        return redirect()->to('/login');
+        echo $e->getMessage();
     }
-
-    $model->checkAuth($decodedToken->id);
 }
 
 function createJWT($id, $username)
