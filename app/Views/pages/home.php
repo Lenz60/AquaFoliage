@@ -1,16 +1,19 @@
 <?= $this->extend('layout/template'); ?>
 <?= $this->section('content'); ?>
 <link rel="stylesheet" type="text/css" href="/css/app.css" />
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <form method="GET" action="/logout">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-                    <h1>LOGOUT</h1>
-                </button>
-            </form>
-
-            <p>This text here</p>
+<div class="container none">
+    <div class="grid grid-rows-4 ">
+        <div class="columns-1 ">
+            <img class="w-max" src="https://wallpapercave.com/wp/wp11199194.jpg">
+        </div>
+        <div class="columns-1">
+            <img class="w-fit" src="https://lostininternet.com/wp-content/uploads/2014/04/aquascaping-04.jpg">
+        </div>
+        <div class="columns-1">
+            <img class="w-fit" src="https://lostininternet.com/wp-content/uploads/2014/04/aquascaping-08.jpg">
+        </div>
+        <div class="columns-1">
+            <img class="w-fit" src="https://lostininternet.com/wp-content/uploads/2014/04/aquascaping-02.jpg">
         </div>
     </div>
 </div>
