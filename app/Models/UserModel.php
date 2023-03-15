@@ -15,7 +15,7 @@ class UserModel extends Model
     use ResponseTrait;
     protected $table      = 'users';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['username', 'email', 'password'];
+    protected $allowedFields = ['username', 'email', 'password', 'token', 'logout_at'];
 
     public function encryptPass($password)
     {
@@ -56,10 +56,13 @@ class UserModel extends Model
             helper('jwt');
             $token = createJWT($id, $username);
             $expireCookie = time() + 604800;
+            setcookie("COOKIE-EXPIRED", false);
             setcookie("COOKIE-SESSION", $token, $expireCookie, '/', null, 'null', true);
             return $token;
         }
     }
+
+
     public function checkAuth($id)
     {
         $builder = $this->table('users');
@@ -68,14 +71,6 @@ class UserModel extends Model
             throw new PageNotFoundException('Authentification failed.');
         } else {
             return $data;
-        }
-    }
-
-    public function checkExpire($exp)
-    {
-        $time = time();
-        if ($time <= $exp) {
-            echo 'Token Expired';
         }
     }
 }
