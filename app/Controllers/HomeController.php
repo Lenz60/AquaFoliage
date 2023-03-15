@@ -15,6 +15,16 @@ class HomeController extends BaseController
         $checkBlacklist = $blacklistModel->checkJwtBlacklist($currentCookie);
         if (!$checkBlacklist) {
             return view('pages/home');
+        } else {
+            dd($_COOKIE['COOKIE-BLACKLISTED']);
+            return view('pages/login');
         }
+    }
+
+    public function expired()
+    {
+        setcookie('COOKIE-SESSION', null);
+        setcookie('COOKIE-EXPIRED', null);
+        return view('pages/login');
     }
 }
