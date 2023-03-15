@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col">
             <form method="GET" action="/logout">
-                <button type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
                     <h1>LOGOUT</h1>
                 </button>
             </form>
