@@ -52,15 +52,20 @@ class LoginController extends BaseController
 
     public function logout()
     {
-        $model = new BlacklistModel();
-        $currentCookie = $_COOKIE['COOKIE-SESSION'];
-        $dataToken = [
-            'token' => $currentCookie,
-            'logout_at' => date("Y-m-d H:i:s"),
+        if (!isset($_COOKIE['COOKIE-SESSION'])) {
+            return view('pages/login');
+        } else {
+            $model = new BlacklistModel();
+            $currentCookie = $_COOKIE['COOKIE-SESSION'];
+            $dataToken = [
+                'token' => $currentCookie,
+                'logout_at' => date("Y-m-d H:i:s"),
 
-        ];
-        $model->addBlacklist($dataToken);
-        setcookie('COOKIE-SESSION', null);
-        return redirect()->to('/login');
+            ];
+            $model->addBlacklist($dataToken);
+            setcookie('COOKIE-EXPIRED', true);
+            setcookie('COOKIE-SESSION', null);
+            return redirect()->to('/login');
+        }
     }
 }
