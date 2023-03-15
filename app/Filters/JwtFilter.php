@@ -21,6 +21,7 @@ class JwtFilter implements FilterInterface
                 // $encodedToken = getJWT($header);
                 //? Automatically detect header from Cookie
                 $encodedToken = $_COOKIE['COOKIE-SESSION'];
+                // dd($encodedToken);
                 validateJWT($encodedToken);
                 return $request;
             } catch (Exception $e) {

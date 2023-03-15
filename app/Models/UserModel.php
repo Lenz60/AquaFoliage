@@ -62,13 +62,20 @@ class UserModel extends Model
     }
     public function checkAuth($id)
     {
-        $model = new Usermodel();
         $builder = $this->table('users');
         $data = $builder->where("id", $id)->first();
         if (!$data) {
             throw new PageNotFoundException('Authentification failed.');
         } else {
             return $data;
+        }
+    }
+
+    public function checkExpire($exp)
+    {
+        $time = time();
+        if ($time <= $exp) {
+            echo 'Token Expired';
         }
     }
 }
