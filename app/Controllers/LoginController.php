@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Filters\JwtFilter;
+use App\Models\BlacklistModel;
 use App\Models\UserModel;
 use CodeIgniter\API\ResponseTrait;
 
@@ -48,10 +49,18 @@ class LoginController extends BaseController
         $model->login($username, $password);
         return redirect()->to('/');
     }
+
     public function logout()
     {
+        $model = new BlacklistModel();
+        $currentCookie = $_COOKIE['COOKIE-SESSION'];
+        $dataToken = [
+            'token' => $currentCookie,
+            'logout_at' => date("Y-m-d H:i:s"),
+
+        ];
+        $model->addBlacklist($dataToken);
         setcookie('COOKIE-SESSION', null);
         return redirect()->to('/login');
-        // session_write_close();
     }
 }
