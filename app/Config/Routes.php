@@ -37,6 +37,7 @@ $routes->get('/register', 'RegisterController::index');
 $routes->post('/register', 'RegisterController::register');
 $routes->get('/logout', 'LoginController::logout');
 $routes->get('/about', 'AboutController::index');
+$routes->get('/expired', 'HomeController::expired');
 
 /*
  * --------------------------------------------------------------------
