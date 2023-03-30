@@ -1,4 +1,4 @@
-@extends('layout/template')
+@extends('layout.template')
 
 @section('homeContainer')
 <link rel="stylesheet" type="text/css" href="/css/app.css" />
