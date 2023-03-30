@@ -10,7 +10,7 @@ class AboutController extends Controller
     //
     public function info()
     {
-        $model = new AboutModel();
+        // $model = new AboutModel();
         // $a = $model->Info();
         // $data['a'] = $model->Info();
         $data['a'] = AboutModel::Info();
