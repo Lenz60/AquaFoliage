@@ -18,5 +18,8 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    return view('home');
+    return view('home', [
+        "name" => "Rafly Andrian",
+        "email" => "raflyandrian@gmail.com"
+    ]);
 });

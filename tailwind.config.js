@@ -6,7 +6,16 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        home1 : "url('https://i.imgur.com/owjKKIa.png')",
+        home2 : "url('https://i.imgur.com/Q4Jq9Ce.png')",
+      },
+      fontFamily:{
+        kreon: "Kreon",
+        poppins: "Poppins"
+      }
+    },
   },
   plugins: [],
 }
