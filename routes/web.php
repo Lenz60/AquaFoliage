@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,9 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return view('home', [
-        "name" => "Rafly Andrian",
-        "email" => "raflyandrian@gmail.com"
+        "name" => "Lorem",
+        "email" => "lorem@gmail"
     ]);
 });
+
+Route::get('/about', [AboutController::class, 'info'])->name('info');
