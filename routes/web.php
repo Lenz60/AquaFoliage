@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\PlantsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,5 @@ Route::get('/home', function () {
 });
 
 Route::get('/about', [AboutController::class, 'info'])->name('info');
+
+Route::get('/plants', [PlantsController::class, 'index'])->name('plants');
