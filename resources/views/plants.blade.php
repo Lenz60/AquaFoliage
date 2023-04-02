@@ -11,7 +11,7 @@
         <p>Common Name : {{ $plant->common_name }}</p>
     </div>
     <div>
-        <h2 class="text-m font-bold">Scientific </h2>
+        <h2 class="text-m font-bold">Specification </h2>
         <p>Light : {{ $plant->light }}</p>
         <p>Temp : {{ $plant->temp }}</p>
         <p>Difficulty : {{ $plant->difficulty }}</p>
