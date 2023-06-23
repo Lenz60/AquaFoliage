@@ -1,16 +1,26 @@
 <template>
-    <div>
-        <div class="hero min-h-screen bg-base-200">
-            <div class="hero-content flex-col lg:flex-row-reverse">
-                <img src="/images/" class="max-w-sm rounded-lg shadow-2xl" />
+    <div data-themes="foliage">
+        <div
+            class="hero min-h-screen"
+            style="background-image: url(/images/HeroCropped.jpg)"
+        >
+            <div class="hero-overlay bg-opacity-40 bg-base-200"></div>
+            <div class="hero-content text-center text-neutral-content">
                 <div>
-                    <h1 class="text-5xl font-bold">Box Office News!</h1>
-                    <p class="py-6">
-                        Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                        assumenda excepturi exercitationem quasi. In deleniti
-                        eaque aut repudiandae et a id nisi.
+                    <h1
+                        class="mb-5 text-6xl font-semibold font-montserrat text-primary"
+                    >
+                        Explore the Diversity of Aquatic Flora
+                    </h1>
+                    <p
+                        class="mb-5 text-lg text-primary font-montserrat font-medium"
+                    >
+                        We provide information about aquatic plants needs.
+                        <br />
+                        Identify, care and create more efficient environments
+                        for your aquascape
                     </p>
-                    <button class="btn btn-primary">Get Started</button>
+                    <button class="btn btn-accent">Check it out</button>
                 </div>
             </div>
         </div>

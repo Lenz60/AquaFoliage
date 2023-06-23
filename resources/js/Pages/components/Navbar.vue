@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class="navbar bg-base-100">
+    <div data-themes="foliage">
+        <div class="navbar bg-base-200">
             <div class="flex-none">
                 <button class="btn btn-square btn-ghost">
                     <svg
