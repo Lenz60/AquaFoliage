@@ -16,6 +16,10 @@ module.exports = {
                 kreon: "Kreon",
                 poppins: "Poppins",
                 montserrat: "Montserrat",
+                baskerville: "Libre Baskerville",
+                bebas: "Bebas Neue",
+                istok: "Istok Web",
+                catamaran: "Catamaran",
             },
         },
     },
@@ -29,7 +33,7 @@ module.exports = {
             "forest",
             {
                 foliage: {
-                    base: "#0B1C11",
+                    neutral: "#0B1C11",
                     primary: "#E8ECE9",
                     accent: "#049806",
                 },

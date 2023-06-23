@@ -8,19 +8,21 @@
             <div class="hero-content text-center text-neutral-content">
                 <div>
                     <h1
-                        class="mb-5 text-6xl font-semibold font-montserrat text-primary"
+                        class="mb-5 text-6xl font-bold font-monserrat text-primary"
                     >
                         Explore the Diversity of Aquatic Flora
                     </h1>
-                    <p
-                        class="mb-5 text-lg text-primary font-montserrat font-medium"
-                    >
+                    <p class="mb-5 text-lg text-primary font-istok font-medium">
                         We provide information about aquatic plants needs.
                         <br />
                         Identify, care and create more efficient environments
                         for your aquascape
                     </p>
-                    <button class="btn btn-accent">Check it out</button>
+                    <button
+                        class="btn btn-accent font-semibold font-montserrat"
+                    >
+                        Check it out
+                    </button>
                 </div>
             </div>
         </div>
