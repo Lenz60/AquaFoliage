@@ -28,7 +28,7 @@ Route::get('/home', function () {
 
 Route::get('/about', [AboutController::class, 'info'])->name('info');
 Route::get('/vue', function () {
-    return view('vue');
+    return \Inertia\Inertia::render('App');
 } );
 
 Route::get('/plants', [PlantsController::class, 'index'])->name('plants');
