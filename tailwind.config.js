@@ -11,6 +11,7 @@ module.exports = {
                 home1: "url('https://i.imgur.com/owjKKIa.png')",
                 home2: "url('https://i.imgur.com/Q4Jq9Ce.png')",
                 hero: "http://127.0.0.1:8000/images/HeroCropped.jpg",
+                bgsection: "url('/images/section2bg.png')",
             },
             fontFamily: {
                 kreon: "Kreon",
