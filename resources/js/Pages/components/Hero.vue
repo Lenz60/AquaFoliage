@@ -53,7 +53,7 @@ export default {
 
             gsap.to("#hero-desc", {
                 y: 0,
-                color: "#FFFFFF",
+                color: "#E8ECE9",
                 stagger: 0.05,
                 delay: 1,
                 duration: 1,

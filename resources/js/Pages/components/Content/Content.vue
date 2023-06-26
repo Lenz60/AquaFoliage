@@ -13,6 +13,7 @@
                     class="w-[50%] flex justify-center items-center border-2 p-5 m-5 border-yellow-400"
                 >
                     <img
+                        id="img1"
                         src="https://preview.redd.it/the-sacabambaspis-an-extinct-genus-of-jawless-fish-v0-mn6hrm3yk5sa1.jpg?auto=webp&s=fff00db26e0b861d1a4beff64ae3398a11aa68a1"
                         alt=""
                         class="rounded-md drop-shadow-2xl card w-[300px] h-[300px]"
@@ -22,7 +23,8 @@
                     class="w-[50%] flex justify-center items-center border-2 p-5 m-5 border-yellow-400"
                 >
                     <p
-                        class="indent-8 relative font-montserrat drop-shadow-xl text-white"
+                        id="desc1"
+                        class="indent-8 relative overflow-hidden font-montserrat drop-shadow-xl text-primary"
                     >
                         On the other hand the innovational path that we have
                         chosen allows to appreciate the value of the tasks given
@@ -45,7 +47,8 @@
                     class="w-[50%] flex justify-center items-center rt border-2 p-5 m-5 border-yellow-400"
                 >
                     <p
-                        class="indent-8 relative font-montserrat drop-shadow-xl text-white"
+                        id="desc2"
+                        class="indent-8 relative font-montserrat drop-shadow-xl text-primary"
                     >
                         The significance of such problems is so obvious that the
                         implementation of the planned tasks contributes to the
@@ -62,6 +65,7 @@
                     class="w-[50%] flex justify-center items-center border-2 p-5 m-5 border-yellow-400"
                 >
                     <img
+                        id="img2"
                         src="https://preview.redd.it/the-sacabambaspis-an-extinct-genus-of-jawless-fish-v0-mn6hrm3yk5sa1.jpg?auto=webp&s=fff00db26e0b861d1a4beff64ae3398a11aa68a1"
                         alt=""
                         class="rounded-md drop-shadow-2xl card w-[300px] h-[300px]"
@@ -77,6 +81,7 @@
                     class="w-[50%] flex justify-center items-center border-2 p-5 m-5 border-yellow-400"
                 >
                     <img
+                        id="img3"
                         src="https://preview.redd.it/the-sacabambaspis-an-extinct-genus-of-jawless-fish-v0-mn6hrm3yk5sa1.jpg?auto=webp&s=fff00db26e0b861d1a4beff64ae3398a11aa68a1"
                         alt=""
                         class="rounded-md drop-shadow-2xl card w-[300px] h-[300px]"
@@ -86,7 +91,8 @@
                     class="w-[50%] flex justify-center items-center border-2 p-5 m-5 border-yellow-400"
                 >
                     <p
-                        class="indent-8 relative font-montserrat drop-shadow-xl text-white"
+                        id="desc3"
+                        class="indent-8 relative font-montserrat drop-shadow-xl text-primary"
                     >
                         However, one should not forget constant quantitive
                         growth and the scope of our activity requires the
@@ -105,8 +111,58 @@
 </template>
 
 <script>
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { onMounted } from "vue";
+import $ from "jquery";
 export default {
     setup() {
+        onMounted(() => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.from("#desc1", {
+                scrollTrigger: "#desc1",
+                x: 100,
+                color: "transparent",
+                stagger: 0.05,
+                duration: 1,
+            });
+            gsap.from("#img1", {
+                scrollTrigger: "#img1",
+                opacity: 0,
+                delay: 1,
+                stagger: 0.05,
+                duration: 2,
+            });
+            gsap.from("#desc2", {
+                scrollTrigger: "#desc2",
+                x: -100,
+                color: "transparent",
+                stagger: 0.05,
+                duration: 1,
+            });
+            gsap.from("#img2", {
+                scrollTrigger: "#img2",
+                opacity: 0,
+                delay: 1,
+                stagger: 0.05,
+                duration: 2,
+            });
+            gsap.from("#desc3", {
+                scrollTrigger: "#desc3",
+                x: 100,
+                color: "transparent",
+                stagger: 0.05,
+                duration: 1,
+            });
+            gsap.from("#img3", {
+                scrollTrigger: "#img3",
+                opacity: 0,
+                delay: 1,
+                stagger: 0.05,
+                duration: 2,
+            });
+        });
         return {};
     },
 };
