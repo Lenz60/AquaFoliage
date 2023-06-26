@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlantsController;
 
 /*
@@ -31,4 +32,6 @@ Route::get('/', function () {
     return \Inertia\Inertia::render('Home');
 } );
 
-Route::get('/plants', [PlantsController::class, 'index'])->name('plants');
+Route::get('/home', function () {
+    return view('home');
+});

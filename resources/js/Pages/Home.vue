@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import {gsap} from "gsap"
 import Navbar from "./Components/Navbar.vue";
 import Hero from "./Components/Hero.vue";
 import Section from "./Components/Section.vue";

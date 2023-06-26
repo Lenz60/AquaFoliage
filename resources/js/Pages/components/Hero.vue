@@ -8,11 +8,15 @@
             <div class="hero-content text-center text-neutral-content">
                 <div>
                     <h1
-                        class="mb-5 text-6xl font-bold font-monserrat text-primary"
+                        id="hero-title"
+                        class="mb-5 p-5 text-6xl font-bold font-monserrat text-primary overflow-hidden"
                     >
                         Explore the Diversity of Aquatic Flora
                     </h1>
-                    <p class="mb-5 text-lg text-primary font-istok font-medium">
+                    <p
+                        id="hero-desc"
+                        class="mb-5 text-lg text-primary font-istok font-medium text-transparent overflow-hidden"
+                    >
                         We provide information about aquatic plants needs.
                         <br />
                         Identify, care and create more efficient environments
@@ -30,8 +34,38 @@
 </template>
 
 <script>
+import { gsap } from "gsap";
+import { onMounted } from "vue";
+import SplitType from "split-type";
+import $ from "jquery";
 export default {
     setup() {
+        onMounted(() => {
+            let text1 = new SplitType("#hero-title");
+            let text2 = $("#hero-desc").prop("id");
+            console.log(text2);
+            let characters = document.querySelectorAll(".char");
+            $(text2).addClass("translate-y-full");
+
+            for (var i = 0; i < characters.length; i++) {
+                $(characters[i]).addClass("translate-y-full");
+            }
+
+            gsap.to("#hero-desc", {
+                y: 0,
+                color: "#FFFFFF",
+                stagger: 0.05,
+                delay: 1,
+                duration: 1,
+            });
+
+            gsap.to(".char", {
+                y: 0,
+                stagger: 0.05,
+                delay: 0.02,
+                duration: 0.5,
+            });
+        });
         return {};
     },
 };
