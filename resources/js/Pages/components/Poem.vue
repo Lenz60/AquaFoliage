@@ -8,7 +8,7 @@
             <div class="hero-overlay bg-opacity-40 bg-base-200"></div>
             <div class="flex-row">
                 <div class="hero-content items-center text-center">
-                    <div class="indicator">
+                    <div class="indicator pb-5">
                         <span
                             id="quote1"
                             class="indicator-item text-white font-catamaran indicator-start text-[96px]"
@@ -17,14 +17,14 @@
                         <div>
                             <p
                                 id="poem1"
-                                class="font-montserrat indent-8 text-primary font-medium text-[32px] overflow-hidden whitespace-nowrap"
+                                class="font-montserrat indent-7 text-primary font-medium text-[30px] overflow-hidden whitespace-nowrap"
                             >
                                 The beauty of nature is not just in the plants
                                 and animals themselves,
                             </p>
                             <p
                                 id="poem2"
-                                class="font-montserrat text-primary font-medium text-[32px] overflow-hidden whitespace-nowrap"
+                                class="font-montserrat text-primary font-medium text-[30px] overflow-hidden whitespace-nowrap"
                             >
                                 but also in the way they interact with each
                                 other and with their environment.
@@ -32,7 +32,7 @@
                         </div>
                         <span
                             id="quote2"
-                            class="indicator-item pt-[60px] text-white font-catamaran indicator-bottom text-[96px]"
+                            class="indicator-item pl-[60px] pt-[60px] text-white font-catamaran indicator-bottom text-[96px]"
                             >”</span
                         >
                     </div>

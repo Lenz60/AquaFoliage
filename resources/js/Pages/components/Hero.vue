@@ -9,7 +9,7 @@
                 <div>
                     <h1
                         id="hero-title"
-                        class="mb-5 p-5 text-6xl font-bold font-monserrat text-primary overflow-hidden"
+                        class="mb-4 p-3 text-6xl font-bold font-monserrat text-primary overflow-hidden"
                     >
                         Explore the Diversity of Aquatic Flora
                     </h1>
@@ -23,6 +23,7 @@
                         for your aquascape
                     </p>
                     <button
+                        id="button"
                         class="btn btn-accent font-semibold font-montserrat"
                     >
                         Check it out
@@ -55,15 +56,22 @@ export default {
                 y: 0,
                 color: "#E8ECE9",
                 stagger: 0.05,
-                delay: 1,
+                delay: 3,
                 duration: 1,
             });
 
             gsap.to(".char", {
                 y: 0,
                 stagger: 0.05,
-                delay: 0.02,
+                delay: 1,
                 duration: 0.5,
+            });
+            gsap.from("#button", {
+                display: "none",
+                overlay: 0,
+                stagger: 0.05,
+                delay: 4,
+                duration: 5,
             });
         });
         return {};

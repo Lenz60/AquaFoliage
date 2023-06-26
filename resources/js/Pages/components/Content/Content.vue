@@ -1,27 +1,27 @@
 <template>
     <div
-        class="flex-row max-w-fit bg-[#101310] bg-no-repeat bg-left-bottom min-h-screen relative border-2 border-red-600"
-        style="background-image: url(/images/section2bg.png)"
+        class="flex-row min-w-full bg-[#101310] bg-no-repeat p-5 bg-right-bottom min-h-full"
+        style="background-image: url(/images/section2bgInverted.png)"
     >
-        <div
-            class="flex justify-center items-center border-2 border-green-400 m-5"
-        >
-            <div
-                class="flex justify-center items-center m-5 p-5 border-2 border-blue-500"
-            >
-                <div
-                    class="w-[50%] flex justify-center items-center border-2 p-5 m-5 border-yellow-400"
-                >
+        <div class="flex justify-center items-center mx-5">
+            <div class="flex justify-center items-center m-5 p-5">
+                <div class="w-[50%] flex justify-center items-center p-5 m-5">
                     <img
                         id="img1"
-                        src="https://preview.redd.it/the-sacabambaspis-an-extinct-genus-of-jawless-fish-v0-mn6hrm3yk5sa1.jpg?auto=webp&s=fff00db26e0b861d1a4beff64ae3398a11aa68a1"
+                        src="/images/section2/hairAlgae.jpg"
                         alt=""
-                        class="rounded-md drop-shadow-2xl card w-[300px] h-[300px]"
+                        class="rounded-md drop-shadow-2xl card"
                     />
                 </div>
                 <div
-                    class="w-[50%] flex justify-center items-center border-2 p-5 m-5 border-yellow-400"
+                    class="w-[50%] flex-row justify-center items-center p-5 m-5"
                 >
+                    <h1
+                        id="title1"
+                        class="overflow-hidden font-montserrat text-2xl font-semibold drop-shadow-xl text-primary m-5"
+                    >
+                        Find out why algae appear in your tank
+                    </h1>
                     <p
                         id="desc1"
                         class="indent-8 relative overflow-hidden font-montserrat drop-shadow-xl text-primary"
@@ -39,13 +39,17 @@
                 </div>
             </div>
         </div>
-        <div class="flex-row items-center border-2 border-green-400 m-5">
-            <div
-                class="flex justify-center items-center m-5 p-5 border-2 border-blue-500"
-            >
+        <div class="flex-row items-center mx-5">
+            <div class="flex justify-center items-center mx-5 p-5">
                 <div
-                    class="w-[50%] flex justify-center items-center rt border-2 p-5 m-5 border-yellow-400"
+                    class="w-[50%] flex-row justify-center items-center rt p-5 m-5"
                 >
+                    <h1
+                        id="title2"
+                        class="overflow-hidden font-montserrat text-2xl font-semibold drop-shadow-xl text-primary m-5"
+                    >
+                        Nutrient Deficiency
+                    </h1>
                     <p
                         id="desc2"
                         class="indent-8 relative font-montserrat drop-shadow-xl text-primary"
@@ -61,35 +65,35 @@
                         directly depends on strengthening the democratic system.
                     </p>
                 </div>
-                <div
-                    class="w-[50%] flex justify-center items-center border-2 p-5 m-5 border-yellow-400"
-                >
+                <div class="w-[50%] flex justify-center items-center p-5 m-5">
                     <img
                         id="img2"
-                        src="https://preview.redd.it/the-sacabambaspis-an-extinct-genus-of-jawless-fish-v0-mn6hrm3yk5sa1.jpg?auto=webp&s=fff00db26e0b861d1a4beff64ae3398a11aa68a1"
+                        src="/images/section2/javaFernMelting.jpg"
                         alt=""
-                        class="rounded-md drop-shadow-2xl card w-[300px] h-[300px]"
+                        class="rounded-md drop-shadow-2xl card"
                     />
                 </div>
             </div>
         </div>
-        <div class="flex-row items-center border-2 border-green-400 m-5">
-            <div
-                class="flex justify-center items-center m-5 p-5 border-2 border-blue-500"
-            >
-                <div
-                    class="w-[50%] flex justify-center items-center border-2 p-5 m-5 border-yellow-400"
-                >
+        <div class="flex-row items-center mx-5">
+            <div class="flex justify-center items-center mx-5 p-5">
+                <div class="w-[50%] flex justify-center items-center p-5 m-5">
                     <img
                         id="img3"
-                        src="https://preview.redd.it/the-sacabambaspis-an-extinct-genus-of-jawless-fish-v0-mn6hrm3yk5sa1.jpg?auto=webp&s=fff00db26e0b861d1a4beff64ae3398a11aa68a1"
+                        src="/images/section2/pearling.jpg"
                         alt=""
-                        class="rounded-md drop-shadow-2xl card w-[300px] h-[300px]"
+                        class="rounded-md drop-shadow-2xl card"
                     />
                 </div>
                 <div
-                    class="w-[50%] flex justify-center items-center border-2 p-5 m-5 border-yellow-400"
+                    class="w-[50%] flex-row justify-center items-center p-5 m-5"
                 >
+                    <h1
+                        id="title3"
+                        class="overflow-hidden font-montserrat text-2xl font-semibold drop-shadow-xl text-primary m-5"
+                    >
+                        Plant needs
+                    </h1>
                     <p
                         id="desc3"
                         class="indent-8 relative font-montserrat drop-shadow-xl text-primary"
@@ -120,6 +124,12 @@ export default {
         onMounted(() => {
             gsap.registerPlugin(ScrollTrigger);
 
+            gsap.from("#title1", {
+                scrollTrigger: "#title1",
+                color: "transparent",
+                stagger: 0.05,
+                duration: 2,
+            });
             gsap.from("#desc1", {
                 scrollTrigger: "#desc1",
                 x: 100,
@@ -130,7 +140,13 @@ export default {
             gsap.from("#img1", {
                 scrollTrigger: "#img1",
                 opacity: 0,
-                delay: 1,
+                delay: 0.5,
+                stagger: 0.05,
+                duration: 2,
+            });
+            gsap.from("#title2", {
+                scrollTrigger: "#title2",
+                color: "transparent",
                 stagger: 0.05,
                 duration: 2,
             });
@@ -144,7 +160,13 @@ export default {
             gsap.from("#img2", {
                 scrollTrigger: "#img2",
                 opacity: 0,
-                delay: 1,
+                delay: 0.5,
+                stagger: 0.05,
+                duration: 2,
+            });
+            gsap.from("#title3", {
+                scrollTrigger: "#title3",
+                color: "transparent",
                 stagger: 0.05,
                 duration: 2,
             });
@@ -158,7 +180,7 @@ export default {
             gsap.from("#img3", {
                 scrollTrigger: "#img3",
                 opacity: 0,
-                delay: 1,
+                delay: 0.5,
                 stagger: 0.05,
                 duration: 2,
             });

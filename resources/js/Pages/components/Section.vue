@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-base-200 max-w-fit">
+    <div data-theme="foliage">
         <Content></Content>
     </div>
 </template>
