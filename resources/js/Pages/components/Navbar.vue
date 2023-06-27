@@ -36,7 +36,7 @@
                         >
                             <div>
                                 <img
-                                    src="/images/logo.png"
+                                    src="images/logo.png"
                                     alt=""
                                     class="btn rounded-md btn-ghost normal-case"
                                 />
@@ -54,7 +54,7 @@
             </div>
             <div class="flex-1">
                 <img
-                    src="/images/logo.png"
+                    src="images/logo.png"
                     alt=""
                     class="btn rounded-md btn-ghost normal-case"
                 />
