@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <Navbar></Navbar>
+    <div class="relative">
+        <Navbar class="sticky top-0 z-50"></Navbar>
         <Hero></Hero>
         <Section></Section>
         <Poem></Poem>
