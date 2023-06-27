@@ -13,9 +13,7 @@
                         class="rounded-md drop-shadow-2xl card"
                     />
                 </div>
-                <div
-                    class="w-[50%] flex-row justify-center items-center p-5 m-5"
-                >
+                <div class="w-[50%] flex-row justify-center items-center m-5">
                     <h1
                         id="title1"
                         class="overflow-hidden font-montserrat text-2xl font-semibold drop-shadow-xl text-primary m-5"
@@ -24,23 +22,18 @@
                     </h1>
                     <p
                         id="desc1"
-                        class="indent-8 relative overflow-hidden font-montserrat drop-shadow-xl text-primary"
+                        class="justify-left relative overflow-hidden font-montserrat drop-shadow-xl text-primary m-5"
                     >
-                        On the other hand the innovational path that we have
-                        chosen allows to appreciate the value of the tasks given
-                        by the society and government. The significance of such
-                        problems is so obvious that new model of the
-                        organisational activity requires the analysis of the
-                        step-by-step consistent development of the society. It
-                        should be noted that the implementation of the planned
-                        tasks plays an important part in the formation of the
-                        step-by-step consistent development of the society.
+                        The appearance of algae can be caused by many factor,
+                        such as too much light, or too many nutrient in the
+                        water. We will guide you to find a perfect way to make a
+                        good tank environtment with minimal algae.
                     </p>
                 </div>
             </div>
         </div>
         <div class="flex-row items-center mx-5">
-            <div class="flex justify-center items-center mx-5 p-5">
+            <div class="flex justify-center items-center m-5 p-5">
                 <div
                     class="w-[50%] flex-row justify-center items-center rt p-5 m-5"
                 >
@@ -52,17 +45,13 @@
                     </h1>
                     <p
                         id="desc2"
-                        class="indent-8 relative font-montserrat drop-shadow-xl text-primary"
+                        class="justify-left relative font-montserrat drop-shadow-xl text-primary"
                     >
-                        The significance of such problems is so obvious that the
-                        implementation of the planned tasks contributes to the
-                        preparing and implementation of further ways of
-                        development. There's no doubt that the innovational path
-                        that we have chosen requires the analysis of existing
-                        financial and administrative conditions. The
-                        significance of such problems is so obvious that the
-                        understanding of nature of resource saving technologies
-                        directly depends on strengthening the democratic system.
+                        Find the cause why your plant is dying. Melting, holes
+                        in the leaves, and another reason why your plant is not
+                        doing well in your tank can be caused by insufficient
+                        amount of nutrition. Here we provide a information on
+                        how much you should dose your fertilizer into your tank.
                     </p>
                 </div>
                 <div class="w-[50%] flex justify-center items-center p-5 m-5">
@@ -76,7 +65,7 @@
             </div>
         </div>
         <div class="flex-row items-center mx-5">
-            <div class="flex justify-center items-center mx-5 p-5">
+            <div class="flex justify-center items-center m-5 p-5">
                 <div class="w-[50%] flex justify-center items-center p-5 m-5">
                     <img
                         id="img3"
@@ -96,17 +85,13 @@
                     </h1>
                     <p
                         id="desc3"
-                        class="indent-8 relative font-montserrat drop-shadow-xl text-primary"
+                        class="relative font-montserrat drop-shadow-xl text-primary"
                     >
-                        However, one should not forget constant quantitive
-                        growth and the scope of our activity requires the
-                        clarification of the tasks given by the society and
-                        government. Thus the innovational path that we have
-                        chosen contributes to increasing the quality of new
-                        propositions. The significance of such problems is so
-                        obvious that the innovational path that we have chosen
-                        allows to complete important implementation tasks of the
-                        system of mass participation.
+                        Your plants need a specific amount of needs that should
+                        be fulfilled to be able to thrive and grows beautiful.
+                        We will help you to achive a beautiful looking tank with
+                        healthy plants that you can enjoy with a cup of coffee
+                        in the morning.
                     </p>
                 </div>
             </div>

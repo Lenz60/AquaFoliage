@@ -6,25 +6,30 @@
         >
             <div class="hero-overlay bg-opacity-40 bg-base-200"></div>
             <div class="hero-content text-center text-neutral-content">
-                <div>
-                    <h1
-                        id="hero-title"
-                        class="mb-4 p-3 text-6xl font-bold font-monserrat text-primary overflow-hidden"
-                    >
-                        Explore the Diversity of Aquatic Flora
-                    </h1>
-                    <p
-                        id="hero-desc"
-                        class="mb-5 text-lg text-primary font-istok font-medium text-transparent overflow-hidden"
-                    >
-                        We provide information about aquatic plants needs.
-                        <br />
-                        Identify, care and create more efficient environments
-                        for your aquascape
-                    </p>
+                <div class="flex-row justify-center items-center text-center">
+                    <div>
+                        <h1
+                            id="hero-title"
+                            class="mb-4 p-3 tracking-[-1%] text-6xl font-semibold font-monserrat text-primary overflow-hidden"
+                        >
+                            Explore the Diversity <br />
+                            of Aquatic Flora
+                        </h1>
+                    </div>
+                    <div class="flex text-center items-center justify-center">
+                        <p
+                            id="hero-desc"
+                            class="mb-5 w-[600px] text-lg text-primary font-istok font-medium text-transparent overflow-hidden"
+                        >
+                            We provide information about aquatic plants needs.
+                            <br />
+                            Identify, care and create more efficient
+                            environments for your aquascape
+                        </p>
+                    </div>
                     <button
                         id="button"
-                        class="btn btn-accent font-semibold font-montserrat"
+                        class="btn m-5 btn-accent font-semibold font-montserrat"
                     >
                         Check it out
                     </button>
@@ -54,6 +59,7 @@ export default {
 
             gsap.to("#hero-desc", {
                 y: 0,
+                x: 0,
                 color: "#E8ECE9",
                 stagger: 0.05,
                 delay: 3,
