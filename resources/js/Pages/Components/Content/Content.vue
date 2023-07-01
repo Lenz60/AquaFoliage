@@ -10,7 +10,7 @@
                         id="img1"
                         src="/images/section2/hairAlgae.jpg"
                         alt=""
-                        class="rounded-md drop-shadow-2xl card"
+                        class="rounded-md drop-shadow-md card"
                     />
                 </div>
                 <div class="w-[50%] flex-row justify-center items-center m-5">
@@ -59,7 +59,7 @@
                         id="img2"
                         src="/images/section2/javaFernMelting.jpg"
                         alt=""
-                        class="rounded-md drop-shadow-2xl card"
+                        class="rounded-md drop-shadow-md card"
                     />
                 </div>
             </div>
@@ -71,7 +71,7 @@
                         id="img3"
                         src="/images/section2/pearling.jpg"
                         alt=""
-                        class="rounded-md drop-shadow-2xl card"
+                        class="rounded-md drop-shadow-md card"
                     />
                 </div>
                 <div
