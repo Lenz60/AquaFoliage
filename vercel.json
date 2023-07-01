@@ -2,14 +2,15 @@
     "version": 2,
     "framework": null,
     "functions": {
-        "public/index.php": {
-            "runtime": "vercel-php@0.6.0"
+        "api/index.php": {
+            "runtime": "vercel-php@0.6.0",
+            "excludeFiles": "api/**"
         }
     },
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/public/index.php"
+            "dest": "/api/index.php"
         }
     ],
     "env": {
