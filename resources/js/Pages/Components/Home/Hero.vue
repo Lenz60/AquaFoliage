@@ -27,12 +27,13 @@
                             environments for your aquascape
                         </p>
                     </div>
-                    <button
+                    <Link
                         id="button"
+                        href="plants"
                         class="btn m-5 btn-accent font-semibold font-montserrat"
                     >
                         Check it out
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>
@@ -40,11 +41,15 @@
 </template>
 
 <script>
+import { Link } from "@inertiajs/vue3";
 import { gsap } from "gsap";
 import { onMounted } from "vue";
 import SplitType from "split-type";
 import $ from "jquery";
 export default {
+    components: {
+        Link,
+    },
     setup() {
         onMounted(() => {
             let text1 = new SplitType("#hero-title");

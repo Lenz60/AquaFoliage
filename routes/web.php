@@ -14,12 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return \Inertia\Inertia::render('Home');
-});
-Route::get('/plants', function () {
-    return \Inertia\Inertia::render('Plants');
-});
+Route::inertia('/','Home');
+Route::inertia('plants','Plants');
+Route::inertia('detail','"./Components/Plants/Content/DetailPlants"'); //???????
 // Route::get('/home', function () {
 //     return view('welcome');
 // });
