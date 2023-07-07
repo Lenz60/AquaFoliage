@@ -1,8 +1,6 @@
 <template>
     <div data-themes="foliage">
-        <div
-            class="flex flex-col border-2 h-screen border-yellow-300 overflow-auto"
-        >
+        <div class="flex flex-col h-screen overflow-auto">
             <h3 class="p-5 text-2xl font-montserrat font-semibold text-primary">
                 Plants Databases
             </h3>

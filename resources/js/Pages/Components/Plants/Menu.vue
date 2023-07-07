@@ -1,11 +1,7 @@
 <template>
     <div>
-        <div
-            class="border-2 font-montserrat text-primary border-green-300 h-screen overflow-x-auto"
-        >
-            <ul
-                class="menu p-5 bg-neutral w-full h-max border-2 border-blue-400"
-            >
+        <div class="font-montserrat text-primary h-screen overflow-x-auto">
+            <ul class="menu p-5 bg-neutral w-full h-max">
                 <li>
                     <details open>
                         <summary class="text-lg">
@@ -16,7 +12,9 @@
                             Plant Characteristics
                         </summary>
                         <ul>
-                            <li><a>level 2 item 1</a></li>
+                            <li>
+                                <Link href="detail">Monte Carlo</Link>
+                            </li>
                             <li><a>level 2 item 2</a></li>
                             <li><a>level 2 item 2</a></li>
                             <li><a>level 2 item 2</a></li>
@@ -92,7 +90,11 @@
 </template>
 
 <script>
+import { Link } from "@inertiajs/vue3";
 export default {
+    components: {
+        Link,
+    },
     setup() {
         return {};
     },
