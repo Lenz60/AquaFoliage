@@ -7,16 +7,16 @@
                 Plants Databases
             </h3>
             <div
-                class="grid grid-cols-2 gap-x-6 gap-y-12 p-5 items-center w-fit h-full"
+                class="grid grid-cols-2 gap-x-6 gap-y-12 p-7 items-center w-fit h-full"
             >
                 <div
                     class="card rounded-md hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
                 >
-                    <div class="flex-col">
+                    <div class="flex-col w-[400px] h-[350px]">
                         <div class="flex justify-center items-center p-2">
                             <img
-                                src="/images/sacaGlare.png"
-                                class="w-[200px] h-[200px] justify-center items-center"
+                                src="/images/HydrocotylTripartita.jpg"
+                                class="rounded-md justify-center items-center"
                             />
                         </div>
                         <div>
@@ -38,11 +38,11 @@
                 <div
                     class="card rounded-md hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
                 >
-                    <div class="flex-col">
+                    <div class="flex-col w-[400px] h-[350px]">
                         <div class="flex justify-center items-center p-2">
                             <img
-                                src="/images/sacaGlare.png"
-                                class="w-[200px] h-[200px] justify-center items-center"
+                                src="/images/MeltingPlants.jpg"
+                                class="rounded-md justify-center items-center"
                             />
                         </div>
                         <div>
@@ -63,11 +63,11 @@
                 <div
                     class="card rounded-md hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
                 >
-                    <div class="flex-col">
+                    <div class="flex-col w-[400px] h-[350px]">
                         <div class="flex justify-center items-center p-2">
                             <img
-                                src="/images/sacaGlare.png"
-                                class="w-[200px] h-[200px] justify-center items-center"
+                                src="/images/BlackBeard.jpg"
+                                class="rounded-md justify-center items-center"
                             />
                         </div>
                         <div>
