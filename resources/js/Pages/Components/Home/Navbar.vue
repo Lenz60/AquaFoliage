@@ -37,7 +37,6 @@
                             <div>
                                 <img
                                     src="images/logo.png"
-                                    alt=""
                                     class="btn rounded-md btn-ghost normal-case"
                                 />
                             </div>
@@ -53,11 +52,13 @@
                 </div>
             </div>
             <div class="flex-1">
-                <img
-                    src="images/logo.png"
-                    alt=""
-                    class="btn rounded-md btn-ghost normal-case"
-                />
+                <Link href="/">
+                    <img
+                        src="images/logo.png"
+                        alt=""
+                        class="btn rounded-md btn-ghost normal-case"
+                    />
+                </Link>
                 <!-- <a class="btn rounded-md btn-ghost normal-case text-xl"
                     >AquaFolliage</a
                 > -->
@@ -84,7 +85,11 @@
 </template>
 
 <script>
+import { Link } from "@inertiajs/vue3";
 export default {
+    components: {
+        Link,
+    },
     setup() {
         return {};
     },
