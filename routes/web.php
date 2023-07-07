@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return \Inertia\Inertia::render('Home');
 });
-Route::get('/home', function () {
-    return view('welcome');
+Route::get('/plants', function () {
+    return \Inertia\Inertia::render('Plants');
 });
+// Route::get('/home', function () {
+//     return view('welcome');
+// });
 

@@ -4,6 +4,7 @@ export default {
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        "./resources/**/**/*.vue",
         "./resources/Pages/*.vue",
     ],
     theme: {
@@ -30,6 +31,7 @@ export default {
             {
                 foliage: {
                     neutral: "#0B1C11",
+                    neutralDark: "#050d08",
                     primary: "#E8ECE9",
                     accent: "#049806",
                 },

@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import Navbar from "./Components/Navbar.vue";
-import Hero from "./Components/Hero.vue";
-import Section from "./Components/Section.vue";
-import Poem from "./Components/Poem.vue";
-import PreFooter from "./Components/PreFooter.vue";
-import Footer from "./Components/Footer.vue";
+import Navbar from "./Components/Home/Navbar.vue";
+import Hero from "./Components/Home/Hero.vue";
+import Section from "./Components/Home/Section.vue";
+import Poem from "./Components/Home/Poem.vue";
+import PreFooter from "./Components/Home/PreFooter.vue";
+import Footer from "./Components/Home/Footer.vue";
 // import SinglePages from "./Components/SinglePages.vue";
 export default {
     components: {
