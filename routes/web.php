@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PlantsController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::inertia('/','Home');
-Route::inertia('plants','Plants');
+// Route::inertia('plants','Plants');
 // Route::group(
 //     [
 //         'namespace'=>'Components\Plants\Content',
@@ -24,7 +25,14 @@ Route::inertia('plants','Plants');
 //         Route:inertia('detail', ['uses'=>'DetailPlants']);
 //     }
 // );
-Route::inertia('detail','Components/Plants/Content/DetailPlants'); //???????
+Route::get('detail', function (){
+    return inertia('Components/Plants/Content/DetailPlants', [
+        'name' => 'Foo'
+    ]);
+});
+
+Route::get('plants', [PlantsController::class, "index"]);
+// Route::inertia('detail','Components/Plants/Content/DetailPlants'); //???????
 // Route::get('/home', function () {
 //     return view('welcome');
 // });

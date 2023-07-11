@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>Coming soon..</h3>
+        <h3>{{ $page.props.test.Name }}</h3>
     </div>
 </template>
 

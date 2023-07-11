@@ -12,39 +12,9 @@
                             Plant Characteristics
                         </summary>
                         <ul>
-                            <li>
-                                <Link href="detail">Monte Carlo</Link>
+                            <li v-for="plant in Plants">
+                                <a>{{ plant.name }}</a>
                             </li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
-                            <li><a>level 2 item 2</a></li>
                         </ul>
                     </details>
                 </li>
@@ -92,6 +62,7 @@
 <script>
 import { Link } from "@inertiajs/vue3";
 export default {
+    props: ["Plants"],
     components: {
         Link,
     },
