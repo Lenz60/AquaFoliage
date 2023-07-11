@@ -3,7 +3,11 @@
         <Navbar class="sticky top-0 z-50"></Navbar>
         <div class="flex h-screen w-screen">
             <div class="w-[30%] h-screen">
-                <Menu :Plants="plants"></Menu>
+                <Menu
+                    :Plants="plants"
+                    :Algaes="algae"
+                    :NutDefs="nutrientDef"
+                ></Menu>
             </div>
             <div class="w-[70%] h-screen">
                 <Section></Section>
@@ -19,6 +23,8 @@ import Section from "./Components/Plants/Section.vue";
 export default {
     props: {
         plants: Object,
+        algae: Object,
+        nutrientDef: Object,
     },
     components: {
         Navbar,

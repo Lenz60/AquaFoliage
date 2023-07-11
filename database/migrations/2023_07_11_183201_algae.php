@@ -11,21 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('plants', function (Blueprint $table) {
+        Schema::create('algae', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('genus');
             $table->string('species');
             $table->string('common_name');
             $table->string('difficulty');
-            $table->string('light');
-            $table->string('temp');
-            $table->string('usage');
+            $table->string('causes');
             $table->text('excerpt');
+            $table->text('causes_desc');
             $table->text('body');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -33,7 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('plants');
-        //
+        Schema::dropIfExists('algae');
     }
 };
