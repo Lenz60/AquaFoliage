@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Catamaran&display=swap" rel="stylesheet">
     @vite('resources/js/app.js')
     @vite('resources/css/app.css')
+    @routes
     @inertiaHead
   </head>
   <body>

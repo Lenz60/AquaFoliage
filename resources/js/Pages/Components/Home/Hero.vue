@@ -29,7 +29,7 @@
                     </div>
                     <Link
                         id="button"
-                        href="plants"
+                        href="docs"
                         class="btn m-5 btn-accent font-semibold font-montserrat"
                     >
                         Check it out

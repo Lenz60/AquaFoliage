@@ -1,6 +1,6 @@
 <template>
     <div data-themes="foliage">
-        <div class="flex flex-col h-screen overflow-auto">
+        <div class="flex flex-col h-screen overflow-x-auto no-scrollbar">
             <h3 class="p-5 text-2xl font-montserrat font-semibold text-primary">
                 Plants Databases
             </h3>
@@ -97,4 +97,15 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+</style>

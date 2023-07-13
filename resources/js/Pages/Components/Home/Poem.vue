@@ -58,7 +58,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 export default {
     setup() {
         onMounted(() => {
-            gsap.registerPlugin(ScrollTrigger);
+            //Incase of gsap not working properly
+            if (typeof window !== "undefined") {
+                gsap.registerPlugin(ScrollTrigger);
+            }
 
             // gsap.timeline({})
             gsap.from("#poem1", {

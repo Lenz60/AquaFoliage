@@ -1,7 +1,7 @@
 <template>
     <div>
         <div
-            class="font-montserrat text-primary h-screen overflow-x-auto pb-10"
+            class="font-montserrat text-primary h-screen overflow-x-auto no-scrollbar pb-10"
         >
             <ul class="menu p-5 bg-neutral w-full h-max">
                 <li>
@@ -15,7 +15,11 @@
                         </summary>
                         <ul>
                             <li v-for="plant in Plants">
-                                <a>{{ plant.name }}</a>
+                                <Link
+                                    :href="route('plantCharacteristic')"
+                                    :data="{ id: plant.id }"
+                                    ><a>{{ plant.name }}</a></Link
+                                >
                             </li>
                         </ul>
                     </details>
@@ -59,6 +63,7 @@
 
 <script>
 import { Link } from "@inertiajs/vue3";
+
 export default {
     props: ["Plants", "Algaes", "NutDefs"],
     components: {
@@ -70,4 +75,15 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+</style>

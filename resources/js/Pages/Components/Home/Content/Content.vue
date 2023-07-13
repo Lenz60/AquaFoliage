@@ -107,7 +107,10 @@ import $ from "jquery";
 export default {
     setup() {
         onMounted(() => {
-            gsap.registerPlugin(ScrollTrigger);
+            //Incase of gsap not working properly
+            if (typeof window !== "undefined") {
+                gsap.registerPlugin(ScrollTrigger);
+            }
 
             gsap.from("#title1", {
                 scrollTrigger: "#title1",
