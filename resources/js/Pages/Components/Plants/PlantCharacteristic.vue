@@ -11,15 +11,7 @@
                 ></Menu>
             </div>
             <div class="w-[70%] h-screen">
-                <div v-if="content == 'plants'">
-                    <Detail :Desc="content" :Payload="payload"></Detail>
-                </div>
-                <div v-else-if="content == 'nutDef'">
-                    <Detail :Desc="content" :Payload="payload"></Detail>
-                </div>
-                <div v-else>
-                    <Detail :Desc="content" :Payload="payload"></Detail>
-                </div>
+                <Detail :Desc="content" :Payload="payload"></Detail>
             </div>
         </div>
     </div>
