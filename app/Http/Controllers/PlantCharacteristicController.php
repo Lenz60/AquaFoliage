@@ -22,19 +22,31 @@ class PlantCharacteristicController extends Controller
         ->select('id','name')
         ->get();
 
-        $nameId = request('id');
+        $contentId = request('id');
+        $content = request('content');
         // dd($nameId);
-        $plantDesc = DB::table('plants')
-        ->where('id', $nameId)
-        ->first();
         // dd($plantDesc);
-
-        if(isset($nameId)){
+        
+        if ($content == 'plants'){
+            $payload = DB::table('plants')
+            ->where('id', $contentId)
+            ->first();
+        }else if($content == 'nutDef'){
+            $payload = DB::table('nutrient_deficiencies')
+            ->where('id', $contentId)
+            ->first();
+        }else if($content == 'algae') {
+            $payload = DB::table('algae')
+            ->where('id', $contentId)
+            ->first();
+        }
+        if(isset($payload)){
             return Inertia::render('Components/Plants/PlantCharacteristic',[
                 'plants' => $plants,
                 'algae' => $algae,
                 'nutrientDef' => $nutrientDef,
-                'plant' => $plantDesc
+                'content' => $content,
+                'payload' => $payload
             ]);
         }else{
             return Inertia::render('Components/Plants/PlantCharacteristic',[
@@ -43,6 +55,20 @@ class PlantCharacteristicController extends Controller
                 'nutrientDef' => $nutrientDef
             ]);   
         }
+        // if(isset($nameId)){
+        //     return Inertia::render('Components/Plants/PlantCharacteristic',[
+        //         'plants' => $plants,
+        //         'algae' => $algae,
+        //         'nutrientDef' => $nutrientDef,
+        //         'plant' => $plantDesc
+        //     ]);
+        // }else{
+        //     return Inertia::render('Components/Plants/PlantCharacteristic',[
+        //         'plants' => $plants,
+        //         'algae' => $algae,
+        //         'nutrientDef' => $nutrientDef
+        //     ]);   
+        // }
     }
     public function show(){
         $nameId = request('id');

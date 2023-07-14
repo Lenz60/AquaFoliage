@@ -4,13 +4,22 @@
         <div class="flex h-screen w-screen">
             <div class="w-[30%] h-screen">
                 <Menu
+                    :Content="content"
                     :Plants="plants"
                     :Algaes="algae"
                     :NutDefs="nutrientDef"
                 ></Menu>
             </div>
             <div class="w-[70%] h-screen">
-                <Detail :Plant="plant"></Detail>
+                <div v-if="content == 'plants'">
+                    <Detail :Desc="content" :Payload="payload"></Detail>
+                </div>
+                <div v-else-if="content == 'nutDef'">
+                    <Detail :Desc="content" :Payload="payload"></Detail>
+                </div>
+                <div v-else>
+                    <Detail :Desc="content" :Payload="payload"></Detail>
+                </div>
             </div>
         </div>
     </div>
@@ -21,13 +30,14 @@ import Navbar from "../Home/Navbar.vue";
 import Menu from "./Menu.vue";
 import Detail from "./Content/DetailPlants.vue";
 export default {
-    props: ["plants", "algae", "nutrientDef", "plant"],
+    props: ["content", "plants", "algae", "nutrientDef", "payload"],
     components: {
         Menu,
         Detail,
         Navbar,
     },
-    setup() {
+    setup(props) {
+        // console.log(props.content);
         return {};
     },
 };
