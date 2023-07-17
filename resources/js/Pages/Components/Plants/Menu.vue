@@ -1,9 +1,11 @@
 <template>
-    <div>
+    <div
+        class="card shadow-xl rounded-sm bg-neutral-focus bg-blend-color-dodge"
+    >
         <div
             class="font-montserrat text-primary h-screen overflow-x-auto no-scrollbar pb-10"
         >
-            <ul class="menu p-5 bg-neutral w-full h-max">
+            <ul class="menu p-5 w-full h-max">
                 <li>
                     <span
                         @click="toggleActive1()"
