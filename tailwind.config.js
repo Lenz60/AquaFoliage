@@ -31,7 +31,7 @@ export default {
             {
                 foliage: {
                     neutral: "#0B1C11",
-                    neutralDark: "#050d08",
+                    "neutral-focus": "#0a1a0f",
                     primary: "#E8ECE9",
                     accent: "#049806",
                 },
