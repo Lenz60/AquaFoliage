@@ -39,6 +39,8 @@ class PlantCharacteristicController extends Controller
             $payload = DB::table('algae')
             ->where('id', $contentId)
             ->first();
+        }else {
+             $payload = null;
         }
         if(isset($payload)){
             return Inertia::render('Components/Plants/PlantCharacteristic',[
@@ -49,10 +51,11 @@ class PlantCharacteristicController extends Controller
                 'payload' => $payload
             ]);
         }else{
-            return Inertia::render('Components/Plants/PlantCharacteristic',[
+            return Inertia::render('Plants',[
                 'plants' => $plants,
                 'algae' => $algae,
-                'nutrientDef' => $nutrientDef
+                'nutrientDef' => $nutrientDef,
+                'content' => '404'
             ]);   
         }
         // if(isset($nameId)){

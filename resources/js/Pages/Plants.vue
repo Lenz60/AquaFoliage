@@ -73,7 +73,36 @@
                     <!-- <Detail></Detail> -->
                 </div>
                 <div v-else>
-                    <Section></Section>
+                    <div v-if="content == '404'">
+                        <div
+                            class="flex flex-col justify-center items-center h-screen"
+                        >
+                            <div
+                                class="items-center justify-center text-center"
+                            >
+                                <h1
+                                    class="text-[200px] font-montserrat text-center text-primary"
+                                >
+                                    404
+                                </h1>
+                                <h2
+                                    class="text-[40px] font-montserrat text-primary pb-5"
+                                >
+                                    Not Found
+                                </h2>
+                            </div>
+                            <div class="items-center justify-content-center">
+                                <h3
+                                    class="text-[20px] font-montserrat text-center text-primary"
+                                >
+                                    The page you requested is not found
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-else>
+                        <Section></Section>
+                    </div>
                 </div>
             </div>
         </div>
@@ -90,6 +119,7 @@ export default {
         plants: Object,
         algae: Object,
         nutrientDef: Object,
+        content: String,
     },
     components: {
         Navbar,
