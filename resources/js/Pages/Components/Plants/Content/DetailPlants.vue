@@ -1,7 +1,5 @@
 <template>
     <div>
-        <!--! Todo Make this components only using one description component only -->
-        <!--! by passing the Desc as props and do the if else in the that one single components description -->
         <div v-if="Desc == 'plants'">
             <PlantsDesc :Payload="Payload"></PlantsDesc>
         </div>
