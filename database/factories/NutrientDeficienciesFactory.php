@@ -17,6 +17,7 @@ class NutrientDeficienciesFactory extends Factory
     public function definition(): array
     {
         return [
+            'id' => $this->faker->uuid(),
             'name' => $this->faker->words(2, true),
             'difficulty' => $this->faker->randomElement(['Easy', 'Medium', 'Hard']),
             'causes' => $this->faker->randomElement(['Lack of potassium', 'Lack of Nitrogen', 'Too much light', 'Low Co2','Adaption']),

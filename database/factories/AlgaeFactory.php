@@ -17,6 +17,7 @@ class AlgaeFactory extends Factory
     public function definition(): array
     {
         return [
+            'id' => $this->faker->uuid(),
             'name' => $this->faker->words(2, true),
             'species' => $this->faker->words(1, true),
             'common_name' => $this->faker->name(2),
