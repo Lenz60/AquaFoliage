@@ -29,14 +29,17 @@ class PlantCharacteristicController extends Controller
         
         if ($content == 'plants'){
             $payload = DB::table('plants')
+            ->select('id','name','genus','species','common_name','difficulty','light','temp','usage','body')
             ->where('id', $contentId)
             ->first();
         }else if($content == 'nutDef'){
             $payload = DB::table('nutrient_deficiencies')
+            ->select('id','name','difficulty','causes','causes_desc','body')
             ->where('id', $contentId)
             ->first();
         }else if($content == 'algae') {
             $payload = DB::table('algae')
+            ->select('id','name','species','common_name','difficulty','causes','causes_desc','body')
             ->where('id', $contentId)
             ->first();
         }else {
@@ -58,20 +61,6 @@ class PlantCharacteristicController extends Controller
                 'content' => '404'
             ]);   
         }
-        // if(isset($nameId)){
-        //     return Inertia::render('Components/Plants/PlantCharacteristic',[
-        //         'plants' => $plants,
-        //         'algae' => $algae,
-        //         'nutrientDef' => $nutrientDef,
-        //         'plant' => $plantDesc
-        //     ]);
-        // }else{
-        //     return Inertia::render('Components/Plants/PlantCharacteristic',[
-        //         'plants' => $plants,
-        //         'algae' => $algae,
-        //         'nutrientDef' => $nutrientDef
-        //     ]);   
-        // }
     }
     public function show(){
         $nameId = request('id');
