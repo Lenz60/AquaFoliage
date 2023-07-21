@@ -113,12 +113,14 @@ export default {
             }
 
             gsap.from("#title1", {
+                lazy: false,
                 scrollTrigger: "#title1",
                 color: "transparent",
                 stagger: 0.05,
                 duration: 2,
             });
             gsap.from("#desc1", {
+                lazy: false,
                 scrollTrigger: "#desc1",
                 x: 100,
                 color: "transparent",
@@ -126,6 +128,7 @@ export default {
                 duration: 1,
             });
             gsap.from("#img1", {
+                lazy: false,
                 scrollTrigger: "#img1",
                 opacity: 0,
                 delay: 0.5,
@@ -133,12 +136,14 @@ export default {
                 duration: 2,
             });
             gsap.from("#title2", {
+                lazy: false,
                 scrollTrigger: "#title2",
                 color: "transparent",
                 stagger: 0.05,
                 duration: 2,
             });
             gsap.from("#desc2", {
+                lazy: false,
                 scrollTrigger: "#desc2",
                 x: -100,
                 color: "transparent",
@@ -146,6 +151,7 @@ export default {
                 duration: 1,
             });
             gsap.from("#img2", {
+                lazy: false,
                 scrollTrigger: "#img2",
                 opacity: 0,
                 delay: 0.5,
@@ -153,12 +159,14 @@ export default {
                 duration: 2,
             });
             gsap.from("#title3", {
+                lazy: false,
                 scrollTrigger: "#title3",
                 color: "transparent",
                 stagger: 0.05,
                 duration: 2,
             });
             gsap.from("#desc3", {
+                lazy: false,
                 scrollTrigger: "#desc3",
                 x: 100,
                 color: "transparent",
@@ -166,6 +174,7 @@ export default {
                 duration: 1,
             });
             gsap.from("#img3", {
+                lazy: false,
                 scrollTrigger: "#img3",
                 opacity: 0,
                 delay: 0.5,

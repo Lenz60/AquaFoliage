@@ -65,6 +65,7 @@ export default {
 
             // gsap.timeline({})
             gsap.from("#poem1", {
+                lazy: false,
                 scrollTrigger: "#poemWrap",
                 width: 0,
                 ease: "none",
@@ -73,6 +74,7 @@ export default {
                 duration: 3,
             });
             gsap.from("#poem2", {
+                lazy: false,
                 scrollTrigger: "#poemWrap",
                 width: 0,
                 delay: 3.5,
@@ -82,16 +84,19 @@ export default {
             });
 
             gsap.from("#quote1", {
+                lazy: false,
                 scrollTrigger: "#poemWrap",
                 delay: 6.5,
                 opacity: 0,
             });
             gsap.from("#quote2", {
+                lazy: false,
                 scrollTrigger: "#poemWrap",
                 delay: 6.5,
                 opacity: 0,
             });
             gsap.from("#takashi", {
+                lazy: false,
                 scrollTrigger: "#poemWrap",
                 delay: 7,
                 opacity: 0,
