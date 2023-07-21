@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="flex-1">
-                <Link href="/">
+                <Link href="http://aquafoliage.test/">
                     <img
                         src="/images/logo.png"
                         alt=""
