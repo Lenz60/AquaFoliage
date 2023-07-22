@@ -54,7 +54,7 @@ export default {
         onMounted(() => {
             let text1 = new SplitType("#hero-title");
             let text2 = $("#hero-desc").prop("id");
-            console.log(text2);
+            // console.log(text2);
             let characters = document.querySelectorAll(".char");
             $(text2).addClass("translate-y-full");
 
