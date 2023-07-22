@@ -1,23 +1,19 @@
 <template>
     <div>
-        <h3
-            class="text-primary font-montserrat font-semibold text-xl p-5 border-2 border-yellow-300"
-        >
+        <h3 class="text-primary font-montserrat font-semibold text-xl p-5">
             {{ Payload["name"] }}
         </h3>
         <p class="text-md text-primary font-montserrat pl-5">
             Common name : {{ Payload["common_name"] }}
         </p>
-        <div class="flex p-5 border-2 border-green-300">
-            <div class="border-2 border-red-300">
+        <div class="flex p-5">
+            <div>
                 <img
                     src="https://pbs.twimg.com/profile_images/1289815343892819969/zIk4dt2E_400x400.jpg"
                     class="w-[200px] h-[200px]"
                 />
             </div>
-            <div
-                class="text-primary font-montserrat text-sm p-5 ml-[10%] border-2 border-blue-300"
-            >
+            <div class="text-primary font-montserrat text-sm p-5 ml-[10%]">
                 <p>Difficulty : {{ Payload["difficulty"] }}</p>
                 <p>Causes : {{ Payload["causes"] }}</p>
                 <div class="mt-10">
