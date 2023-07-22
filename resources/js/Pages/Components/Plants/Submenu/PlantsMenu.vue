@@ -17,8 +17,9 @@
                             <Link
                                 :href="route('plantCharacteristic')"
                                 :data="{ content: 'plants', id: plant.id }"
-                                ><a>{{ plant.name }}</a></Link
                             >
+                                <a>{{ plant.name }}</a>
+                            </Link>
                         </li>
                     </ul>
                 </details>

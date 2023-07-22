@@ -17,8 +17,9 @@
                             <Link
                                 :href="route('plantCharacteristic')"
                                 :data="{ content: 'nutDef', id: nutDef.id }"
-                                ><a>{{ nutDef.name }}</a></Link
                             >
+                                <a>{{ nutDef.name }}</a>
+                            </Link>
                         </li>
                     </ul>
                 </details>
