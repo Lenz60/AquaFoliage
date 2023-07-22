@@ -22,6 +22,8 @@
         "jquery": "^3.7.0",
         "split-type": "^0.3.3",
         "vue": "^3.3.4",
+        "vue-cookie": "^1.1.4",
+        "vue-cookies": "^1.8.3",
         "ziggy-js": "^1.6.0"
     }
 }
