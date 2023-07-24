@@ -63,7 +63,10 @@
                     >AquaFolliage</a
                 > -->
             </div>
-            <div>
+            <div v-if="isset($page.props.auth.user.name)">
+                <p>{{ $page.props.auth.user.name }}</p>
+            </div>
+            <div v-else>
                 <Link :href="route('login')">
                     <p class="btn btn-ghost">Sign in</p>
                 </Link>
