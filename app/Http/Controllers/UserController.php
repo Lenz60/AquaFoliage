@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Hamcrest\Core\HasToString;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Inertia\Inertia;
 
 class UserController extends Controller
@@ -22,7 +23,7 @@ class UserController extends Controller
         $data = DB::table('users')
         ->select('id','name','email')
         ->where('email', $email)
-        ->where('password', bcrypt($password))
+        ->where('password', Hash::make($password))
         ->first();
         // dd($data);
 
