@@ -1,4 +1,5 @@
 <template>
+    <Head title="Aqua Foliage"> </Head>
     <div class="relative">
         <Navbar class="sticky top-0 z-50"></Navbar>
         <Hero></Hero>
@@ -11,7 +12,7 @@
 </template>
 
 <script>
-import { Link } from "@inertiajs/vue3";
+import { Head, Link } from "@inertiajs/vue3";
 import Navbar from "./Components/Home/Navbar.vue";
 import Hero from "./Components/Home/Hero.vue";
 import Section from "./Components/Home/Section.vue";
@@ -21,6 +22,7 @@ import Footer from "./Components/Home/Footer.vue";
 // import SinglePages from "./Components/SinglePages.vue";
 export default {
     components: {
+        Head,
         Link,
         Navbar,
         Hero,
