@@ -4,8 +4,10 @@ use App\Http\Controllers\DetailPlantsController;
 use App\Http\Controllers\PlantCharacteristicController;
 use App\Http\Controllers\PlantsController;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,38 +15,38 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
 
-Route::inertia('/','Home');
-// Route::inertia('plants','Plants');
-// Route::group(
-//     [
-//         'namespace'=>'Components\Plants\Content',
-//         'prefix' => 'detail'
-//     ], function(){
-//         Route:inertia('detail', ['uses'=>'DetailPlants']);
-//     }
-// );
-// Route::get('detail', function (){
-//     return inertia('Components/Plants/Content/DetailPlants', [
-//         'name' => $name
-//     ]);
-// }) ->name('detailplants');
+Route::get('/', function () {
+    return Inertia::render('Home', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
 
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 Route::get('docs', [PlantsController::class, "index"]);
-Route::get('login', [UserController::class, "indexLogin"])->name('login');
-Route::post('login/auth', [UserController::class, "login"])->name('loginAuth');
-Route::get('register', [UserController::class, "register"])->name('register');
+// Route::get('login', [UserController::class, "indexLogin"])->name('login');
+// Route::post('login/auth', [UserController::class, "login"])->name('loginAuth');
+// Route::get('register', [UserController::class, "register"])->name('register');
 Route::get('docs/plants', [PlantCharacteristicController::class, "index"])->name('plantCharacteristic');
 Route::post('docs/plants', [PlantCharacteristicController::class, "index"])->name('plantDesc');
 Route::get('detail', [DetailPlantsController::class, "index"])->name('detailplants');
 Route::post('detail', [DetailPlantsController::class, "index"]);
 // Route::inertia('detail','Components/Plants/Content/DetailPlants'); //???????
 Route::inertia('test','Components/Plants/Content/Detail'); //???????
-// Route::get('/home', function () {
-//     return view('welcome');
-// });
 
+require __DIR__.'/auth.php';
