@@ -64,9 +64,11 @@
                 > -->
             </div>
             <div v-if="$page.props.auth.user?.name">
-                <p>{{ $page.props.auth.user.name }}</p>
+                <p class="text-md font-montserrat">
+                    {{ $page.props.auth.user.name }}
+                </p>
                 <Link :href="route('logout')" method="post">
-                    <p class="btn btn-ghost">Log out</p>
+                    <p class="btn btn-ghost text-sm">Log out</p>
                 </Link>
             </div>
             <div v-else>
