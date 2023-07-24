@@ -3,6 +3,7 @@
 use App\Http\Controllers\DetailPlantsController;
 use App\Http\Controllers\PlantCharacteristicController;
 use App\Http\Controllers\PlantsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,9 @@ Route::inertia('/','Home');
 // }) ->name('detailplants');
 
 Route::get('docs', [PlantsController::class, "index"]);
+Route::get('login', [UserController::class, "indexLogin"])->name('login');
+Route::post('login/auth', [UserController::class, "login"])->name('loginAuth');
+Route::get('register', [UserController::class, "register"])->name('register');
 Route::get('docs/plants', [PlantCharacteristicController::class, "index"])->name('plantCharacteristic');
 Route::post('docs/plants', [PlantCharacteristicController::class, "index"])->name('plantDesc');
 Route::get('detail', [DetailPlantsController::class, "index"])->name('detailplants');

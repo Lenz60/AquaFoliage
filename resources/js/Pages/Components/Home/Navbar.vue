@@ -63,6 +63,11 @@
                     >AquaFolliage</a
                 > -->
             </div>
+            <div>
+                <Link :href="route('login')">
+                    <p class="btn btn-ghost">Sign in</p>
+                </Link>
+            </div>
         </header>
     </div>
 </template>
