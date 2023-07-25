@@ -1,7 +1,7 @@
 <template>
     <div
-        class="flex-row min-w-full bg-[#101310] bg-no-repeat p-5 bg-right-bottom min-h-full"
-        style="background-image: url(/images/section2bgInverted.png)"
+        class="flex-row min-w-full bg-transparent bg-no-repeat p-5 bg-right-bottom min-h-full"
+        style="background-image: url(/images/section2bgInvertedTransparent.png)"
     >
         <div class="flex justify-center items-center mx-5">
             <div class="flex justify-center items-center m-5 p-5">

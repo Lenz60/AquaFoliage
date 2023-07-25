@@ -1,7 +1,7 @@
 <template>
     <div data-themes="foliage">
         <div
-            class="hero min-h-screen"
+            class="hero min-h-screen masking"
             style="background-image: url(/images/HeroCropped.jpg)"
         >
             <div class="hero-overlay bg-opacity-40 bg-base-200"></div>
@@ -90,4 +90,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.masking {
+    mask-image: linear-gradient(#101310 85%, #10131000);
+}
+</style>

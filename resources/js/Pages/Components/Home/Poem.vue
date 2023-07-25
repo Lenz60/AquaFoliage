@@ -2,10 +2,10 @@
     <div data-themes="foliage">
         <div
             id="poemWrap"
-            class="hero min-h-screen bg-opacity-60 absolute bg-base-200"
+            class="hero h-screen bg-opacity-60 masking"
             style="background-image: url(/images/cinematic2.png)"
         >
-            <div class="hero-overlay bg-opacity-40 bg-base-200"></div>
+            <div class="hero-overlay bg-opacity-40"></div>
             <div class="flex-row">
                 <div class="hero-content items-center text-center">
                     <div class="indicator pb-5">
@@ -109,4 +109,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.masking {
+    mask-image: linear-gradient(#10131000, #101310 20%);
+}
+</style>

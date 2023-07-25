@@ -1,5 +1,5 @@
 <template>
-    <div data-theme="foliage">
+    <div data-theme="foliage" class="bg-transparent">
         <Content></Content>
     </div>
 </template>
