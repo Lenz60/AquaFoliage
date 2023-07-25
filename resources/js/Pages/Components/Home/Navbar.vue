@@ -74,7 +74,7 @@
                                 <details>
                                     <summary>
                                         <p
-                                            class="text-md font-semibold font-montserrat"
+                                            class="text-md font-semibold font-montserrat px-2"
                                         >
                                             {{ $page.props.auth.user.name }}
                                         </p>
