@@ -1,11 +1,11 @@
 <template>
     <Head title="Aqua Foliage"> </Head>
-    <div class="relative">
+    <div class="bg-[#101310]">
         <Navbar class="sticky top-0 z-50"></Navbar>
         <Hero></Hero>
         <Section></Section>
         <Poem></Poem>
-        <PreFooter></PreFooter>
+        <!-- <PreFooter></PreFooter> -->
         <Footer></Footer>
         <!-- <SinglePages :fish="fish"></SinglePages> -->
     </div>
@@ -19,6 +19,7 @@ import Section from "./Components/Home/Section.vue";
 import Poem from "./Components/Home/Poem.vue";
 import PreFooter from "./Components/Home/PreFooter.vue";
 import Footer from "./Components/Home/Footer.vue";
+import { onMounted } from "vue";
 // import SinglePages from "./Components/SinglePages.vue";
 export default {
     components: {
@@ -31,12 +32,15 @@ export default {
         PreFooter,
         Footer,
     },
-    data() {
-        return {
-            fish: 0,
-        };
-    },
+    // data() {
+    //     return {
+    //         fish: 0,
+    //     };
+    // },
     setup() {
+        onMounted: () => {
+            location.reload();
+        };
         return {};
     },
 };
