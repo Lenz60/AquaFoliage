@@ -46,6 +46,16 @@
                     >
                 </label>
             </div>
+            <div class="block mt-2">
+                <Link :href="route('register')">
+                    <label class="flex items-center hover:cursor-pointer">
+                        <span
+                            class="ml-2 text-sm text-gray-600 dark:text-gray-400"
+                            >Dont have an account ? Register here</span
+                        >
+                    </label>
+                </Link>
+            </div>
 
             <div class="flex items-center justify-end mt-4">
                 <Link

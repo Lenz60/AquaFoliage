@@ -63,18 +63,20 @@
                     >AquaFolliage</a
                 > -->
             </div>
-            <div v-if="$page.props.auth.user?.name">
-                <p class="text-md font-montserrat">
-                    {{ $page.props.auth.user.name }}
-                </p>
-                <Link :href="route('logout')" method="post">
-                    <p class="btn btn-ghost text-sm">Log out</p>
-                </Link>
-            </div>
-            <div v-else>
-                <Link :href="route('login')">
-                    <p class="btn btn-ghost">Sign in</p>
-                </Link>
+            <div v-if="!NoAuthLink">
+                <div v-if="$page.props.auth.user?.name">
+                    <p class="text-md font-montserrat">
+                        {{ $page.props.auth.user.name }}
+                    </p>
+                    <Link :href="route('logout')" method="post">
+                        <p class="btn btn-ghost text-sm">Log out</p>
+                    </Link>
+                </div>
+                <div v-else>
+                    <Link :href="route('login')">
+                        <p class="btn btn-ghost">Sign in</p>
+                    </Link>
+                </div>
             </div>
         </header>
     </div>
@@ -85,6 +87,9 @@ import { Link } from "@inertiajs/vue3";
 export default {
     components: {
         Link,
+    },
+    props: {
+        NoAuthLink: Object,
     },
     setup() {
         return {};

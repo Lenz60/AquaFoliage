@@ -1,11 +1,22 @@
-<script setup>
+<script>
+import Navbar from "../Pages/Components/Home/Navbar.vue";
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 import { Link } from "@inertiajs/vue3";
+
+export default {
+    components: {
+        Navbar,
+    },
+    setup() {
+        return {};
+    },
+};
 </script>
 
 <template>
+    <Navbar :NoAuthLink="true"></Navbar>
     <div
-        class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900"
+        class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-neutral dark:bg-gray-900"
     >
         <div>
             <!-- <Link href="/">
