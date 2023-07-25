@@ -64,13 +64,49 @@
                 > -->
             </div>
             <div v-if="!NoAuthLink">
-                <div v-if="$page.props.auth.user?.name">
-                    <p class="text-md font-montserrat">
-                        {{ $page.props.auth.user.name }}
-                    </p>
-                    <Link :href="route('logout')" method="post">
-                        <p class="btn btn-ghost text-sm">Log out</p>
-                    </Link>
+                <div
+                    v-if="$page.props.auth.user?.name"
+                    class="menu flex-row-reverse"
+                >
+                    <div class="flex-none">
+                        <ul class="menu menu-horizontal px-1">
+                            <li>
+                                <details>
+                                    <summary>
+                                        <p
+                                            class="text-md font-semibold font-montserrat"
+                                        >
+                                            {{ $page.props.auth.user.name }}
+                                        </p>
+                                    </summary>
+                                    <ul
+                                        class="flex flex-col bg-base-200 bg-opacity-70 w-full rounded-md text-center justify-center"
+                                    >
+                                        <li>
+                                            <Link
+                                                :href="route('profile.edit')"
+                                                method="get"
+                                            >
+                                                <p class="text-sm text-center">
+                                                    Profile
+                                                </p>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link
+                                                :href="route('logout')"
+                                                method="post"
+                                            >
+                                                <p class="text-sm text-center">
+                                                    Log out
+                                                </p>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </details>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div v-else>
                     <Link :href="route('login')">
