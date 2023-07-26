@@ -10,7 +10,7 @@
                 <div class="hero-content items-center text-center">
                     <div class="indicator pb-5">
                         <span
-                            id="quote1"
+                            id="quote"
                             class="indicator-item text-white font-catamaran indicator-start text-[96px]"
                             >“</span
                         >
@@ -31,7 +31,7 @@
                             </p>
                         </div>
                         <span
-                            id="quote2"
+                            id="quote"
                             class="indicator-item pl-[60px] pt-[60px] text-white font-catamaran indicator-bottom text-[96px]"
                             >”</span
                         >
@@ -63,46 +63,77 @@ export default {
                 gsap.registerPlugin(ScrollTrigger);
             }
 
-            // gsap.timeline({})
-            gsap.from("#poem1", {
-                lazy: false,
-                scrollTrigger: "#poemWrap",
-                width: 0,
-                ease: "none",
-                delay: 0.5,
-                stagger: 1,
-                duration: 3,
-            });
-            gsap.from("#poem2", {
-                lazy: false,
-                scrollTrigger: "#poemWrap",
-                width: 0,
-                delay: 3.5,
-                ease: "none",
-                stagger: 1,
-                duration: 3,
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#poemWrap",
+                },
             });
 
-            gsap.from("#quote1", {
+            tl.from("#poem1", {
                 lazy: false,
-                scrollTrigger: "#poemWrap",
-                delay: 6.5,
-                opacity: 0,
-            });
-            gsap.from("#quote2", {
-                lazy: false,
-                scrollTrigger: "#poemWrap",
-                delay: 6.5,
-                opacity: 0,
-            });
-            gsap.from("#takashi", {
-                lazy: false,
-                scrollTrigger: "#poemWrap",
-                delay: 7,
-                opacity: 0,
+                width: 0,
+                ease: "none",
                 stagger: 1,
-                duration: 2,
-            });
+                duration: 3,
+            })
+                .from("#poem2", {
+                    lazy: false,
+                    width: 0,
+                    ease: "none",
+                    stagger: 1,
+                    duration: 3,
+                })
+                .from("#quote", {
+                    lazy: false,
+                    opacity: 0,
+                })
+                .from("#takashi", {
+                    lazy: false,
+                    opacity: 0,
+                    stagger: 1,
+                    duration: 2,
+                });
+
+            // gsap.timeline({})
+            // gsap.from("#poem1", {
+            //     lazy: false,
+            //     scrollTrigger: "#poemWrap",
+            //     width: 0,
+            //     ease: "none",
+            //     delay: 0.5,
+            //     stagger: 1,
+            //     duration: 3,
+            // });
+            // gsap.from("#poem2", {
+            //     lazy: false,
+            //     scrollTrigger: "#poemWrap",
+            //     width: 0,
+            //     delay: 3.5,
+            //     ease: "none",
+            //     stagger: 1,
+            //     duration: 3,
+            // });
+
+            // gsap.from("#quote1", {
+            //     lazy: false,
+            //     scrollTrigger: "#poemWrap",
+            //     delay: 6.5,
+            //     opacity: 0,
+            // });
+            // gsap.from("#quote2", {
+            //     lazy: false,
+            //     scrollTrigger: "#poemWrap",
+            //     delay: 6.5,
+            //     opacity: 0,
+            // });
+            // gsap.from("#takashi", {
+            //     lazy: false,
+            //     scrollTrigger: "#poemWrap",
+            //     delay: 7,
+            //     opacity: 0,
+            //     stagger: 1,
+            //     duration: 2,
+            // });
         });
         return {};
     },
