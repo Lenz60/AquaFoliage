@@ -52,16 +52,13 @@
                 </div>
             </div>
             <div class="flex-1">
-                <Link href="http://aquafoliage.test/">
+                <Link :href="route('HomePage')">
                     <img
                         src="/images/logo.png"
                         alt=""
                         class="btn rounded-md btn-ghost normal-case"
                     />
                 </Link>
-                <!-- <a class="btn rounded-md btn-ghost normal-case text-xl"
-                    >AquaFolliage</a
-                > -->
             </div>
             <div v-if="!NoAuthLink">
                 <div
