@@ -1,6 +1,6 @@
 <template>
     <Head title="Aqua Foliage"> </Head>
-    <div class="bg-[#101310]">
+    <div class="bg-[#101310] overflow-hidden">
         <Navbar class="sticky top-0 z-50"></Navbar>
         <Hero></Hero>
         <Section></Section>
