@@ -1,4 +1,5 @@
 <template>
+    <Head title="Plants Databases"> </Head>
     <div class="relative bg-neutral overflow-x-hidden no-scrollbar">
         <Navbar class="sticky top-0 z-50"></Navbar>
         <div class="flex h-screen w-screen">
@@ -108,6 +109,7 @@ import Navbar from "./Components/Home/Navbar.vue";
 import Menu from "./Components/Plants/Menu.vue";
 import Section from "./Components/Plants/Section.vue";
 import { VueElement, ref } from "vue";
+import { Head } from "@inertiajs/vue3";
 export default {
     props: {
         plants: Object,
@@ -116,6 +118,7 @@ export default {
         content: String,
     },
     components: {
+        Head,
         Navbar,
         Menu,
         Section,
