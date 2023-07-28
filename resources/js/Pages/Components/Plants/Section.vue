@@ -5,12 +5,14 @@
                 Plants Databases
             </h3>
             <div
-                class="grid grid-cols-2 gap-x-6 gap-y-12 p-7 items-center w-fit h-full"
+                class="grid grid-cols-2 gap-x-6 gap-y-0.5 p-7 items-center w-fit h-full"
             >
                 <div
                     class="card rounded-md hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
                 >
-                    <div class="flex-col w-[400px] h-[350px]">
+                    <div
+                        class="flex-col p-2 w-[400px] h-[350px] md:w-[250px] md:h-[300px]"
+                    >
                         <div class="flex justify-center items-center p-2">
                             <img
                                 src="/images/HydrocotylTripartita.jpg"
@@ -36,7 +38,9 @@
                 <div
                     class="card rounded-md hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
                 >
-                    <div class="flex-col w-[400px] h-[350px]">
+                    <div
+                        class="flex-col p-2 w-[400px] h-[350px] md:w-[250px] md:h-[300px]"
+                    >
                         <div class="flex justify-center items-center p-2">
                             <img
                                 src="/images/MeltingPlants.jpg"
@@ -61,7 +65,9 @@
                 <div
                     class="card rounded-md hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
                 >
-                    <div class="flex-col w-[400px] h-[350px]">
+                    <div
+                        class="flex-col p-2 w-[400px] h-[350px] md:w-[250px] md:h-[300px]"
+                    >
                         <div class="flex justify-center items-center p-2">
                             <img
                                 src="/images/BlackBeard.jpg"

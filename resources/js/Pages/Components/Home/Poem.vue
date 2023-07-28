@@ -2,45 +2,61 @@
     <div data-themes="foliage">
         <div
             id="poemWrap"
-            class="hero h-screen bg-opacity-60 masking"
+            class="hero h-screen w-screen bg-opacity-60 masking"
             style="background-image: url(/images/cinematic2.png)"
         >
             <div class="hero-overlay bg-opacity-40"></div>
-            <div class="flex-row">
+            <div
+                class="flex flex-col md:w-[400px] md:h-[400px] justify-center items-center text-center lg:w-screen lg:h-screen"
+            >
                 <div class="hero-content items-center text-center">
                     <div class="indicator pb-5">
-                        <span
+                        <!-- <span
                             id="quote"
-                            class="indicator-item text-white font-catamaran indicator-start text-[96px]"
+                            class="indicator-item text-white font-catamaran indicator-start lg:text-[96px] md:text-[45px]"
                             >“</span
-                        >
+                        > -->
                         <div>
-                            <p
-                                id="poem1"
-                                class="font-montserrat indent-7 text-primary font-medium text-[30px] overflow-hidden whitespace-nowrap"
-                            >
-                                The beauty of nature is not just in the plants
-                                and animals themselves,
-                            </p>
-                            <p
-                                id="poem2"
-                                class="font-montserrat text-primary font-medium text-[30px] overflow-hidden whitespace-nowrap"
-                            >
-                                but also in the way they interact with each
-                                other and with their environment.
-                            </p>
+                            <div class="flex">
+                                <span
+                                    id="quote"
+                                    class="font-catamaran indicator-item indicator-start text-white lg:text-[96px] md:text-[45px]"
+                                    >“
+                                </span>
+                                <p
+                                    id="poem1"
+                                    class="font-montserrat text-primary indent-7 font-medium lg:text-[30px] overflow-hidden whitespace-nowrap md:text-[20px]"
+                                >
+                                    The beauty of nature is not just in the
+                                    plants and animals themselves,
+                                </p>
+                            </div>
+                            <div class="flex">
+                                <p
+                                    id="poem2"
+                                    class="font-montserrat text-primary font-medium lg:text-[30px] overflow-hidden whitespace-nowrap md:text-[20px]"
+                                >
+                                    but also in the way they interact with each
+                                    other and with their environment.
+                                </p>
+                                <span
+                                    id="quote"
+                                    class="font-catamaran indicator-end px-2 text-white lg:text-[96px] md:text-[45px] md:pt-4"
+                                    >”</span
+                                >
+                            </div>
                         </div>
-                        <span
+                        <!-- <span
                             id="quote"
-                            class="indicator-item pl-[60px] pt-[60px] text-white font-catamaran indicator-bottom text-[96px]"
+                            class="indicator-item text-white font-catamaran indicator-bottom lg:text-[96px] md:text-[45px]"
                             >”</span
-                        >
+                        > -->
                     </div>
                 </div>
                 <div class="text-end">
                     <h1
                         id="takashi"
-                        class="m-5 ml-5 font-montserrat font-semibold text-[32px] text-white"
+                        class="m-5 ml-5 font-montserrat font-semibold lg:text-[32px] text-white md:text-[20px] md:text-center md:m-[-70px]"
                     >
                         - Takashi Amano
                     </h1>

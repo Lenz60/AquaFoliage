@@ -118,19 +118,19 @@ export default {
             const tl1 = gsap.timeline({
                 scrollTrigger: {
                     trigger: "#desc1",
-                    markers: true,
+                    // markers: true,
                 },
             });
             const tl2 = gsap.timeline({
                 scrollTrigger: {
                     trigger: "#desc2",
-                    markers: true,
+                    // markers: true,
                 },
             });
             const tl3 = gsap.timeline({
                 scrollTrigger: {
                     trigger: "#desc3",
-                    markers: true,
+                    // markers: true,
                 },
             });
 
