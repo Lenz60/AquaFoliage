@@ -78,7 +78,7 @@
     </GuestLayout>
 </template>
 
-<script setup>
+<script>
 import Checkbox from "@/Components/Checkbox.vue";
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import InputError from "@/Components/InputError.vue";
@@ -86,25 +86,48 @@ import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
+import { onUpdated } from "vue";
+import VueCookies from "vue-cookies";
+import { ref } from "vue";
+import { onMounted } from "vue";
 
-defineProps({
-    canResetPassword: {
-        type: Boolean,
+export default {
+    components: {
+        Head,
+        Checkbox,
+        GuestLayout,
+        InputError,
+        InputLabel,
+        PrimaryButton,
+        TextInput,
+        Link,
     },
-    status: {
-        type: String,
+    props: {
+        canResetPassword: Boolean,
+        status: String,
     },
-});
+    setup() {
+        const emailCookies = ref(VueCookies.get("email"));
+        const passwordCookies = ref(VueCookies.get("password"));
 
-const form = useForm({
-    email: "",
-    password: "",
-    remember: false,
-});
-
-const submit = () => {
-    form.post(route("login"), {
-        onFinish: () => form.reset("password"),
-    });
+        const form = useForm({
+            email: "",
+            password: "",
+            remember: false,
+        });
+        onMounted(() => {
+            if (emailCookies != null) {
+                form["email"] = emailCookies;
+            } else {
+                form["email"] = "";
+            }
+        });
+        const submit = () => {
+            form.post(route("login"), {
+                onFinish: () => form.reset("password"),
+            });
+        };
+        return { form, submit };
+    },
 };
 </script>
