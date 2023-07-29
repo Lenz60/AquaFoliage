@@ -5,46 +5,44 @@
                 Plants Databases
             </h3>
             <div
-                class="grid grid-cols-2 gap-x-6 gap-y-0.5 p-7 items-center w-fit h-full"
+                class="grid grid-cols-2 gap-x-6 gap-y-0.5 lg:gap-y-5 p-7 items-center w-fit h-full mb-3"
             >
                 <div
-                    class="card rounded-md hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
+                    class="card rounded-md lg:w-[400px] lg:h-fit md:w-[250px] md:h-[300px] hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
                 >
-                    <div
-                        class="flex-col p-2 w-[400px] h-[350px] md:w-[250px] md:h-[300px]"
-                    >
+                    <div class="flex-col">
                         <div class="flex justify-center items-center p-2">
                             <img
                                 src="/images/HydrocotylTripartita.jpg"
-                                class="rounded-md justify-center items-center"
+                                class="rounded-md p-2"
                             />
                         </div>
-                        <div>
-                            <h2
-                                class="text-[20px] p-2 text-primary font-montserrat font-medium"
-                            >
-                                Plants Characteristics
-                            </h2>
-                        </div>
-                        <div>
-                            <p class="p-2 font-montserrat text-sm">
-                                Check certain plants characteristics and needs,
-                                like optimal temperatures, light needs, and
-                                plants growth rate.
-                            </p>
+                        <div class="p-1">
+                            <div>
+                                <h2
+                                    class="text-[20px] p-2 text-primary font-montserrat font-medium"
+                                >
+                                    Plants Characteristics
+                                </h2>
+                            </div>
+                            <div>
+                                <p class="p-2 font-montserrat text-sm">
+                                    Check certain plants characteristics and
+                                    needs, like optimal temperatures, light
+                                    needs, and plants growth rate.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div
-                    class="card rounded-md hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
+                    class="card rounded-md lg:w-[400px] lg:h-fit md:w-[250px] md:h-[300px] hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
                 >
-                    <div
-                        class="flex-col p-2 w-[400px] h-[350px] md:w-[250px] md:h-[300px]"
-                    >
+                    <div class="flex-col">
                         <div class="flex justify-center items-center p-2">
                             <img
                                 src="/images/MeltingPlants.jpg"
-                                class="rounded-md justify-center items-center"
+                                class="rounded-md p-2"
                             />
                         </div>
                         <div>
@@ -63,15 +61,13 @@
                     </div>
                 </div>
                 <div
-                    class="card rounded-md hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
+                    class="card rounded-md lg:w-[400px] lg:h-fit md:w-[250px] md:h-[300px] hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
                 >
-                    <div
-                        class="flex-col p-2 w-[400px] h-[350px] md:w-[250px] md:h-[300px]"
-                    >
+                    <div class="flex-col">
                         <div class="flex justify-center items-center p-2">
                             <img
                                 src="/images/BlackBeard.jpg"
-                                class="rounded-md justify-center items-center"
+                                class="rounded-md p-2"
                             />
                         </div>
                         <div>
