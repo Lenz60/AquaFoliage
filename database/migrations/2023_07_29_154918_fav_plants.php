@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('favPlants', function (Blueprint $table) {
+        
+        Schema::create('fav_plant', function (Blueprint $table) {
             $table->string('id');
-            $table->foreign('plants_id')
-            ->references('id')->on('plants')->onDelete('cascade');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->string('user_id');
+            $table->string('plant_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('plant_id')->references('id')->on('plants')->onDelete('cascade');
         });
     }
 
@@ -30,5 +27,6 @@ return new class extends Migration
     public function down(): void
     {
         //
+        Schema::dropIfExists('fav_plant');
     }
 };

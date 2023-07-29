@@ -12,6 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('fav_nutdef', function (Blueprint $table) {
+            $table->string('id');
+            $table->string('user_id');
+            $table->string('nutdef_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('nutdef_id')->references('id')->on('nutrient_deficiencies')->onDelete('cascade');
+        });
     }
 
     /**
@@ -20,5 +27,6 @@ return new class extends Migration
     public function down(): void
     {
         //
+        Schema::dropIfExists('fav_nutdef');
     }
 };

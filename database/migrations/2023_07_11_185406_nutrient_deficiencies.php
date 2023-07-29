@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('nutrient_deficiencies', function (Blueprint $table) {
-            $table->string('id');
+            $table->string('id')->primary();
             $table->string('name');
             $table->string('difficulty');
             $table->string('causes');

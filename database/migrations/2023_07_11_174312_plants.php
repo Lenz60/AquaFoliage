@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('plants', function (Blueprint $table) {
-            $table->string('id');
+            $table->string('id')->primary();
             $table->string('name');
             $table->string('genus');
             $table->string('species');
@@ -25,6 +25,7 @@ return new class extends Migration
             $table->text('body');
             $table->timestamps();
         });
+
 
     }
 
