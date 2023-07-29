@@ -16,10 +16,8 @@ return new class extends Migration
             $table->string('id');
             $table->string('user_id');
             $table->string('algae_id');
-            $table->foreign('user_id')
-            ->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('algae_id')
-            ->references('id')->on('algae')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('algae_id')->references('id')->on('algae')->onDelete('cascade');
         });
     }
 
