@@ -108,19 +108,12 @@ export default {
     },
     setup() {
         const emailCookies = ref(VueCookies.get("email"));
-        const passwordCookies = ref(VueCookies.get("password"));
+        let rememberedEmail = ref(emailCookies ? emailCookies : "");
 
         const form = useForm({
-            email: "",
+            email: rememberedEmail.value,
             password: "",
             remember: false,
-        });
-        onMounted(() => {
-            if (emailCookies != null) {
-                form["email"] = emailCookies;
-            } else {
-                form["email"] = "";
-            }
         });
         const submit = () => {
             form.post(route("login"), {
