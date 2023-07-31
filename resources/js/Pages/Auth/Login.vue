@@ -2,8 +2,11 @@
     <GuestLayout class="bg-neutral">
         <Head title="Log in" />
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-white-600">
-            {{ status }}
+        <div v-if="errors.status">
+            <div class="bg-red-100 border my-2 mb-4 border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                <strong class="font-bold">{{errors.status}} !</strong>
+                <span class="block sm:inline"> Check your email and passwords</span>
+            </div>
         </div>
 
         <form @submit.prevent="submit">
@@ -105,8 +108,9 @@ export default {
     props: {
         canResetPassword: Boolean,
         status: String,
+        errors: Object
     },
-    setup() {
+    setup(props) {
         const emailCookies = ref(VueCookies.get("email"));
         let rememberedEmail = ref(emailCookies ? emailCookies : "");
 
@@ -120,7 +124,8 @@ export default {
                 onFinish: () => form.reset("password"),
             });
         };
-        return { form, submit };
+
+        return { form, submit};
     },
 };
 </script>
