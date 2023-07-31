@@ -44,6 +44,7 @@ class RegisteredUserController extends Controller
             'id' => fake()->uuid(),
             'name' => $request->name,
             'email' => $request->email,
+            'role' => '2',
             'password' => Hash::make($request->password),
         ]);
 
