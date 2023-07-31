@@ -2,9 +2,13 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Http\Controllers\JwtController;
+use App\Models\Payload;
+use Firebase\JWT\JWT;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -18,6 +22,7 @@ class LoginRequest extends FormRequest
     {
         return true;
     }
+
 
     /**
      * Get the validation rules that apply to the request.
@@ -39,27 +44,62 @@ class LoginRequest extends FormRequest
      */
     public function authenticate(): void
     {
+
+        $credentials = [
+            'email' =>$this->email,
+            'password' =>$this->password
+        ];
+
+        $data = DB::table('users')
+        ->select('role','email_verified_at')
+        ->where('email',$credentials['email'])
+        ->first();
+
+        
+
+
+        
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        if (! Auth::attempt($credentials,$this->remember)) {
 
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                // 'email' => trans('auth.failed'),
+                'status' => 'Login Failed',
             ]);
         }else{
-
+            
             if($this->remember){
-                setcookie('email', $this->email, time()+3600);
+                $data = [
+                'role' => $data->role,
+                'email_verified_at' => $data->email_verified_at
+                ];
+                $token = JWT::encode($data,env('JWT_SECRET'),'HS256');
+
+                setcookie('email', $credentials['email'], time()+3600);
+                setcookie('userData', $token, time()+3600);
             }else{
+                $data = [
+                'role' => $data->role,
+                'email_verified_at' => $data->email_verified_at
+                ];
+                $token = JWT::encode($data,env('JWT_SECRET'),'HS256');
+                setcookie('email', null);
+                setcookie('userData', $token, time()+3600);
+
             }
-
-
         }
+        
         
 
         RateLimiter::clear($this->throttleKey());
+    }
+
+    public function encodeToken($payload){
+        $token = Auth::refresh();
+        dd($token);
     }
 
     /**
@@ -92,4 +132,8 @@ class LoginRequest extends FormRequest
     {
         return Str::transliterate(Str::lower($this->input('email')).'|'.$this->ip());
     }
+
+
+
+   
 }
