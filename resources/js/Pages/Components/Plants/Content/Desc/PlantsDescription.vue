@@ -1,9 +1,9 @@
 <template>
     <div>
-        <h3 class="text-primary font-montserrat font-semibold text-xl p-5">
+        <h3 class="font-montserrat font-semibold text-xl p-5">
             {{ Payload["name"] }}
         </h3>
-        <p class="text-md text-primary font-montserrat pl-5">
+        <p class="text-md font-montserrat pl-5">
             Common name : {{ Payload["common_name"] }}
         </p>
         <div class="flex p-5">
@@ -13,7 +13,7 @@
                     class="w-[200px] h-[200px]"
                 />
             </div>
-            <div class="text-primary font-montserrat text-sm p-5 ml-[10%]">
+            <div class="font-montserrat text-sm p-5 ml-[10%]">
                 <p>Genus : {{ Payload["genus"] }}</p>
                 <p>Species : {{ Payload["species"] }}</p>
                 <p>Difficulty : {{ Payload["difficulty"] }}</p>
@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <p class="text-primary text-sm p-5">{{ Payload["body"] }}</p>
+        <p class="text-sm p-5">{{ Payload["body"] }}</p>
     </div>
 </template>
 

@@ -1,9 +1,9 @@
 <template>
     <div>
-        <h3 class="text-primary font-montserrat font-semibold text-xl p-5">
+        <h3 class="font-montserrat font-semibold text-xl p-5">
             {{ Payload["name"] }}
         </h3>
-        <p class="text-md text-primary font-montserrat pl-5">
+        <p class="text-md font-montserrat pl-5">
             Common name : {{ Payload["common_name"] }}
         </p>
         <div class="flex p-5">
@@ -13,13 +13,13 @@
                     class="w-[200px] h-[200px]"
                 />
             </div>
-            <div class="text-primary font-montserrat text-sm p-5 ml-[10%]">
+            <div class="font-montserrat text-sm p-5 ml-[10%]">
                 <p>Difficulty : {{ Payload["difficulty"] }}</p>
                 <p>Causes : {{ Payload["causes"] }}</p>
                 <div class="mt-10">
                     <!-- TODO: Check the user if its register, if registered, -->
                     <!-- TODO: Instead using Button, use Link to API to the Controller function to insert is Favorited to another table  -->
-                    <!-- TODO: The table is relation between the plants,algae,nutdef and User -->
+                    <!--v DONE: The table is relation between the plants,algae,nutdef and User -->
                     <div v-if="isFavorite">
                         <button
                             @click="toggleFav(Payload['id'])"
@@ -60,11 +60,9 @@
             </div>
         </div>
 
-        <p class="text-md text-primary font-montserrat pl-5">
-            Why did it appear ?
-        </p>
-        <p class="text-primary text-sm p-5">{{ Payload["causes_desc"] }}</p>
-        <p class="text-primary text-sm p-5">{{ Payload["body"] }}</p>
+        <p class="text-md font-montserrat pl-5">Why did it appear ?</p>
+        <p class="text-sm p-5">{{ Payload["causes_desc"] }}</p>
+        <p class="text-sm p-5">{{ Payload["body"] }}</p>
     </div>
 </template>
 
