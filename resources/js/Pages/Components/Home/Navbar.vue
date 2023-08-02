@@ -68,7 +68,7 @@
                     <div class="flex-none">
                         <ul class="menu menu-horizontal px-1">
                             <li>
-                                <details>
+                                <details class="text-primary">
                                     <summary>
                                         <p
                                             class="text-md font-semibold font-montserrat px-2"
@@ -79,6 +79,16 @@
                                     <ul
                                         class="flex flex-col bg-base-200 bg-opacity-70 w-full rounded-md text-center justify-center"
                                     >
+                                        <li>
+                                            <Link
+                                                :href="route('dashboard')"
+                                                method="get"
+                                            >
+                                                <p class="text-sm text-center">
+                                                    Dashboard
+                                                </p>
+                                            </Link>
+                                        </li>
                                         <li>
                                             <Link
                                                 :href="route('profile.edit')"
