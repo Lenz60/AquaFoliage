@@ -21,6 +21,10 @@
                     <NutDefMenu Class="hide" :NutDefs="NutDefs"></NutDefMenu>
                     <AlgaeMenu Class="show" :Algaes="Algaes"></AlgaeMenu>
                 </div>
+                <div v-else-if="Content == 'Dashboard'">
+                    <h3 class="text-xl p-5">Dashboard Menu</h3>
+                    <DashboardMenu></DashboardMenu>
+                </div>
                 <div v-else>
                     <PlantsMenu Class="hide" :Plants="Plants"></PlantsMenu>
                     <NutDefMenu Class="hide" :NutDefs="NutDefs"></NutDefMenu>
@@ -37,6 +41,7 @@ import { onMounted, ref } from "vue";
 import PlantsMenu from "./Submenu/PlantsMenu.vue";
 import NutDefMenu from "./Submenu/NutDefMenu.vue";
 import AlgaeMenu from "./Submenu/AlgaeMenu.vue";
+import DashboardMenu from "./Submenu/DashboardMenu.vue";
 
 export default {
     props: ["Content", "Plants", "Algaes", "NutDefs"],
@@ -44,6 +49,7 @@ export default {
         PlantsMenu,
         NutDefMenu,
         AlgaeMenu,
+        DashboardMenu,
         Link,
     },
     setup() {
