@@ -1,12 +1,15 @@
 <template>
     <div>
         <div v-if="Desc == 'plants'">
+            <Head title="Plants Descriptions"></Head>
             <PlantsDesc :Payload="Payload"></PlantsDesc>
         </div>
         <div v-else-if="Desc == 'nutDef'">
+            <Head title="Nutrient Deficiencies Descriptions"></Head>
             <NutDefDesc :Payload="Payload"></NutDefDesc>
         </div>
         <div v-else>
+            <Head title="Algae Descriptions"></Head>
             <AlgaeDesc :Payload="Payload"></AlgaeDesc>
         </div>
     </div>
@@ -15,11 +18,13 @@
 <script>
 import { onMounted } from "vue";
 import PlantsDesc from "./Desc/PlantsDescription.vue";
+import { Head } from "@inertiajs/vue3";
 import NutDefDesc from "./Desc/NutDefDescription.vue";
 import AlgaeDesc from "./Desc/AlgaeDescription.vue";
 
 export default {
     components: {
+        Head,
         PlantsDesc,
         NutDefDesc,
         AlgaeDesc,
