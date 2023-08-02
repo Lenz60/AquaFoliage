@@ -1,21 +1,41 @@
-<script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+<script>
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import { Head } from "@inertiajs/vue3";
+import { ref } from "vue";
+import Menu from "./Components/Plants/Menu.vue";
+import Section from "./Components/Dashboard/section.vue";
+
+export default {
+    components: {
+        Head,
+        AuthenticatedLayout,
+        Menu,
+        Section,
+    },
+    props: {},
+    setup(props) {
+        const Content = ref("Dashboard");
+
+        return { Content };
+    },
+};
 </script>
 
 <template>
     <Head title="Dashboard" />
 
-    <AuthenticatedLayout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Dashboard</h2>
-        </template>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900 dark:text-gray-100">You're logged in!</div>
-                </div>
+    <AuthenticatedLayout data-theme="foliage">
+        <div class="flex">
+            <div class="w-[30%]">
+                <Menu :Content="Content"></Menu>
+            </div>
+            <div class="w-[70%] border-2 border-blue-500">
+                <h3
+                    class="text-primary font-montserrat font-semibold text-md p-5"
+                >
+                    Hello {{ $page.props.auth.user.name }}
+                </h3>
+                <Section></Section>
             </div>
         </div>
     </AuthenticatedLayout>
