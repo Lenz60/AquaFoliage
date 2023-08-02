@@ -1,5 +1,5 @@
 <template>
-    <div class="relative bg-neutral overflow-x-hidden no-scrollbar">
+    <div class="relative bg-primary-focus overflow-x-hidden no-scrollbar">
         <Navbar class="sticky top-0 z-50"></Navbar>
         <div class="flex h-screen w-screen">
             <div class="w-[30%] h-screen">
@@ -11,7 +11,12 @@
                 ></Menu>
             </div>
             <div class="w-[70%] h-screen">
-                <Detail :Desc="content" :Payload="payload"></Detail>
+                <!-- bg-primary-focus text-neutral-focus -->
+                <Detail
+                    :Desc="content"
+                    :Payload="payload"
+                    class="bg-primary-focus text-neutral-focus"
+                ></Detail>
             </div>
         </div>
     </div>
