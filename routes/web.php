@@ -42,8 +42,8 @@ Route::post('login/auth', [UserController::class, "login"])->name('loginAuth');
 Route::get('registerOld', [UserController::class, "register"])->name('register');
 Route::get('docs/plants', [PlantCharacteristicController::class, "index"])->name('plantCharacteristic');
 Route::post('docs/plants', [PlantCharacteristicController::class, "index"])->name('plantDesc');
-Route::get('detail', [DetailPlantsController::class, "index"])->name('detailplants');
-Route::post('detail', [DetailPlantsController::class, "index"]);
+// Route::get('detail', [DetailPlantsController::class, "index"])->name('detailplants');
+// Route::post('detail', [DetailPlantsController::class, "index"]);
 // Route::inertia('detail','Components/Plants/Content/DetailPlants'); //???????
 Route::inertia('test','Components/Plants/Content/Detail'); //???????
 
