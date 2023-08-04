@@ -22,6 +22,24 @@ class DatabaseSeeder extends Seeder
     {
         
         //? Seeder for Relationship Favourites table
+        //TODO: Seed for another Table with Favourites table
+
+        // $users = User::factory()
+        //     ->count(5)
+        //     ->create();
+        // $plants = Plants::factory()
+        //     ->count(5)
+        //     ->create();
+        // //v Seed The Favourites table
+        // foreach ($users as $user){
+        //     foreach ($plants as $plant){
+        //         FavPlant::factory([
+        //             'user_id' => $user->id,
+        //             'plants_id' => $plant->id
+        //         ]) ->create();
+        //     }
+        // }
+
         // User::factory()
         // ->has(FavPlant::factory(),'fav_Plant')
         // ->count(5)
