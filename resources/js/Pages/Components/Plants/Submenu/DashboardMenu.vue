@@ -1,9 +1,15 @@
 <template>
     <div>
         <ul class="menu w-56 rounded-box">
-            <li><a>Item 1</a></li>
-            <li><a>Item 2</a></li>
-            <li><a>Item 3</a></li>
+            <li @click="$emit('DashboardDesc', 'Plants')">
+                <a>Favourite Plants</a>
+            </li>
+            <li @click="$emit('DashboardDesc', 'NutDefs')">
+                <a>Favourite Nutrient Deficiencies</a>
+            </li>
+            <li @click="$emit('DashboardDesc', 'Algaes')">
+                <a>Favourite Algaes</a>
+            </li>
         </ul>
     </div>
 </template>

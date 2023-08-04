@@ -23,7 +23,9 @@
                 </div>
                 <div v-else-if="Content == 'Dashboard'">
                     <h3 class="text-xl p-5">Dashboard Menu</h3>
-                    <DashboardMenu></DashboardMenu>
+                    <DashboardMenu
+                        @DashboardDesc="getDesc($event)"
+                    ></DashboardMenu>
                 </div>
                 <div v-else>
                     <PlantsMenu Class="hide" :Plants="Plants"></PlantsMenu>
@@ -54,6 +56,11 @@ export default {
     },
     setup() {
         return {};
+    },
+    methods: {
+        getDesc(data) {
+            this.$emit("DashboardDesc", data);
+        },
     },
 };
 </script>
