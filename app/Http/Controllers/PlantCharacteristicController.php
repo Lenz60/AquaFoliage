@@ -12,46 +12,21 @@ use Inertia\Inertia;
 class PlantCharacteristicController extends Controller
 {
     public function index(){
-        $plants = DB::table('plants')
-        ->select('id','name')
-        ->get();
-        $algae = DB::table('algae')
-        ->select('id','name')
-        ->get();
-        $nutrientDef = DB::table('nutrient_deficiencies')
-        ->select('id','name')
-        ->get();
+        $plants = $this->getTableName('plants');
+        $algae = $this->getTableName('algae');
+        $nutrientDef = $this->getTableName('nutrient_deficiencies');
 
         $contentId = request('id');
-        $content = request('content');
-        // dd($nameId);
-        // dd($plantDesc);
-        
-        if ($content == 'plants'){
-            $payload = DB::table('plants')
-            ->select('id','name','genus','species','common_name','difficulty','light','temp','usage','body')
-            ->where('id', $contentId)
-            ->first();
-        }else if($content == 'nutDef'){
-            $payload = DB::table('nutrient_deficiencies')
-            ->select('id','name','difficulty','causes','causes_desc','body')
-            ->where('id', $contentId)
-            ->first();
-        }else if($content == 'algae') {
-            $payload = DB::table('algae')
-            ->select('id','name','species','common_name','difficulty','causes','causes_desc','body')
-            ->where('id', $contentId)
-            ->first();
-        }else {
-             $payload = null;
-        }
+        $contentDesc = request('content');
+
+        $payload = $this->checkContent($contentId,$contentDesc);
         if(isset($payload)){
             return Inertia::render('Components/Plants/PlantCharacteristic',[
                 'plants' => $plants,
                 'algae' => $algae,
                 'nutrientDef' => $nutrientDef,
-                'content' => $content,
-                'payload' => $payload
+                'content' => $contentDesc,
+                'payload' => $payload,
             ]);
         }else{
             return Inertia::render('Plants',[
@@ -62,15 +37,32 @@ class PlantCharacteristicController extends Controller
             ]);   
         }
     }
-    public function show(){
-        $nameId = request('id');
-        // dd($nameId);
-        $plants = DB::table('plants')
-        ->where('id', $nameId)
-        ->first();
-        return Inertia::render('Components/Plants/Content/DetailPlants',[
-            'name' => $plants->name,
-            'desc' => $plants->body
-        ]);
+
+    public function getTableName($tableName){
+        return DB::table($tableName)
+        ->select('id','name')
+        ->get();
+    }
+
+    public function checkContent($id,$table){
+        if ($table == 'plants'){
+            $payload = DB::table('plants')
+            ->select('id','name','genus','species','common_name','difficulty','light','temp','usage','body')
+            ->where('id', $id)
+            ->first();
+        }else if($table == 'nutDef'){
+            $payload = DB::table('nutrient_deficiencies')
+            ->select('id','name','difficulty','causes','causes_desc','body')
+            ->where('id', $id)
+            ->first();
+        }else if($table == 'algae') {
+            $payload = DB::table('algae')
+            ->select('id','name','species','common_name','difficulty','causes','causes_desc','body')
+            ->where('id', $id)
+            ->first();
+        }else {
+             $payload = null;
+        }
+        return $payload;
     }
 }
