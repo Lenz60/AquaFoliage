@@ -13,11 +13,12 @@ return new class extends Migration
     {
         
         Schema::create('fav_algae', function (Blueprint $table) {
-            $table->string('id');
-            $table->string('user_id');
-            $table->string('algae_id');
+            $table->string('id')->primary();
+            $table->string('user_id')->nullable();
+            $table->string('algae_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('algae_id')->references('id')->on('algae')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

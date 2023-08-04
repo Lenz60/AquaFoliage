@@ -12,12 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         
-        Schema::create('fav_plant', function (Blueprint $table) {
-            $table->string('id');
-            $table->string('user_id');
-            $table->string('plant_id');
+       Schema::create('fav_plant', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->string('user_id')->nullable();
+            $table->string('plants_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('plant_id')->references('id')->on('plants')->onDelete('cascade');
+            $table->foreign('plants_id')->references('id')->on('plants')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

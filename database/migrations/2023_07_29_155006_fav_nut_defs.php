@@ -13,11 +13,12 @@ return new class extends Migration
     {
         //
         Schema::create('fav_nutdef', function (Blueprint $table) {
-            $table->string('id');
-            $table->string('user_id');
-            $table->string('nutdef_id');
+            $table->string('id')->primary();
+            $table->string('user_id')->nullable();
+            $table->string('nutdef_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('nutdef_id')->references('id')->on('nutrient_deficiencies')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
