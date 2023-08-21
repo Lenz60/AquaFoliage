@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContentExcerptController;
 use App\Http\Controllers\DetailPlantsController;
 use App\Http\Controllers\PlantCharacteristicController;
 use App\Http\Controllers\PlantsController;
@@ -35,6 +36,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::controller(ContentExcerptController::class)->group(function () {
+    // Route::inertia('ContentExcerpt', 'Components/Plants/Content/ContentExcerpt')->name('ContentExcerpt');
+    Route::get('/excerpt','index')->name('ContentExcerpt');
 });
 Route::get('docs', [PlantsController::class, "index"]);
 Route::get('loginOld', [UserController::class, "indexLogin"])->name('login');
