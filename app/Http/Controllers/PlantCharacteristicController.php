@@ -34,7 +34,7 @@ class PlantCharacteristicController extends Controller
                 'algae' => $algae,
                 'nutrientDef' => $nutrientDef,
                 'content' => '404'
-            ]);   
+            ]);
         }
     }
 
@@ -50,12 +50,12 @@ class PlantCharacteristicController extends Controller
             ->select('id','name','genus','species','common_name','difficulty','light','temp','usage','body')
             ->where('id', $id)
             ->first();
-        }else if($table == 'nutDef'){
+        }elseif($table == 'nutDef'){
             $payload = DB::table('nutrient_deficiencies')
             ->select('id','name','difficulty','causes','causes_desc','body')
             ->where('id', $id)
             ->first();
-        }else if($table == 'algae') {
+        }elseif($table == 'algae') {
             $payload = DB::table('algae')
             ->select('id','name','species','common_name','difficulty','causes','causes_desc','body')
             ->where('id', $id)
