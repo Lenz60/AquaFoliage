@@ -58,8 +58,8 @@ export default {
             let characters = document.querySelectorAll(".char");
             $(text2).addClass("translate-y-full");
 
-            for (var i = 0; i < characters.length; i++) {
-                $(characters[i]).addClass("translate-y-full");
+            for (const element of characters) {
+                $(element).addClass("translate-y-full");
             }
 
             gsap.to("#hero-desc", {
