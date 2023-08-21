@@ -36,64 +36,6 @@
                             :Algaes="algae"
                             :NutDefs="nutrientDef"
                         ></Menu>
-                        <!-- <div>
-                            <div
-                                class="font-montserrat text-primary h-screen overflow-y-auto pb-10 no-scrollbar"
-                            >
-                                <ul class="menu p-5 bg-neutral w-full h-max">
-                                    <li>
-                                        <details open>
-                                            <summary class="text-lg">
-                                                <img
-                                                    src="/icons/plantsico.png"
-                                                    class="w-[42px] h-[25px]"
-                                                />
-                                                Plant Characteristics
-                                            </summary>
-                                            <ul>
-                                                <li v-for="plant in plants">
-                                                    <Link @click="getPlant(plant.id)"
-                                                        ><a>{{ plant.name }}</a></Link
-                                                    >
-                                                </li>
-                                            </ul>
-                                        </details>
-                                    </li>
-                                    <li>
-                                        <details open>
-                                            <summary class="text-lg">
-                                                <img
-                                                    src="/icons/nutrientico.png"
-                                                    class="w-[42px] h-[34.29px]"
-                                                />
-                                                Nutrient Deficiencies
-                                            </summary>
-                                            <ul>
-                                                <li v-for="nutdef in nutrientDef">
-                                                    <a>{{ nutdef.name }}</a>
-                                                </li>
-                                            </ul>
-                                        </details>
-                                    </li>
-                                    <li>
-                                        <details open>
-                                            <summary class="text-lg">
-                                                <img
-                                                    src="/icons/algaeico.png"
-                                                    class="w-[42px] h-[35.72px]"
-                                                />
-                                                Algae Characteristics
-                                            </summary>
-                                            <ul>
-                                                <li v-for="algae in algae">
-                                                    <a>{{ algae.name }}</a>
-                                                </li>
-                                            </ul>
-                                        </details>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> -->
                     </div>
                     <div class="w-[70%] h-screen">
                         <Section></Section>
