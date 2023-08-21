@@ -7,92 +7,112 @@
             <div
                 class="grid grid-cols-2 gap-x-6 gap-y-0.5 lg:gap-y-5 p-7 items-center w-fit h-full mb-3"
             >
-                <div
-                    class="card rounded-md lg:w-[400px] lg:h-fit md:w-[250px] md:h-[300px] hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
+                <Link
+                    :href="route('ContentExcerpt')"
+                    :data="{ content: 'plants' }"
                 >
-                    <div class="flex-col">
-                        <div class="flex justify-center items-center p-2">
-                            <img
-                                src="/images/HydrocotylTripartita.jpg"
-                                class="rounded-md p-2"
-                            />
+                    <div
+                        class="card rounded-md lg:w-[400px] lg:h-fit md:w-[250px] md:h-[300px] hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
+                    >
+                        <div class="flex-col">
+                            <div class="flex justify-center items-center p-2">
+                                <img
+                                    src="/images/HydrocotylTripartita.jpg"
+                                    class="rounded-md p-2"
+                                />
+                            </div>
+                            <div class="p-1">
+                                <div>
+                                    <h2
+                                        class="text-[20px] p-2 text-primary font-montserrat font-medium"
+                                    >
+                                        Plants Characteristics
+                                    </h2>
+                                </div>
+                                <div>
+                                    <p class="p-2 font-montserrat text-sm">
+                                        Check certain plants characteristics and
+                                        needs, like optimal temperatures, light
+                                        needs, and plants growth rate.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="p-1">
+                    </div>
+                </Link>
+                <Link
+                    :href="route('ContentExcerpt')"
+                    :data="{ content: 'nutDef' }"
+                >
+                    <div
+                        class="card rounded-md lg:w-[400px] lg:h-fit md:w-[250px] md:h-[300px] hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
+                    >
+                        <div class="flex-col">
+                            <div class="flex justify-center items-center p-2">
+                                <img
+                                    src="/images/MeltingPlants.jpg"
+                                    class="rounded-md p-2"
+                                />
+                            </div>
                             <div>
                                 <h2
                                     class="text-[20px] p-2 text-primary font-montserrat font-medium"
                                 >
-                                    Plants Characteristics
+                                    Nutrient Deficiencies
                                 </h2>
                             </div>
                             <div>
                                 <p class="p-2 font-montserrat text-sm">
-                                    Check certain plants characteristics and
-                                    needs, like optimal temperatures, light
-                                    needs, and plants growth rate.
+                                    Check the causes of your dying plants and
+                                    gives the solution for the problem.
                                 </p>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div
-                    class="card rounded-md lg:w-[400px] lg:h-fit md:w-[250px] md:h-[300px] hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
+                </Link>
+                <Link
+                    :href="route('ContentExcerpt')"
+                    :data="{ content: 'algae' }"
+                    :content="algae"
                 >
-                    <div class="flex-col">
-                        <div class="flex justify-center items-center p-2">
-                            <img
-                                src="/images/MeltingPlants.jpg"
-                                class="rounded-md p-2"
-                            />
-                        </div>
-                        <div>
-                            <h2
-                                class="text-[20px] p-2 text-primary font-montserrat font-medium"
-                            >
-                                Nutrient Deficiencies
-                            </h2>
-                        </div>
-                        <div>
-                            <p class="p-2 font-montserrat text-sm">
-                                Check the causes of your dying plants and gives
-                                the solution for the problem.
-                            </p>
+                    <div
+                        class="card rounded-md lg:w-[400px] lg:h-fit md:w-[250px] md:h-[300px] hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
+                    >
+                        <div class="flex-col">
+                            <div class="flex justify-center items-center p-2">
+                                <img
+                                    src="/images/BlackBeard.jpg"
+                                    class="rounded-md p-2"
+                                />
+                            </div>
+                            <div>
+                                <h2
+                                    class="text-[20px] p-2 text-primary font-montserrat font-medium"
+                                >
+                                    Algae Characteristics
+                                </h2>
+                            </div>
+                            <div>
+                                <p class="p-2 font-montserrat text-sm">
+                                    Check certain algae characteristics, what
+                                    causes it to appear and how to remove and
+                                    prevents it for come back.
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div
-                    class="card rounded-md lg:w-[400px] lg:h-fit md:w-[250px] md:h-[300px] hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
-                >
-                    <div class="flex-col">
-                        <div class="flex justify-center items-center p-2">
-                            <img
-                                src="/images/BlackBeard.jpg"
-                                class="rounded-md p-2"
-                            />
-                        </div>
-                        <div>
-                            <h2
-                                class="text-[20px] p-2 text-primary font-montserrat font-medium"
-                            >
-                                Algae Characteristics
-                            </h2>
-                        </div>
-                        <div>
-                            <p class="p-2 font-montserrat text-sm">
-                                Check certain algae characteristics, what causes
-                                it to appear and how to remove and prevents it
-                                for come back.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                </Link>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { Link } from "@inertiajs/vue3";
 export default {
+    components: {
+        Link,
+    },
     setup() {
         return {};
     },
