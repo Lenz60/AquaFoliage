@@ -1,53 +1,57 @@
 <template>
     <div>
         <div v-if="Class == 'hide'">
-            <li>
-                <details close>
-                    <summary class="w-full h-full text-lg">
-                        <div>
-                            <img
-                                src="/icons/algaeico.png"
-                                class="w-[42px] h-[35.72px]"
-                            />
-                        </div>
-                        <div>Algae Characteristics</div>
-                    </summary>
-                    <ul>
-                        <li v-for="algae in Algaes">
-                            <Link
-                                :href="route('plantCharacteristic')"
-                                :data="{ content: 'algae', id: algae.id }"
-                                ><a>{{ algae.name }}</a></Link
-                            >
-                        </li>
-                    </ul>
-                </details>
-            </li>
+            <ul>
+                <li>
+                    <details close>
+                        <summary class="w-full h-full text-lg">
+                            <div>
+                                <img
+                                    src="/icons/algaeico.png"
+                                    class="w-[42px] h-[35.72px]"
+                                />
+                            </div>
+                            <div>Algae Characteristics</div>
+                        </summary>
+                        <ul>
+                            <li v-for="algae in Algaes">
+                                <Link
+                                    :href="route('plantCharacteristic')"
+                                    :data="{ content: 'algae', id: algae.id }"
+                                    ><a>{{ algae.name }}</a></Link
+                                >
+                            </li>
+                        </ul>
+                    </details>
+                </li>
+            </ul>
         </div>
         <div v-else-if="Class == 'show'">
-            <li>
-                <details open>
-                    <summary class="w-full h-full text-lg">
-                        <div>
-                            <img
-                                src="/icons/algaeico.png"
-                                class="w-[42px] h-[35.72px]"
-                            />
-                        </div>
-                        <div>Algae Characteristics</div>
-                    </summary>
-                    <ul>
-                        <li v-for="algae in Algaes">
-                            <Link
-                                :href="route('plantCharacteristic')"
-                                :data="{ content: 'algae', id: algae.id }"
-                            >
-                                <a>{{ algae.name }}</a>
-                            </Link>
-                        </li>
-                    </ul>
-                </details>
-            </li>
+            <ul>
+                <li>
+                    <details open>
+                        <summary class="w-full h-full text-lg">
+                            <div>
+                                <img
+                                    src="/icons/algaeico.png"
+                                    class="w-[42px] h-[35.72px]"
+                                />
+                            </div>
+                            <div>Algae Characteristics</div>
+                        </summary>
+                        <ul>
+                            <li v-for="algae in Algaes">
+                                <Link
+                                    :href="route('plantCharacteristic')"
+                                    :data="{ content: 'algae', id: algae.id }"
+                                >
+                                    <a>{{ algae.name }}</a>
+                                </Link>
+                            </li>
+                        </ul>
+                    </details>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -64,4 +68,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<!-- <style lang="scss" scoped></style> -->

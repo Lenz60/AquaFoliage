@@ -39,7 +39,6 @@
 
 <script>
 import { Link } from "@inertiajs/vue3";
-import { onMounted, ref } from "vue";
 import PlantsMenu from "./Submenu/PlantsMenu.vue";
 import NutDefMenu from "./Submenu/NutDefMenu.vue";
 import AlgaeMenu from "./Submenu/AlgaeMenu.vue";

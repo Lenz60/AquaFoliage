@@ -67,8 +67,8 @@
 </template>
 
 <script>
-import { computed, onMounted, onUpdated, ref } from "vue";
-import { $ } from "jquery";
+import { onMounted, ref } from "vue";
+// import { $ } from "jquery";
 import VueCookies from "vue-cookies";
 export default {
     props: ["Payload"],
@@ -127,4 +127,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<!-- <style lang="scss" scoped></style> -->
