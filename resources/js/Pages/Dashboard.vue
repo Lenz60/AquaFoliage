@@ -16,7 +16,12 @@
                 >
                     Favourites
                 </h3>
-                <Section :sectionContent="SectionContent"></Section>
+                <Section
+                    :sectionContent="SectionContent"
+                    :favPlants="favPlants"
+                    :favNutDefs="favNutDefs"
+                    :favAlgaes="favAlgaes"
+                ></Section>
             </div>
         </div>
     </AuthenticatedLayout>
@@ -36,7 +41,7 @@ export default {
         Menu,
         Section,
     },
-    props: {},
+    props: ["favPlants", "favNutDefs", "favAlgaes"],
     setup(props) {
         const Content = ref("Dashboard");
         let SectionContent = ref("");
