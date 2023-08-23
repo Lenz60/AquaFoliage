@@ -3,9 +3,14 @@
         <Head title="Log in" />
 
         <div v-if="errors.status">
-            <div class="bg-red-100 border my-2 mb-4 border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                <strong class="font-bold">{{errors.status}} !</strong>
-                <span class="block sm:inline"> Check your email and passwords</span>
+            <div
+                class="bg-red-100 border my-2 mb-4 border-red-400 text-red-700 px-4 py-3 rounded relative"
+                role="alert"
+            >
+                <strong class="font-bold">{{ errors.status }} !</strong>
+                <span class="block sm:inline">
+                    Check your email and passwords</span
+                >
             </div>
         </div>
 
@@ -108,11 +113,11 @@ export default {
     props: {
         canResetPassword: Boolean,
         status: String,
-        errors: Object
+        errors: Object,
     },
     setup(props) {
-        const emailCookies = ref(VueCookies.get("email"));
-        let rememberedEmail = ref(emailCookies ? emailCookies : "");
+        const emailCookies = ref(VueCookies.get("rememberEmail"));
+        let rememberedEmail = ref(emailCookies || "");
 
         const form = useForm({
             email: rememberedEmail.value,
@@ -125,7 +130,7 @@ export default {
             });
         };
 
-        return { form, submit};
+        return { form, submit };
     },
 };
 </script>

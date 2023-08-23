@@ -55,10 +55,10 @@ class LoginRequest extends FormRequest
         ->where('email',$credentials['email'])
         ->first();
 
-        
 
 
-        
+
+
         $this->ensureIsNotRateLimited();
 
         if (! Auth::attempt($credentials,$this->remember)) {
@@ -70,7 +70,7 @@ class LoginRequest extends FormRequest
                 'status' => 'Login Failed',
             ]);
         }else{
-            
+
             if($this->remember){
                 $data = [
                 'role' => $data->role,
@@ -78,7 +78,7 @@ class LoginRequest extends FormRequest
                 ];
                 $token = JWT::encode($data,env('JWT_SECRET'),'HS256');
 
-                setcookie('email', $credentials['email'], time()+3600);
+                setcookie('rememberEmail', $credentials['email'], time()+3600);
                 setcookie('userData', $token, time()+3600);
             }else{
                 $data = [
@@ -86,13 +86,13 @@ class LoginRequest extends FormRequest
                 'email_verified_at' => $data->email_verified_at
                 ];
                 $token = JWT::encode($data,env('JWT_SECRET'),'HS256');
-                setcookie('email', null);
+                setcookie('rememberEmail', null);
                 setcookie('userData', $token, time()+3600);
 
             }
         }
-        
-        
+
+
 
         RateLimiter::clear($this->throttleKey());
     }
@@ -135,5 +135,5 @@ class LoginRequest extends FormRequest
 
 
 
-   
+
 }
