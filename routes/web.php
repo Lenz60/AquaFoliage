@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\ContentExcerptController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailPlantsController;
 use App\Http\Controllers\PlantCharacteristicController;
 use App\Http\Controllers\PlantsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -28,18 +30,16 @@ Route::get('/', function () {
     ]);
 })->name('HomePage');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, "index"])->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 Route::controller(ContentExcerptController::class)->group(function () {
-    // Route::inertia('ContentExcerpt', 'Components/Plants/Content/ContentExcerpt')->name('ContentExcerpt');
     Route::get('/excerpt','index')->name('ContentExcerpt');
 });
 Route::get('docs', [PlantsController::class, "index"]);
