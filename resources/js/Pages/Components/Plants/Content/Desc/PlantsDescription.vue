@@ -122,7 +122,7 @@ export default {
                 VueCookies.set("FavId", decodeURI(removed));
                 // console.log("UID : " + id + " UnFavorited");
             }
-            console.log("Current Favourited ID = " + VueCookies.get("FavId"));
+            // console.log("Current Favourited ID = " + VueCookies.get("FavId"));
         },
     },
 };
