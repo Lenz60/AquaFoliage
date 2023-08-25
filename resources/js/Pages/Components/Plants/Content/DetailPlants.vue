@@ -2,15 +2,15 @@
     <div>
         <div v-if="Desc == 'plants'">
             <Head title="Plants Descriptions"></Head>
-            <PlantsDesc :Payload="Payload"></PlantsDesc>
+            <PlantsDesc :Payload="Payload" :Content="Desc"></PlantsDesc>
         </div>
         <div v-else-if="Desc == 'nutDef'">
             <Head title="Nutrient Deficiencies Descriptions"></Head>
-            <NutDefDesc :Payload="Payload"></NutDefDesc>
+            <NutDefDesc :Payload="Payload" :Content="Desc"></NutDefDesc>
         </div>
         <div v-else>
             <Head title="Algae Descriptions"></Head>
-            <AlgaeDesc :Payload="Payload"></AlgaeDesc>
+            <AlgaeDesc :Payload="Payload" :Content="Desc"></AlgaeDesc>
         </div>
     </div>
 </template>
