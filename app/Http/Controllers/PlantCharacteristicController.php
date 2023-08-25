@@ -65,4 +65,11 @@ class PlantCharacteristicController extends Controller
         }
         return $payload;
     }
+
+    public function addFav(){
+        $id = request('id');
+        $content = request('content');
+        // dd($id, $content);
+        // return $id;
+    }
 }

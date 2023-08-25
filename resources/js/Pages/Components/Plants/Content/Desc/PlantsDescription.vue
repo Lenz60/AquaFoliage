@@ -26,7 +26,7 @@
                     <!-- TODO: The table is relation between the plants,algae,nutdef and User -->
                     <div v-if="isFavorite">
                         <button
-                            @click="toggleFav(Payload['id'])"
+                            @click="toggleFav(Payload['id'], Content)"
                             class="btn btn-outline btn-accent btn-active"
                         >
                             <svg
@@ -44,7 +44,7 @@
                     </div>
                     <div v-else>
                         <button
-                            @click="toggleFav(Payload['id'])"
+                            @click="toggleFav(Payload['id'], Content)"
                             class="btn btn-outline btn-accent"
                         >
                             <svg
@@ -72,11 +72,16 @@
 import { computed, onMounted, onUpdated, ref } from "vue";
 import { $ } from "jquery";
 import VueCookies from "vue-cookies";
+import { router } from "@inertiajs/vue3";
 export default {
-    props: ["Payload"],
+    props: ["Payload", "Content"],
     setup(props) {
         const isFavorite = ref(false);
         const Cookie = VueCookies.get("FavId");
+        const contentDesc = props.Content;
+
+        // console.log(props.Content);
+        // const token: ref('{{csrf_token()}}')
 
         onMounted(() => {
             // console.log("on Mounted");
@@ -97,21 +102,25 @@ export default {
         });
 
         // console.log(props.Payload["name"]);
-        return { isFavorite };
+        return { isFavorite, contentDesc };
     },
     methods: {
-        toggleFav(id) {
+        toggleFav(id, content) {
             //Everytime button is clicked, change the value of the isFavorite to manipulate button style
             this.isFavorite = !this.isFavorite;
             //check if it is favorite
             const currentCookies = [VueCookies.get("FavId")];
             let arrayCookies = [];
+            console.log(content);
+            // console.log(this.content);
             if (this.isFavorite) {
                 //set the cookie to id passed
                 arrayCookies.push(currentCookies);
                 arrayCookies.push(id);
                 // console.log(arrayCookies);
                 VueCookies.set("FavId", decodeURI(arrayCookies));
+                // router.post(`docs/plants/${Content}&${id}`);
+                this.$inertia.patch(this.route("addfavDB", [content, id]));
                 // console.log("UID : " + id + " Favourited");
             } else {
                 //if the favorite button pressed again it will remove the current id in the cookie
