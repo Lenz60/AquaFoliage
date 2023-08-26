@@ -46,9 +46,12 @@ Route::get('docs', [PlantsController::class, "index"]);
 Route::get('loginOld', [UserController::class, "indexLogin"])->name('login');
 Route::post('login/auth', [UserController::class, "login"])->name('loginAuth');
 Route::get('registerOld', [UserController::class, "register"])->name('register');
-Route::get('docs/plants', [PlantCharacteristicController::class, "index"])->name('plantCharacteristic');
-Route::patch('docs/plants/{content}&{id}&{favorite}', [PlantCharacteristicController::class, "addFav"])->name('addfavDB');
-Route::post('docs/plants', [PlantCharacteristicController::class, "index"])->name('plantDesc');
+Route::controller(PlantCharacteristicController::class)->group(function () {
+    Route::get('docs/plants', [PlantCharacteristicController::class, "index"])->name('plantCharacteristic');
+    Route::post('docs/plants/{content}&{id}&{favorite}&{state}', [PlantCharacteristicController::class, "addFav"])->name('addfavDB');
+
+});
+// Route::post('docs/plants', [PlantCharacteristicController::class, "index"])->name('plantDesc');
 // Route::get('detail', [DetailPlantsController::class, "index"])->name('detailplants');
 // Route::post('detail', [DetailPlantsController::class, "index"]);
 // Route::inertia('detail','Components/Plants/Content/DetailPlants'); //???????
