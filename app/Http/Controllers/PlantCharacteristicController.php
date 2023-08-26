@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Algae;
+use App\Models\FavAlgae;
+use App\Models\FavNutDef;
+use App\Models\FavPlant;
 use App\Models\NutrientDeficiencies;
 use App\Models\Plants;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
@@ -68,16 +73,103 @@ class PlantCharacteristicController extends Controller
 
     public function addFav(){
         $id = request('id');
+        // dd('function stopped');
         $content = request('content');
         $favorite = filter_var(request('favorite'), FILTER_VALIDATE_BOOLEAN) ;
-        // dd($isFav);
+        $state = request('state');
 
-        // dd($favourite);
-        if($favorite){
-            dd('added to db');
+        if($state === 'offline'){
+            dd('You are offline');
+
         }else{
-            dd('removed from db');
+            $user = Auth::user();
+            if($favorite){
+
+                if($this->checkFavorite($content, $user, $id)){
+                    dd('This Plants is already in the favorites list');
+
+                }else{
+                    $this->addFavorite($content, $user, $id);
+                    dd('added to db');
+                }
+
+            }else{
+                $this->removeFavorite($content, $user, $id);
+                dd('removed from db');
+
+            }
         }
-        // return $id;
+    }
+
+    public function addFavorite($content, $user, $id){
+        if($content === "plants"){
+            FavPlant::create([
+                    'id' => fake()->uuid(),
+                    'user_id' => $user->id,
+                    'plants_id' => $id,
+                   ]);
+        }elseif($content === "nutDef"){
+            FavNutDef::create([
+                        'id' => fake()->uuid(),
+                        'user_id' => $user->id,
+                        'nutdef_id' => $id,
+                    ]);
+        }elseif($content === "algae"){
+            FavAlgae::create([
+                        'id' => fake()->uuid(),
+                        'user_id' => $user->id,
+                        'algae_id' => $id,
+                    ]);
+        }
+    }
+
+    public function checkFavorite($content, $user, $id){
+        if($content === "plants"){
+            return DB::table('fav_plant')
+            ->where([
+                ['user_id', '=', $user->id],
+                ['plants_id', '=', $id],
+            ])
+            ->first();
+        }elseif($content === "nutDef"){
+            return DB::table('fav_nutdef')
+            ->where([
+                ['user_id', '=', $user->id],
+                ['nutdef_id', '=', $id],
+            ])
+            ->first();
+        }elseif($content === "algae"){
+            return DB::table('fav_algae')
+            ->where([
+                ['user_id', '=', $user->id],
+                ['algae_id', '=', $id],
+            ])
+            ->first();
+        }
+    }
+
+    public function removeFavorite($content, $user, $id){
+        if($content === "plants"){
+            return DB::table('fav_plant')
+            ->where([
+                ['user_id', '=', $user->id],
+                ['plants_id', '=', $id],
+            ])
+            ->delete();
+        }elseif($content === "nutDef"){
+            return DB::table('fav_nutdef')
+            ->where([
+                ['user_id', '=', $user->id],
+                ['nutdef_id', '=', $id],
+            ])
+            ->delete();
+        }elseif($content === "algae"){
+            return DB::table('fav_algae')
+            ->where([
+                ['user_id', '=', $user->id],
+                ['algae_id', '=', $id],
+            ])
+            ->delete();
+        }
     }
 }
