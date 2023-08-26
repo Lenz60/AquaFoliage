@@ -32,7 +32,7 @@ class DashboardController extends Controller
         ->select('fav_algae.id as id','algae.name as name')
         ->where('fav_algae.user_id', $user->id)
         ->get();
-        // dd($favPlants);
+
        return Inertia::render('Dashboard', [
         'favPlants' => $favPlants,
         'favNutDefs' => $favNutDefs,
