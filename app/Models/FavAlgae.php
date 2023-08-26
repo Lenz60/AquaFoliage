@@ -11,6 +11,7 @@ class FavAlgae extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
+        'id',
         'algae_id',
         'user_id'
     ];

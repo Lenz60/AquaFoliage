@@ -19,6 +19,7 @@ class FavPlant extends Model
      protected $keyType = 'string';
 
     protected $fillable = [
+        'id',
         'plants_id',
         'user_id'
     ];

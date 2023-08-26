@@ -15,7 +15,8 @@ class FavNutDef extends Model
      protected $keyType = 'string';
 
      protected $fillable = [
-        'nutdef',
+        'id',
+        'nutdef_id',
         'user_id'
     ];
     use HasFactory;
