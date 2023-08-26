@@ -69,7 +69,15 @@ class PlantCharacteristicController extends Controller
     public function addFav(){
         $id = request('id');
         $content = request('content');
-        // dd($id, $content);
+        $favorite = filter_var(request('favorite'), FILTER_VALIDATE_BOOLEAN) ;
+        // dd($isFav);
+
+        // dd($favourite);
+        if($favorite){
+            dd('added to db');
+        }else{
+            dd('removed from db');
+        }
         // return $id;
     }
 }

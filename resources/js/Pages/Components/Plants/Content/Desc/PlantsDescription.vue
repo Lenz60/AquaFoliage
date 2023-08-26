@@ -111,24 +111,27 @@ export default {
             //check if it is favorite
             const currentCookies = [VueCookies.get("FavId")];
             let arrayCookies = [];
-            console.log(content);
-            // console.log(this.content);
+
             if (this.isFavorite) {
+                let favorite = true;
                 //set the cookie to id passed
                 arrayCookies.push(currentCookies);
                 arrayCookies.push(id);
-                // console.log(arrayCookies);
                 VueCookies.set("FavId", decodeURI(arrayCookies));
-                // router.post(`docs/plants/${Content}&${id}`);
-                this.$inertia.patch(this.route("addfavDB", [content, id]));
+                this.$inertia.patch(
+                    this.route("addfavDB", [content, id, favorite])
+                );
                 // console.log("UID : " + id + " Favourited");
             } else {
+                let favorite = false;
                 //if the favorite button pressed again it will remove the current id in the cookie
                 //without removing all the cookies
                 const removeCookies = currentCookies.toString();
                 const removed = removeCookies.replace(id, "");
-                console.log(removed);
                 VueCookies.set("FavId", decodeURI(removed));
+                this.$inertia.patch(
+                    this.route("addfavDB", [content, id, favorite])
+                );
                 // console.log("UID : " + id + " UnFavorited");
             }
             // console.log("Current Favourited ID = " + VueCookies.get("FavId"));

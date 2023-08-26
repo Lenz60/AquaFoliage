@@ -47,7 +47,7 @@ Route::get('loginOld', [UserController::class, "indexLogin"])->name('login');
 Route::post('login/auth', [UserController::class, "login"])->name('loginAuth');
 Route::get('registerOld', [UserController::class, "register"])->name('register');
 Route::get('docs/plants', [PlantCharacteristicController::class, "index"])->name('plantCharacteristic');
-Route::patch('docs/plants/{content}&{id}', [PlantCharacteristicController::class, "addFav"])->name('addfavDB');
+Route::patch('docs/plants/{content}&{id}&{favorite}', [PlantCharacteristicController::class, "addFav"])->name('addfavDB');
 Route::post('docs/plants', [PlantCharacteristicController::class, "index"])->name('plantDesc');
 // Route::get('detail', [DetailPlantsController::class, "index"])->name('detailplants');
 // Route::post('detail', [DetailPlantsController::class, "index"]);
