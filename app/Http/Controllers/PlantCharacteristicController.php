@@ -79,6 +79,9 @@ class PlantCharacteristicController extends Controller
         $state = request('state');
 
         if($state === 'offline'){
+            //? Insert Alert box that indicates that the user is offline
+            //? and remind the bookmarked item will only saved in cookies
+            //? by returning a value indicating the state of the user
             // dd('You are offline');
 
         }else{
@@ -86,15 +89,21 @@ class PlantCharacteristicController extends Controller
             if($favorite){
 
                 if($this->checkFavorite($content, $user, $id)){
+                    //? Create alert that indicates that user is already favorites this item
+                    //? by returning a value indicating the plant is already favorited
                     dd('This Plants is already in the favorites list');
 
                 }else{
                     $this->addFavorite($content, $user, $id);
+                    //? Create alert box that indicates that the user is successfully added items to the favorites list
+                    //? by returning a value indicating the plant is added to db
                     dd('added to db');
                 }
 
             }else{
                 $this->removeFavorite($content, $user, $id);
+                //? Create alert box that indicates that the user is successfully remove item from favorites list
+                //? by returning a value indicating the item is removed from db
                 dd('removed from db');
 
             }
