@@ -125,7 +125,7 @@ body {
     height: 100px;
     position: relative;
     border-radius: 50%;
-    background: white;
+    background: #e8ece9;
     float: left;
     margin: 50px 100px;
 }
@@ -186,7 +186,7 @@ body {
 .loader {
     background-color: #0b1c11;
     bottom: 0;
-    color: white;
+    color: #e8ece9;
     display: block;
     font-size: 32px;
     left: 0;
@@ -208,11 +208,6 @@ body {
     }
 }
 
-h1.loading {
-    font-size: 3em;
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-}
 span[class^="dot-"] {
     opacity: 0;
 }
