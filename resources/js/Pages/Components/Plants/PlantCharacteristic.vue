@@ -12,7 +12,10 @@
                 ></Menu>
             </div>
             <div class="w-[70%] h-screen">
+                <!--? Use this alternate color for dark version   -->
                 <!-- bg-primary-focus text-neutral-focus -->
+                <!-- Apply both of the Detail Components and w-[70%] elements -->
+                <!--?  -->
                 <Detail
                     :Desc="content"
                     :Payload="payload"
