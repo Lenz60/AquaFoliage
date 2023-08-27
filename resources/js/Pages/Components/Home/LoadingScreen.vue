@@ -21,8 +21,15 @@
                         ></path>
                     </svg>
                 </div>
-                <div>
-                    <h3>Loading ....</h3>
+                <div class="wrapper">
+                    <div class="loading-text">
+                        <h1 class="font-montserrat font-semibold">
+                            Loading
+                            <span class="dot-one"> .</span>
+                            <span class="dot-two"> .</span>
+                            <span class="dot-three"> .</span>
+                        </h1>
+                    </div>
                 </div>
             </div>
         </div>
@@ -149,13 +156,6 @@ body {
     animation: grow 1s 0.5s infinite ease-in-out;
 }
 
-.b::before {
-    animation: grow 1s infinite alternate ease-in-out;
-}
-.b::after {
-    animation: grow 1s 0.5s infinite alternate ease-in-out;
-}
-
 @keyframes grow {
     0% {
         transform: scale(1);
@@ -167,42 +167,12 @@ body {
     }
 }
 
-.c::before {
-    background: #00ba69;
-    animation: grow 1.5s infinite ease-out;
-}
-
-.c::after {
-    animation: grow 2s 0.5s infinite ease-out;
-}
-
-.d {
-    background: transparent;
-}
-.d::before {
-    border: 2px dotted #00ba69;
-    border-bottom: 4px solid #00ba69;
-    border-top: 4px solid #00ba69;
-    animation: spinning 1.5s infinite linear;
-}
-.d::after {
-    animation: grow 2s 0.5s infinite ease-out;
-}
-
 .e::before {
     background: #00ba69;
     animation: grow 1s infinite ease-out;
 }
 .e::after {
     animation: grow 1s 0.5s infinite ease-out;
-}
-
-.f::before {
-    background: #00ba69;
-    animation: grow 1s 1.5s infinite ease-out;
-}
-.f::after {
-    animation: grow 1s 0.8s infinite ease-out;
 }
 
 @keyframes spinning {
@@ -235,6 +205,68 @@ body {
     to {
         opacity: 0;
         visibility: hidden;
+    }
+}
+
+h1.loading {
+    font-size: 3em;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+}
+span[class^="dot-"] {
+    opacity: 0;
+}
+.dot-one {
+    animation: dot-one 2s infinite linear;
+}
+.dot-two {
+    animation: dot-two 2s infinite linear;
+}
+.dot-three {
+    animation: dot-three 2s infinite linear;
+}
+@keyframes dot-one {
+    0% {
+        opacity: 0;
+    }
+    15% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes dot-two {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes dot-three {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
     }
 }
 </style>

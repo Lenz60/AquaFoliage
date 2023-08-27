@@ -1,6 +1,6 @@
 <template>
     <Head title="Aqua Foliage"> </Head>
-    <Transition name="slide-fade">
+    <Transition name="fade">
         <div v-if="!isLoading">
             <div class="bg-[#101310] overflow-hidden">
                 <Navbar class="sticky top-0 z-50"></Navbar>
@@ -67,16 +67,16 @@ export default {
 </script>
 
 <style scoped>
-.slide-fade-enter-active {
+.fade-enter-active {
     transition: all 0.4s ease-out;
 }
 
-.slide-fade-leave-active {
-    transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+.fade-leave-active {
+    transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
-.slide-fade-enter-from,
-.slide-fade-leave-to {
+.fade-enter-from,
+.fade-leave-to {
     opacity: 0;
 }
 </style>
