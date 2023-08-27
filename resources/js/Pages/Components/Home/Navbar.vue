@@ -43,9 +43,11 @@
                             <ul
                                 class="menu p-5 text-primary text-base font-normal font-montserrat"
                             >
-                                <li><a>Plants Databases</a></li>
-                                <li><a>Algae Databases</a></li>
-                                <li><a>Plants Health</a></li>
+                                <li>
+                                    <Link :href="route('plants')">
+                                        <a>Plants Databases</a>
+                                    </Link>
+                                </li>
                             </ul>
                         </div>
                     </div>
