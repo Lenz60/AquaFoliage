@@ -45,8 +45,17 @@
                                 <Link
                                     :href="route('plantCharacteristic')"
                                     :data="{ content: 'nutDef', id: nutDef.id }"
-                                    ><a>{{ nutDef.name }}</a></Link
                                 >
+                                    <div v-if="Payload['id'] == nutDef.id">
+                                        <a
+                                            class="p-10 py-2 w-full h-max text-accent"
+                                            >{{ nutDef.name }}</a
+                                        >
+                                    </div>
+                                    <div v-else>
+                                        <a>{{ nutDef.name }}</a>
+                                    </div>
+                                </Link>
                             </li>
                         </ul>
                     </details>
@@ -60,7 +69,7 @@
 import { Link } from "@inertiajs/vue3";
 
 export default {
-    props: ["Class", "NutDefs"],
+    props: ["Class", "NutDefs", "Payload"],
     components: {
         Link,
     },

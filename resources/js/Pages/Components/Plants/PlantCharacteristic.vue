@@ -2,8 +2,9 @@
     <div class="relative bg-primary-focus overflow-x-hidden no-scrollbar">
         <Navbar class="sticky top-0 z-50"></Navbar>
         <div class="flex h-screen w-screen">
-            <div class="w-[30%] h-screen">
+            <div class="w-[30%] h-screen overflow-x-visible">
                 <Menu
+                    :Payload="payload"
                     :Content="content"
                     :Plants="plants"
                     :Algaes="algae"

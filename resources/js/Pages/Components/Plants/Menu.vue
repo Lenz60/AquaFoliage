@@ -1,36 +1,142 @@
 <template>
-    <div
-        class="card shadow-xl rounded-sm bg-neutral-focus bg-blend-color-dodge"
-    >
+    <div class="card shadow-xl rounded-sm bg-neutral-focus">
         <div
             class="font-montserrat text-primary h-screen overflow-x-auto no-scrollbar pb-10"
         >
             <ul class="menu p-5 w-full h-max">
-                <div v-if="Content == 'plants'">
-                    <PlantsMenu Class="show" :Plants="Plants"></PlantsMenu>
-                    <NutDefMenu Class="hide" :NutDefs="NutDefs"></NutDefMenu>
-                    <AlgaeMenu Class="hide" :Algaes="Algaes"></AlgaeMenu>
-                </div>
-                <div v-else-if="Content == 'nutDef'">
-                    <PlantsMenu Class="hide" :Plants="Plants"></PlantsMenu>
-                    <NutDefMenu Class="show" :NutDefs="NutDefs"></NutDefMenu>
-                    <AlgaeMenu Class="hide" :Algaes="Algaes"></AlgaeMenu>
-                </div>
-                <div v-else-if="Content == 'algae'">
-                    <PlantsMenu Class="hide" :Plants="Plants"></PlantsMenu>
-                    <NutDefMenu Class="hide" :NutDefs="NutDefs"></NutDefMenu>
-                    <AlgaeMenu Class="show" :Algaes="Algaes"></AlgaeMenu>
-                </div>
-                <div v-else-if="Content == 'Dashboard'">
-                    <h3 class="text-xl p-5">Dashboard Menu</h3>
-                    <DashboardMenu
-                        @DashboardDesc="getDesc($event)"
-                    ></DashboardMenu>
+                <div v-if="!Payload">
+                    <div v-if="Content == 'plants'">
+                        <PlantsMenu Class="show" :Plants="Plants"></PlantsMenu>
+                        <NutDefMenu
+                            Class="hide"
+                            :NutDefs="NutDefs"
+                        ></NutDefMenu>
+                        <AlgaeMenu Class="hide" :Algaes="Algaes"></AlgaeMenu>
+                    </div>
+                    <div v-else-if="Content == 'nutDef'">
+                        <PlantsMenu Class="hide" :Plants="Plants"></PlantsMenu>
+                        <NutDefMenu
+                            Class="show"
+                            :NutDefs="NutDefs"
+                        ></NutDefMenu>
+                        <AlgaeMenu Class="hide" :Algaes="Algaes"></AlgaeMenu>
+                    </div>
+                    <div v-else-if="Content == 'algae'">
+                        <PlantsMenu
+                            Class="hide"
+                            :Plants="Plants"
+                            :Payload="Payload"
+                        ></PlantsMenu>
+                        <NutDefMenu
+                            Class="hide"
+                            :NutDefs="NutDefs"
+                            :Payload="Payload"
+                        ></NutDefMenu>
+                        <AlgaeMenu
+                            Class="show"
+                            :Algaes="Algaes"
+                            :Payload="Payload"
+                        ></AlgaeMenu>
+                    </div>
+                    <div v-else-if="Content == 'Dashboard'">
+                        <h3 class="text-xl p-5">Dashboard Menu</h3>
+                        <DashboardMenu
+                            @DashboardDesc="getDesc($event)"
+                        ></DashboardMenu>
+                    </div>
+                    <div v-else>
+                        <PlantsMenu
+                            Class="hide"
+                            :Plants="Plants"
+                            :Payload="Payload"
+                        ></PlantsMenu>
+                        <NutDefMenu
+                            Class="hide"
+                            :NutDefs="NutDefs"
+                            :Payload="Payload"
+                        ></NutDefMenu>
+                        <AlgaeMenu
+                            Class="hide"
+                            :Algaes="Algaes"
+                            :Payload="Payload"
+                        ></AlgaeMenu>
+                    </div>
                 </div>
                 <div v-else>
-                    <PlantsMenu Class="hide" :Plants="Plants"></PlantsMenu>
-                    <NutDefMenu Class="hide" :NutDefs="NutDefs"></NutDefMenu>
-                    <AlgaeMenu Class="hide" :Algaes="Algaes"></AlgaeMenu>
+                    <div v-if="Content == 'plants'">
+                        <PlantsMenu
+                            Class="show"
+                            :Plants="Plants"
+                            :Payload="Payload"
+                        ></PlantsMenu>
+                        <NutDefMenu
+                            Class="hide"
+                            :NutDefs="NutDefs"
+                            :Payload="Payload"
+                        ></NutDefMenu>
+                        <AlgaeMenu
+                            Class="hide"
+                            :Algaes="Algaes"
+                            :Payload="Payload"
+                        ></AlgaeMenu>
+                    </div>
+                    <div v-else-if="Content == 'nutDef'">
+                        <PlantsMenu
+                            Class="hide"
+                            :Plants="Plants"
+                            :Payload="Payload"
+                        ></PlantsMenu>
+                        <NutDefMenu
+                            Class="show"
+                            :NutDefs="NutDefs"
+                            :Payload="Payload"
+                        ></NutDefMenu>
+                        <AlgaeMenu
+                            Class="hide"
+                            :Algaes="Algaes"
+                            :Payload="Payload"
+                        ></AlgaeMenu>
+                    </div>
+                    <div v-else-if="Content == 'algae'">
+                        <PlantsMenu
+                            Class="hide"
+                            :Plants="Plants"
+                            :Payload="Payload"
+                        ></PlantsMenu>
+                        <NutDefMenu
+                            Class="hide"
+                            :NutDefs="NutDefs"
+                            :Payload="Payload"
+                        ></NutDefMenu>
+                        <AlgaeMenu
+                            Class="show"
+                            :Algaes="Algaes"
+                            :Payload="Payload"
+                        ></AlgaeMenu>
+                    </div>
+                    <div v-else-if="Content == 'Dashboard'">
+                        <h3 class="text-xl p-5">Dashboard Menu</h3>
+                        <DashboardMenu
+                            @DashboardDesc="getDesc($event)"
+                        ></DashboardMenu>
+                    </div>
+                    <div v-else>
+                        <PlantsMenu
+                            Class="hide"
+                            :Plants="Plants"
+                            :Payload="Payload"
+                        ></PlantsMenu>
+                        <NutDefMenu
+                            Class="hide"
+                            :NutDefs="NutDefs"
+                            :Payload="Payload"
+                        ></NutDefMenu>
+                        <AlgaeMenu
+                            Class="hide"
+                            :Algaes="Algaes"
+                            :Payload="Payload"
+                        ></AlgaeMenu>
+                    </div>
                 </div>
             </ul>
         </div>
@@ -45,7 +151,7 @@ import AlgaeMenu from "./Submenu/AlgaeMenu.vue";
 import DashboardMenu from "./Submenu/DashboardMenu.vue";
 
 export default {
-    props: ["Content", "Plants", "Algaes", "NutDefs"],
+    props: ["Content", "Plants", "Algaes", "NutDefs", "Payload"],
     components: {
         PlantsMenu,
         NutDefMenu,

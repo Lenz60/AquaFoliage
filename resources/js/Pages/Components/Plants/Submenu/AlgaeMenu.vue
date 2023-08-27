@@ -45,7 +45,15 @@
                                     :href="route('plantCharacteristic')"
                                     :data="{ content: 'algae', id: algae.id }"
                                 >
-                                    <a>{{ algae.name }}</a>
+                                    <div v-if="Payload['id'] == algae.id">
+                                        <a
+                                            class="p-10 py-2 w-full h-max text-accent"
+                                            >{{ algae.name }}</a
+                                        >
+                                    </div>
+                                    <div v-else>
+                                        <a>{{ algae.name }}</a>
+                                    </div>
                                 </Link>
                             </li>
                         </ul>
@@ -60,7 +68,7 @@
 import { Link } from "@inertiajs/vue3";
 
 export default {
-    props: ["Class", "Algaes"],
+    props: ["Class", "Algaes", "Payload"],
     components: {
         Link,
     },

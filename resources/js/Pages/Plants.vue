@@ -30,7 +30,7 @@
             </div>
             <div v-else>
                 <div class="flex">
-                    <div class="w-[30%] h-screen">
+                    <div class="w-[30%] h-screen overflow-x-visible">
                         <Menu
                             :Plants="plants"
                             :Algaes="algae"

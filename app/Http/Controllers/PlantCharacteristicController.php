@@ -79,7 +79,7 @@ class PlantCharacteristicController extends Controller
         $state = request('state');
 
         if($state === 'offline'){
-            dd('You are offline');
+            // dd('You are offline');
 
         }else{
             $user = Auth::user();
