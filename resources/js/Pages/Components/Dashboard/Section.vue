@@ -6,7 +6,7 @@
             >
                 <div class="p-5">
                     <div v-if="sectionContent == 'Plants'">
-                        <p>This is Plants Fav List</p>
+                        <p>Plants Bookmark Lists</p>
 
                         <div class="overflow-x-auto">
                             <table
@@ -29,7 +29,11 @@
                                             {{ favPlant.name }}
                                         </td>
                                         <td>
-                                            <div class="btn">Remove</div>
+                                            <div
+                                                class="btn btn-outline btn-accent btn-active"
+                                            >
+                                                Remove
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -37,7 +41,7 @@
                         </div>
                     </div>
                     <div v-else-if="sectionContent == 'NutDefs'">
-                        <p>This is NutDef Fav List</p>
+                        <p>Nutrient Deficiencies Bookmark Lists</p>
                         <div class="overflow-x-auto">
                             <table
                                 aria-label="table of nutrient deficiencies"
@@ -59,7 +63,11 @@
                                             {{ favNutDef.name }}
                                         </td>
                                         <td>
-                                            <div class="btn">Remove</div>
+                                            <div
+                                                class="btn btn-outline btn-accent btn-active"
+                                            >
+                                                Remove
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -67,7 +75,7 @@
                         </div>
                     </div>
                     <div v-else-if="sectionContent == 'Algaes'">
-                        <p>This is Algae Fav List</p>
+                        <p>Algae Bookmark Lists</p>
                         <div class="overflow-x-auto">
                             <table aria-label="table of algaes" class="table">
                                 <!-- head -->
@@ -86,7 +94,11 @@
                                             {{ favAlgae.name }}
                                         </td>
                                         <td>
-                                            <div class="btn">Remove</div>
+                                            <div
+                                                class="btn btn-outline btn-accent btn-active"
+                                            >
+                                                Remove
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>
