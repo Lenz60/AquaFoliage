@@ -1,19 +1,21 @@
 <template>
     <Head title="Aqua Foliage"> </Head>
-    <div v-if="!isLoading">
-        <div class="bg-[#101310] overflow-hidden">
-            <Navbar class="sticky top-0 z-50"></Navbar>
-            <Hero></Hero>
-            <Section></Section>
-            <Poem></Poem>
-            <!-- <PreFooter></PreFooter> -->
-            <Footer></Footer>
-            <!-- <SinglePages :fish="fish"></SinglePages> -->
+    <Transition name="slide-fade">
+        <div v-if="!isLoading">
+            <div class="bg-[#101310] overflow-hidden">
+                <Navbar class="sticky top-0 z-50"></Navbar>
+                <Hero></Hero>
+                <Section></Section>
+                <Poem></Poem>
+                <!-- <PreFooter></PreFooter> -->
+                <Footer></Footer>
+                <!-- <SinglePages :fish="fish"></SinglePages> -->
+            </div>
         </div>
-    </div>
-    <div v-else>
-        <LoadingScreen :isLoading="isLoading" />
-    </div>
+        <div v-else>
+            <LoadingScreen :isLoading="isLoading" />
+        </div>
+    </Transition>
 </template>
 
 <script>
@@ -48,12 +50,12 @@ export default {
         let isLoading = ref(true);
 
         onMounted(() => {
-            window.onload = function () {
-                if (!window.location.hash) {
-                    window.location = window.location;
-                    window.location.reload();
-                }
-            };
+            // window.onload = function () {
+            //     if (!window.location.hash) {
+            //         window.location = window.location;
+            //         window.location.reload();
+            //     }
+            // };
             setTimeout(() => {
                 isLoading.value = false;
             }, 4000);
@@ -64,4 +66,17 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.slide-fade-enter-active {
+    transition: all 0.4s ease-out;
+}
+
+.slide-fade-leave-active {
+    transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    opacity: 0;
+}
+</style>
