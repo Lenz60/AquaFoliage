@@ -16,21 +16,29 @@
                                 <!-- head -->
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Plant Name</th>
                                         <th>Remove Bookmark</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr
-                                        v-for="favPlant in favPlants"
+                                        v-for="(favPlant, no) in favPlants"
                                         class="hover:bg-neutral-focus"
                                     >
+                                        <td>{{ no + 1 }}</td>
                                         <td>
                                             {{ favPlant.name }}
                                         </td>
                                         <td>
                                             <div
-                                                class="btn btn-outline btn-accent btn-active"
+                                                @click="
+                                                    removeFav(
+                                                        'plants',
+                                                        favPlant.id
+                                                    )
+                                                "
+                                                class="btn btn-outline btn-accent"
                                             >
                                                 Remove
                                             </div>
@@ -50,21 +58,29 @@
                                 <!-- head -->
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Nutrient Deficiencies Name</th>
                                         <th>Remove Bookmark</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr
-                                        v-for="favNutDef in favNutDefs"
+                                        v-for="(favNutDef, no) in favNutDefs"
                                         class="hover:bg-neutral-focus"
                                     >
+                                        <td>{{ no + 1 }}</td>
                                         <td>
                                             {{ favNutDef.name }}
                                         </td>
                                         <td>
                                             <div
-                                                class="btn btn-outline btn-accent btn-active"
+                                                @click="
+                                                    removeFav(
+                                                        'nutDef',
+                                                        favNutDef.id
+                                                    )
+                                                "
+                                                class="btn btn-outline btn-accent"
                                             >
                                                 Remove
                                             </div>
@@ -81,21 +97,29 @@
                                 <!-- head -->
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Algaes Name</th>
                                         <th>Remove Bookmark</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr
-                                        v-for="favAlgae in favAlgaes"
+                                        v-for="(favAlgae, no) in favAlgaes"
                                         class="hover:bg-neutral-focus"
                                     >
+                                        <td>{{ no + 1 }}</td>
                                         <td>
                                             {{ favAlgae.name }}
                                         </td>
                                         <td>
                                             <div
-                                                class="btn btn-outline btn-accent btn-active"
+                                                @click="
+                                                    removeFav(
+                                                        'algae',
+                                                        favAlgae.id
+                                                    )
+                                                "
+                                                class="btn btn-outline btn-accent"
                                             >
                                                 Remove
                                             </div>
@@ -125,6 +149,14 @@ export default {
     setup(props) {
         // console.log(for(props.favPlants in favplant));
         return {};
+    },
+    methods: {
+        removeFav(content, id) {
+            // console.log($content, $id);
+            this.$inertia.post(
+                this.route("dashboard.removeFav", [content, id])
+            );
+        },
     },
 };
 </script>
