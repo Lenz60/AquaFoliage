@@ -30,7 +30,11 @@ Route::get('/', function () {
     ]);
 })->name('HomePage');
 
-Route::get('/dashboard', [DashboardController::class, "index"])->middleware(['auth', 'verified'])->name('dashboard');
+Route::controller(DashboardController::class)->group(function (){
+    Route::get('/dashboard', "index")->middleware(['auth', 'verified'])->name('dashboard');
+    Route::post('/dashboard/{content}&{id}', "removeFav")->middleware(['auth', 'verified'])->name('dashboard.removeFav');
+} );
+
 
 
 Route::middleware('auth')->group(function () {
