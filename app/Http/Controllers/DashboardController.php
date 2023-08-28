@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\FavPlant;
 use App\Models\Plants;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+use Firebase\JWT\SignatureInvalidException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -32,6 +35,17 @@ class DashboardController extends Controller
         ->select('fav_algae.id as id','algae.name as name')
         ->where('fav_algae.user_id', $user->id)
         ->get();
+
+        $jwt = $_COOKIE['userData'];
+
+        try{
+            JWT::decode($jwt,new Key(env('JWT_SECRET'),'HS256'));
+
+        }catch(SignatureInvalidException $e){
+            dd('JWT Token Invalid');
+        }
+
+
 
        return Inertia::render('Dashboard', [
         'favPlants' => $favPlants,
