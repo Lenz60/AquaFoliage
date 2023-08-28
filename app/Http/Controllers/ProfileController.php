@@ -18,10 +18,19 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): Response
     {
-        return Inertia::render('Profile/Edit', [
-            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
-            'status' => session('status'),
-        ]);
+        //v Checking the JWT token using helper function
+        $token = $_COOKIE['userData'];
+        $validate = validateJWT($token);
+
+        if($validate){
+            return Inertia::render('Profile/Edit', [
+                'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
+                'status' => session('status'),
+            ]);
+        }else{
+            return redirect()->to('/');
+        }
+        //v ////////////////////////////
     }
 
     /**

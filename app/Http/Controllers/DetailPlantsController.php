@@ -14,11 +14,22 @@ class DetailPlantsController extends Controller
         $plants = DB::table('plants')
         ->where('id', $nameId)
         ->first();
-        return Inertia::render('Components/Plants/Content/DetailPlants',[
-            'name' => $plants->name,
-            'desc' => $plants->body
-        ]);
 
-        
+        //v Checking the JWT token using helper function
+        $token = $_COOKIE['userData'];
+        $validate = validateJWT($token);
+
+        if($validate){
+            return Inertia::render('Components/Plants/Content/DetailPlants',[
+                'name' => $plants->name,
+                'desc' => $plants->body
+            ]);
+
+        }else{
+            return redirect()->to('/');
+        }
+        //v ////////////////////////////
+
+
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Models\FavPlant;
 use App\Models\Plants;
+use Firebase\JWT\ExpiredException;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use Firebase\JWT\SignatureInvalidException;
@@ -11,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
+
 
 class DashboardController extends Controller
 {
@@ -36,21 +39,65 @@ class DashboardController extends Controller
         ->where('fav_algae.user_id', $user->id)
         ->get();
 
-        $jwt = $_COOKIE['userData'];
 
-        try{
-            JWT::decode($jwt,new Key(env('JWT_SECRET'),'HS256'));
+        //v Checking the JWT token using helper function
+        $token = $_COOKIE['userData'];
+        $validate = validateJWT($token);
 
-        }catch(SignatureInvalidException $e){
-            dd('JWT Token Invalid');
+        // dd($validate);
+
+        if($validate){
+            return Inertia::render('Dashboard', [
+             'favPlants' => $favPlants,
+             'favNutDefs' => $favNutDefs,
+             'favAlgaes' => $favAlgaes
+             ]);
+
+        }else{
+            return redirect()->to('/');
+        }
+
+        // try{
+        //     JWT::decode($jwt,new Key(env('JWT_SECRET'),'HS256'));
+
+        // }catch(LogicException | UnexpectedValueException $e){
+        //     // dd($e->getMessage());
+
+        //     setcookie('userData', null);
+        //     Auth::guard('web')->logout();
+        //     session()->invalidate();
+        //     session()->regenerateToken();
+
+        //     return redirect()->to('/');
+        // }
+        //v ////////////////////////////
+
+
+
+    }
+
+    public function removeFav($content, $id){
+        // dd($content,$id);
+        if($content === "plants"){
+            DB::table('fav_plant')
+            ->where([
+                ['id', '=', $id],
+            ])
+            ->delete();
+        }elseif($content === "nutDef"){
+             DB::table('fav_nutdef')
+            ->where([
+                ['id', '=', $id],
+            ])
+            ->delete();
+        }elseif($content === "algae"){
+             DB::table('fav_algae')
+            ->where([
+                ['id', '=', $id],
+            ])
+            ->delete();
         }
 
 
-
-       return Inertia::render('Dashboard', [
-        'favPlants' => $favPlants,
-        'favNutDefs' => $favNutDefs,
-        'favAlgaes' => $favAlgaes
-        ]);
     }
 }
