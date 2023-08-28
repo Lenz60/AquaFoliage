@@ -170,6 +170,8 @@ return [
         App\Providers\RouteServiceProvider::class,
     ])->toArray(),
 
+    'jwt_secret' => env('JWT_SECRET'),
+
     /*
     |--------------------------------------------------------------------------
     | Class Aliases

@@ -74,20 +74,25 @@ class LoginRequest extends FormRequest
             if($this->remember){
                 $data = [
                 'id' => $data->id,
+                'iat' => time(),
+                'exp' => time()+3600,
+
                 // 'email_verified_at' => $data->email_verified_at
                 ];
                 $token = JWT::encode($data,env('JWT_SECRET'),'HS256');
 
-                setcookie('rememberEmail', $credentials['email'], time()+3600);
-                setcookie('userData', $token, time()+3600);
+                setcookie('rememberEmail', $credentials['email']);
+                setcookie('userData', $token);
             }else{
                 $data = [
                 'id' => $data->id,
+                'iat' => time(),
+                'exp' => time()+3600,
                 // 'email_verified_at' => $data->email_verified_at
                 ];
-                $token = JWT::encode($data,env('JWT_SECRET'),'HS256');
+                $token = JWT::encode($data,config('app.jwt_secret'),'HS256');
                 setcookie('rememberEmail', null);
-                setcookie('userData', $token, time()+3600);
+                setcookie('userData', $token);
 
             }
         }
