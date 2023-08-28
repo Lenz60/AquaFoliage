@@ -51,7 +51,7 @@ class LoginRequest extends FormRequest
         ];
 
         $data = DB::table('users')
-        ->select('role','email_verified_at')
+        ->select('id','email_verified_at')
         ->where('email',$credentials['email'])
         ->first();
 
@@ -73,8 +73,8 @@ class LoginRequest extends FormRequest
 
             if($this->remember){
                 $data = [
-                'role' => $data->role,
-                'email_verified_at' => $data->email_verified_at
+                'id' => $data->id,
+                // 'email_verified_at' => $data->email_verified_at
                 ];
                 $token = JWT::encode($data,env('JWT_SECRET'),'HS256');
 
@@ -82,8 +82,8 @@ class LoginRequest extends FormRequest
                 setcookie('userData', $token, time()+3600);
             }else{
                 $data = [
-                'role' => $data->role,
-                'email_verified_at' => $data->email_verified_at
+                'id' => $data->id,
+                // 'email_verified_at' => $data->email_verified_at
                 ];
                 $token = JWT::encode($data,env('JWT_SECRET'),'HS256');
                 setcookie('rememberEmail', null);
