@@ -28,12 +28,16 @@ class PlantsController extends Controller
 
         //v Checking the JWT token using helper function
         $token = $_COOKIE['userData'];
-        $validate = validateJWT($token);
+        if(isset($token)){
+            $validate = validateJWT($token);
 
-        if($validate){
-            return inertia('Plants', compact('plants','algae','nutrientDef'));
+            if($validate){
+                return inertia('Plants', compact('plants','algae','nutrientDef'));
+            }else{
+                return redirect()->to('/');
+            }
         }else{
-            return redirect()->to('/');
+            return inertia('Plants', compact('plants','algae','nutrientDef'));
         }
         //v ////////////////////////////
 

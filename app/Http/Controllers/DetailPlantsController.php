@@ -17,16 +17,24 @@ class DetailPlantsController extends Controller
 
         //v Checking the JWT token using helper function
         $token = $_COOKIE['userData'];
-        $validate = validateJWT($token);
+        if(isset($token)){
+            $validate = validateJWT($token);
 
-        if($validate){
+            if($validate){
+                return Inertia::render('Components/Plants/Content/DetailPlants',[
+                    'name' => $plants->name,
+                    'desc' => $plants->body
+                ]);
+
+            }else{
+                return redirect()->to('/');
+            }
+
+        }else{
             return Inertia::render('Components/Plants/Content/DetailPlants',[
                 'name' => $plants->name,
                 'desc' => $plants->body
             ]);
-
-        }else{
-            return redirect()->to('/');
         }
         //v ////////////////////////////
 
