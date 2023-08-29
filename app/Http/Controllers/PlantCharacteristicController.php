@@ -52,11 +52,12 @@ class PlantCharacteristicController extends Controller
                 return redirect()->to('/');
             }
         }else{
-            return Inertia::render('Plants',[
-                'plants' => $plants,
-                'algae' => $algae,
-                'nutrientDef' => $nutrientDef,
-                'content' => '404'
+            return Inertia::render('Components/Plants/PlantCharacteristic',[
+                        'plants' => $plants,
+                        'algae' => $algae,
+                        'nutrientDef' => $nutrientDef,
+                        'content' => $contentDesc,
+                        'payload' => $payload,
             ]);
         }
         //v ////////////////////////////
