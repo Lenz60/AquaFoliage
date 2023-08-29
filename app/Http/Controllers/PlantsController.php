@@ -27,8 +27,8 @@ class PlantsController extends Controller
         ->get();
 
         //v Checking the JWT token using helper function
-        $token = $_COOKIE['userData'];
-        if(isset($token)){
+        if(isset($_COOKIE['userData'])){
+            $token = $_COOKIE['userData'];
             $validate = validateJWT($token);
 
             if($validate){
