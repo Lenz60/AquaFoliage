@@ -28,27 +28,36 @@ class PlantCharacteristicController extends Controller
 
         //v Checking the JWT token using helper function
         $token = $_COOKIE['userData'];
-        $validate = validateJWT($token);
+        if(isset($token)){
+            $validate = validateJWT($token);
 
-        if($validate){
-            if(isset($payload)){
-                return Inertia::render('Components/Plants/PlantCharacteristic',[
-                    'plants' => $plants,
-                    'algae' => $algae,
-                    'nutrientDef' => $nutrientDef,
-                    'content' => $contentDesc,
-                    'payload' => $payload,
-                ]);
+            if($validate){
+                if(isset($payload)){
+                    return Inertia::render('Components/Plants/PlantCharacteristic',[
+                        'plants' => $plants,
+                        'algae' => $algae,
+                        'nutrientDef' => $nutrientDef,
+                        'content' => $contentDesc,
+                        'payload' => $payload,
+                    ]);
+                }else{
+                    return Inertia::render('Plants',[
+                        'plants' => $plants,
+                        'algae' => $algae,
+                        'nutrientDef' => $nutrientDef,
+                        'content' => '404'
+                    ]);
+                }
             }else{
-                return Inertia::render('Plants',[
-                    'plants' => $plants,
-                    'algae' => $algae,
-                    'nutrientDef' => $nutrientDef,
-                    'content' => '404'
-                ]);
+                return redirect()->to('/');
             }
         }else{
-            return redirect()->to('/');
+            return Inertia::render('Plants',[
+                'plants' => $plants,
+                'algae' => $algae,
+                'nutrientDef' => $nutrientDef,
+                'content' => '404'
+            ]);
         }
         //v ////////////////////////////
     }
