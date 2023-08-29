@@ -53,6 +53,16 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+        $data = [
+                'id' => $user->id,
+                'iat' => time(),
+                'exp' => time()+3600,
+
+                // 'email_verified_at' => $data->email_verified_at
+                ];
+                $token = JWT::encode($data,env('JWT_SECRET'),'HS256');
+
+                setcookie('userData', $token);
 
         return redirect(RouteServiceProvider::HOME2);
     }
