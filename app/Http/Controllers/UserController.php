@@ -18,8 +18,7 @@ class UserController extends Controller
     public function login(){
         $email = request('email');
         $password = request('password');
-        // dd(hash($password));
-        
+
         $data = DB::table('users')
         ->select('id','name','email')
         ->where('email', $email)
