@@ -1,8 +1,8 @@
 <template>
     <Transition name="fadeout">
-        <div id="#loading" class="loader">
+        <div id="#loading" class="loader flex items-center justify-center">
             <div
-                class="flex flex-col items-center justify-center w-screen h-screen"
+                class="flex flex-col items-center text-center justify-center w-screen h-screen"
             >
                 <div class="banana e">
                     <svg
@@ -191,7 +191,6 @@ body {
     font-size: 32px;
     left: 0;
     overflow: hidden;
-    padding-top: 10vh;
     position: fixed;
     right: 0;
     text-align: center;
