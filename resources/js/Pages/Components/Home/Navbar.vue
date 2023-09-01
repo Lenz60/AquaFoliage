@@ -54,13 +54,13 @@
                 </div>
             </div>
             <div class="flex-1">
-                <Link :href="route('HomePage')">
+                <a href="/">
                     <img
                         src="/images/logo.png"
                         alt=""
                         class="btn rounded-md btn-ghost normal-case invisible xl:visible md:visible sm:invisible"
                     />
-                </Link>
+                </a>
             </div>
             <div v-if="!NoAuthLink" class="px-5">
                 <div
