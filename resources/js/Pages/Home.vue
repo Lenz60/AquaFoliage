@@ -2,8 +2,10 @@
     <Head title="Aqua Foliage"> </Head>
     <Transition name="fade">
         <div v-if="!isLoading">
-            <div class="bg-[#101310] overflow-hidden">
-                <Navbar class="sticky top-0 z-50"></Navbar>
+            <div class="bg-[#101310] overflow-hidden relative w-full">
+                <Header class="fixed top-0 z-50">
+                    <Navbar class="sticky top-0 z-50 w-screen"></Navbar>
+                </Header>
                 <Hero></Hero>
                 <Section></Section>
                 <Poem></Poem>
@@ -25,7 +27,7 @@ import Navbar from "./Components/Home/Navbar.vue";
 import Hero from "./Components/Home/Hero.vue";
 import Section from "./Components/Home/Section.vue";
 import Poem from "./Components/Home/Poem.vue";
-import PreFooter from "./Components/Home/PreFooter.vue";
+// import PreFooter from "./Components/Home/PreFooter.vue";
 import Footer from "./Components/Home/Footer.vue";
 import { onMounted, ref } from "vue";
 // import SinglePages from "./Components/SinglePages.vue";
@@ -38,7 +40,6 @@ export default {
         Hero,
         Section,
         Poem,
-        PreFooter,
         Footer,
     },
     // data() {
@@ -58,7 +59,7 @@ export default {
             // };
             setTimeout(() => {
                 isLoading.value = false;
-            }, 4000);
+            }, 1000);
             console.log(isLoading.value);
         });
         return { isLoading };

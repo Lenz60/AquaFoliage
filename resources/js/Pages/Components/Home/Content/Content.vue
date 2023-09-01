@@ -1,27 +1,28 @@
 <template>
     <div
-        class="flex-row min-w-full bg-transparent bg-no-repeat p-5 bg-right-bottom min-h-full"
+        class="flex-row min-w-full bg-transparent bg-no-repeat overflow-hidden p-5 bg-right-bottom min-h-full"
         style="background-image: url(/images/section2bgInvertedTransparent.png)"
     >
-        <div class="flex justify-center items-center mx-5">
-            <div class="flex justify-center items-center m-5 p-5">
+        <div
+            class="max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-screen-2xl"
+        >
+            <div class="md:flex flex-row">
                 <div
-                    class="w-[50%] flex justify-center items-center p-5 m-5 rtlImage"
+                    class="md:shrink-0 xl:w-[50%] items-center p-5 m-5 justify-center"
                 >
                     <img
-                        id="img1"
+                        class="h-48 w-full object-cover md:h-full md:w-48 xl:w-full card rounded-md"
                         src="/images/section2/hairAlgae.jpg"
-                        alt=""
-                        class="rounded-md drop-shadow-md card"
+                        alt="Modern building architecture"
                     />
                 </div>
-                <div class="w-[50%] flex-row justify-center items-center m-5">
-                    <h1
+                <div class="p-8">
+                    <div
                         id="title1"
-                        class="overflow-hidden font-montserrat text-2xl font-semibold drop-shadow-xl text-primary m-5 Title"
+                        class="overflow-hidden font-montserrat xl:text-2xl md:text-xl sm:text-lg font-semibold drop-shadow-xl text-primary m-5 Title"
                     >
-                        Find out why algae appear in your tank
-                    </h1>
+                        Find out the causes of the algae
+                    </div>
                     <p
                         id="desc1"
                         class="justify-left relative overflow-hidden font-montserrat drop-shadow-xl text-primary m-5 rtlDesc"
@@ -34,20 +35,20 @@
                 </div>
             </div>
         </div>
-        <div class="flex-row items-center mx-5">
-            <div class="flex justify-center items-center m-5 p-5">
-                <div
-                    class="w-[50%] flex-row justify-center items-center rt p-5 m-5"
-                >
-                    <h1
+        <div
+            class="max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-screen-2xl"
+        >
+            <div class="flex md:flex-row sm:flex flex-col-reverse xl:flex-row">
+                <div class="p-8">
+                    <div
                         id="title2"
-                        class="overflow-hidden font-montserrat text-2xl font-semibold drop-shadow-xl text-primary m-5 Title"
+                        class="overflow-hidden font-montserrat xl:text-2xl md:text-xl sm:text-lg font-semibold drop-shadow-xl text-primary m-5 Title"
                     >
                         Nutrient Deficiency
-                    </h1>
+                    </div>
                     <p
                         id="desc2"
-                        class="justify-left relative font-montserrat drop-shadow-xl text-primary ltrDesc"
+                        class="justify-left relative overflow-hidden font-montserrat drop-shadow-xl text-primary m-5 rtlDesc"
                     >
                         Find the cause why your plant is dying. Melting, holes
                         in the leaves, and another reason why your plant is not
@@ -57,41 +58,41 @@
                     </p>
                 </div>
                 <div
-                    class="w-[50%] flex justify-center items-center p-5 m-5 ltrImage"
+                    class="md:shrink-0 xl:w-[50%] items-center p-5 m-5 justify-center"
                 >
                     <img
                         id="img2"
+                        class="h-48 w-full object-cover md:h-full md:w-48 xl:w-full card rounded-md"
                         src="/images/section2/javaFernMelting.jpg"
-                        alt=""
-                        class="rounded-md drop-shadow-md card"
+                        alt="Modern building architecture"
                     />
                 </div>
             </div>
         </div>
-        <div class="flex-row items-center mx-5">
-            <div class="flex justify-center items-center m-5 p-5">
+        <div
+            class="max-w-md mx-auto rounded-xl shadow-md overflow-hidden md:max-w-screen-2xl"
+        >
+            <div class="md:flex flex-row">
                 <div
-                    class="w-[50%] flex justify-center items-center p-5 m-5 rtlImage"
+                    class="md:shrink-0 xl:w-[50%] items-center p-5 m-5 justify-center"
                 >
                     <img
                         id="img3"
+                        class="h-48 w-full object-cover md:h-full md:w-48 xl:w-full card rounded-md"
                         src="/images/section2/pearling.jpg"
-                        alt=""
-                        class="rounded-md drop-shadow-md card"
+                        alt="Modern building architecture"
                     />
                 </div>
-                <div
-                    class="w-[50%] flex-row justify-center items-center p-5 m-5"
-                >
-                    <h1
-                        id="title3"
-                        class="overflow-hidden font-montserrat text-2xl font-semibold drop-shadow-xl text-primary m-5 Title"
+                <div class="p-8">
+                    <div
+                        id="title1"
+                        class="overflow-hidden font-montserrat xl:text-2xl md:text-xl sm:text-lg font-semibold drop-shadow-xl text-primary m-5 Title"
                     >
-                        Plant needs
-                    </h1>
+                        Plant Needs
+                    </div>
                     <p
-                        id="desc3"
-                        class="relative font-montserrat drop-shadow-xl text-primary rtlDesc"
+                        id="desc1"
+                        class="justify-left relative overflow-hidden font-montserrat drop-shadow-xl text-primary m-5 rtlDesc"
                     >
                         Your plants need a specific amount of needs that should
                         be fulfilled to be able to thrive and grows beautiful.

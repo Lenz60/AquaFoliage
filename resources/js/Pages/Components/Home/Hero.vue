@@ -5,12 +5,12 @@
             style="background-image: url(/images/HeroCropped.jpg)"
         >
             <div class="hero-overlay bg-opacity-40 bg-base-200"></div>
-            <div class="hero-content text-center text-neutral-content">
+            <div class="hero-content text-center text-neutral-content w-screen">
                 <div class="flex-row justify-center items-center text-center">
                     <div>
                         <h1
                             id="hero-title"
-                            class="mb-4 p-1 tracking-[-1%] text-6xl font-semibold font-montserrat text-primary overflow-hidden"
+                            class="mb-4 p-1 tracking-[-1%] text-2xl sm:text-4xl md:text-5xl xl:text-6xl font-semibold font-montserrat text-primary overflow-hidden"
                         >
                             Explore the Diversity <br />
                             of Aquatic Flora
@@ -19,7 +19,7 @@
                     <div class="flex text-center items-center justify-center">
                         <p
                             id="hero-desc"
-                            class="mb-5 w-[600px] text-lg text-primary font-istok font-medium text-transparent overflow-hidden"
+                            class="mb-5 w-[600px] text-[10px] sm:text-sm break-all md:text-md xl:text-lg text-primary font-istok font-medium text-transparent overflow-hidden"
                         >
                             We provide information about aquatic plants needs.
                             <br />
@@ -30,9 +30,11 @@
                     <Link
                         id="button"
                         href="docs"
-                        class="btn m-5 btn-accent font-semibold font-montserrat"
+                        class="btn btn-md md:btn-md lg:btn-lg btn-accent font-semibold font-montserrat"
                     >
-                        Check it out
+                        <p class="text-xs sm:text-sm md:text-md lg:text-lg">
+                            Check it out
+                        </p>
                     </Link>
                 </div>
             </div>

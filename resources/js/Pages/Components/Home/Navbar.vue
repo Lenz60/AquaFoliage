@@ -58,22 +58,22 @@
                     <img
                         src="/images/logo.png"
                         alt=""
-                        class="btn rounded-md btn-ghost normal-case"
+                        class="btn rounded-md btn-ghost normal-case invisible xl:visible md:visible sm:invisible"
                     />
                 </Link>
             </div>
-            <div v-if="!NoAuthLink">
+            <div v-if="!NoAuthLink" class="px-5">
                 <div
                     v-if="$page.props.auth.user?.name"
                     class="menu flex-row-reverse"
                 >
-                    <div class="flex-none">
+                    <div class="flex">
                         <ul class="menu menu-horizontal px-1">
                             <li>
                                 <details class="text-primary">
                                     <summary>
                                         <p
-                                            class="text-md font-semibold font-montserrat px-2"
+                                            class="text-md font-semibold font-montserrat px-2 break-words"
                                         >
                                             {{ $page.props.auth.user.name }}
                                         </p>

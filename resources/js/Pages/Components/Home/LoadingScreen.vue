@@ -46,7 +46,7 @@ export default {
         onMounted(() => {
             const tl = gsap
                 .timeline({
-                    defaults: { duration: 5 },
+                    defaults: { duration: 2 },
                 })
                 .to("#loading", { opacity: 0 });
             tl.restart();
