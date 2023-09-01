@@ -85,13 +85,13 @@
                 </div>
                 <div class="p-8">
                     <div
-                        id="title1"
+                        id="title3"
                         class="overflow-hidden font-montserrat xl:text-2xl md:text-xl sm:text-lg font-semibold drop-shadow-xl text-primary m-5 Title"
                     >
                         Plant Needs
                     </div>
                     <p
-                        id="desc1"
+                        id="desc3"
                         class="justify-left relative overflow-hidden font-montserrat drop-shadow-xl text-primary m-5 rtlDesc"
                     >
                         Your plants need a specific amount of needs that should
