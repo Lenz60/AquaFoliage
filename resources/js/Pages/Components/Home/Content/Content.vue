@@ -19,7 +19,7 @@
                 <div class="p-8">
                     <div
                         id="title1"
-                        class="overflow-hidden font-montserrat xl:text-2xl md:text-xl sm:text-lg font-semibold drop-shadow-xl text-primary m-5 Title"
+                        class="overflow-hidden font-montserrat text-center xl:text-start xl:text-2xl md:text-xl md:text-start sm:text-lg font-semibold drop-shadow-xl text-primary m-5 Title"
                     >
                         Find out the causes of the algae
                     </div>
@@ -42,7 +42,7 @@
                 <div class="p-8">
                     <div
                         id="title2"
-                        class="overflow-hidden font-montserrat xl:text-2xl md:text-xl sm:text-lg font-semibold drop-shadow-xl text-primary m-5 Title"
+                        class="overflow-hidden font-montserrat text-center xl:text-2xl xl:text-start md:text-xl md:text-start sm:text-lg font-semibold drop-shadow-xl text-primary m-5 Title"
                     >
                         Nutrient Deficiency
                     </div>
@@ -86,7 +86,7 @@
                 <div class="p-8">
                     <div
                         id="title3"
-                        class="overflow-hidden font-montserrat xl:text-2xl md:text-xl sm:text-lg font-semibold drop-shadow-xl text-primary m-5 Title"
+                        class="overflow-hidden text-center sm:items-center font-montserrat xl:text-2xl xl:text-start md:text-xl md:text-start sm:text-lg font-semibold drop-shadow-xl text-primary m-5 Title"
                     >
                         Plant Needs
                     </div>
