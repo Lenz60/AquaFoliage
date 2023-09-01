@@ -1,6 +1,6 @@
 <template>
     <div data-themes="foliage">
-        <div class="flex flex-col h-screen overflow-x-auto no-scrollbar">
+        <div class="flex flex-col h-screen w-full overflow-x-auto no-scrollbar">
             <h3 class="p-5 text-2xl font-montserrat font-semibold text-primary">
                 Plants Databases
             </h3>
@@ -8,8 +8,9 @@
                 class="grid grid-cols-2 gap-x-6 gap-y-0.5 lg:gap-y-5 p-7 items-center w-fit h-full mb-3"
             >
                 <Link
-                    :href="route('ContentExcerpt')"
-                    :data="{ content: 'plants' }"
+                    :href="route('plants')"
+                    method="post"
+                    :data="{ content: 'plants', excerpt: 'true' }"
                 >
                     <div
                         class="card rounded-md lg:w-[400px] lg:h-fit md:w-[250px] md:h-[300px] hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
@@ -41,8 +42,9 @@
                     </div>
                 </Link>
                 <Link
-                    :href="route('ContentExcerpt')"
-                    :data="{ content: 'nutDef' }"
+                    :href="route('plants')"
+                    method="post"
+                    :data="{ content: 'nutDef', excerpt: 'true' }"
                 >
                     <div
                         class="card rounded-md lg:w-[400px] lg:h-fit md:w-[250px] md:h-[300px] hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
@@ -71,9 +73,9 @@
                     </div>
                 </Link>
                 <Link
-                    :href="route('ContentExcerpt')"
-                    :data="{ content: 'algae' }"
-                    :content="algae"
+                    :href="route('plants')"
+                    method="post"
+                    :data="{ content: 'algae', excerpt: 'true' }"
                 >
                     <div
                         class="card rounded-md lg:w-[400px] lg:h-fit md:w-[250px] md:h-[300px] hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"

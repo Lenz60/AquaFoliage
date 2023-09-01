@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="Desc == 'plants'">
+        <div v-if="Desc == 'plants'" class="border-2 border-green-500">
             <Head title="Plants Descriptions"></Head>
             <PlantsDesc :Payload="Payload" :Content="Desc"></PlantsDesc>
         </div>

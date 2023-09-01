@@ -1,9 +1,7 @@
 <template>
-    <div class="bg-neutral">
-        <!-- <h3 class="text-black">Content Excerpt</h3>
-        <p>{{ content }}</p> -->
+    <div data-theme="foliage">
         <div
-            class="flex flex-col justify-center items-center h-screen w-screen"
+            class="flex flex-col items-center justify-center h-screen w-full overflow-x-auto no-scrollbar"
         >
             <div class="items-center justify-center text-center">
                 <h1
@@ -27,12 +25,27 @@
 </template>
 
 <script>
+import Menu from "../Menu.vue";
 export default {
     props: ["content"],
+    components: {
+        Menu,
+    },
     setup() {
         return {};
     },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+</style>

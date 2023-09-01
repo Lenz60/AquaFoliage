@@ -25,6 +25,9 @@ class PlantsController extends Controller
         $nutrientDef = DB::table('nutrient_deficiencies')
         ->select('id','name')
         ->get();
+        $excerpt = request('excerpt');
+
+        // dd(request('excerpt'));
 
         //v Checking the JWT token using helper function
         if(isset($_COOKIE['userData'])){
@@ -32,15 +35,24 @@ class PlantsController extends Controller
             $validate = validateJWT($token);
 
             if($validate){
-                return inertia('Plants', compact('plants','algae','nutrientDef'));
+                if(isset($excerpt)){
+                    return inertia('Plants', compact('plants','algae','nutrientDef','excerpt'));
+                }else{
+                    return inertia('Plants', compact('plants','algae','nutrientDef'));
+                }
             }else{
                 return redirect()->to('/');
             }
         }else{
-            return inertia('Plants', compact('plants','algae','nutrientDef'));
+            if(isset($excerpt)){
+                return inertia('Plants', compact('plants','algae','nutrientDef','excerpt'));
+            }else{
+                return inertia('Plants', compact('plants','algae','nutrientDef'));
+            }
         }
         //v ////////////////////////////
 
     }
+
     //
 }

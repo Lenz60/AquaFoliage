@@ -45,8 +45,10 @@ Route::middleware('auth')->group(function () {
 
 Route::controller(ContentExcerptController::class)->group(function () {
     Route::get('/excerpt','index')->name('ContentExcerpt');
+    Route::post('/excerpt','index')->name('ContentExcerpt');
 });
 Route::get('docs', [PlantsController::class, "index"])->name('plants');
+Route::post('docs', [PlantsController::class, "index"])->name('plants');
 Route::get('loginOld', [UserController::class, "indexLogin"])->name('login');
 Route::post('login/auth', [UserController::class, "login"])->name('loginAuth');
 Route::get('registerOld', [UserController::class, "register"])->name('register');

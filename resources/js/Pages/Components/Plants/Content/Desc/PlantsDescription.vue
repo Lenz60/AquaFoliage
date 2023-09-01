@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="border-2 border-red-600">
         <h3 class="font-montserrat font-semibold text-xl p-5">
             {{ Payload["name"] }}
         </h3>
