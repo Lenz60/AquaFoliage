@@ -30,9 +30,9 @@
                     <Link
                         id="button"
                         href="docs"
-                        class="btn btn-md md:btn-md lg:btn-lg btn-accent font-semibold font-montserrat"
+                        class="btn btn-md btn-accent font-semibold font-montserrat"
                     >
-                        <p class="text-xs sm:text-sm md:text-md lg:text-lg">
+                        <p class="text-xs sm:text-sm md:text-md lg:text-md">
                             Check it out
                         </p>
                     </Link>

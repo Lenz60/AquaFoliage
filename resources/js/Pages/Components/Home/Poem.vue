@@ -45,10 +45,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="text-end mt-20">
+                <div class="text-end">
                     <h1
                         id="takashi"
-                        class="m-5 ml-5 font-montserrat font-semibold sm:text-[20px] lg:text-[32px] text-white md:text-[20px] md:text-center"
+                        class="ml-5 font-montserrat font-semibold sm:text-[20px] lg:text-[32px] text-white md:text-[20px]"
                     >
                         - Takashi Amano
                     </h1>
