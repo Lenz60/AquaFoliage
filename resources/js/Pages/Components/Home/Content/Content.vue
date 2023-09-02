@@ -8,7 +8,7 @@
         >
             <div class="md:flex flex-row">
                 <div
-                    class="md:shrink-0 xl:w-[50%] items-center p-5 m-5 justify-center"
+                    class="md:shrink-0 xl:w-[40%] items-center p-5 m-5 justify-center"
                 >
                     <img
                         class="h-48 w-full object-cover md:h-full md:w-48 xl:w-full card rounded-md"
@@ -58,7 +58,7 @@
                     </p>
                 </div>
                 <div
-                    class="md:shrink-0 xl:w-[50%] items-center p-5 m-5 justify-center"
+                    class="md:shrink-0 xl:w-[40%] items-center p-5 m-5 justify-center"
                 >
                     <img
                         id="img2"
@@ -74,7 +74,7 @@
         >
             <div class="md:flex flex-row">
                 <div
-                    class="md:shrink-0 xl:w-[50%] items-center p-5 m-5 justify-center"
+                    class="md:shrink-0 xl:w-[40%] items-center p-5 m-5 justify-center"
                 >
                     <img
                         id="img3"
