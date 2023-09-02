@@ -7,17 +7,17 @@
         >
             <div class="hero-overlay bg-opacity-40"></div>
             <div
-                class="flex flex-col w-[400px] h-[400px] justify-center items-center text-center lg:w-screen lg:h-screen xl:w-screen xl:h-screen"
+                class="flex flex-col w-screen h-screen justify-center items-center text-center md:w-full lg:w-screen lg:h-screen xl:w-full xl:h-screen"
             >
                 <div
                     class="hero-content items-center text-center break-words overflow-hidden"
                 >
                     <div class="indicator p-5 m-5">
-                        <div class="">
+                        <div class="w-full">
                             <div class="flex w-fit h-fit">
                                 <span
                                     id="quote"
-                                    class="font-catamaran mt-5 indicator-item indicator-start ml-4 text-white lg:text-[96px] md:text-[45px]"
+                                    class="font-catamaran invisible mt-5 indicator-item indicator-start ml-4 text-white lg:text-[96px] xl:visible sm:invisible lg:invisible md:text-[45px]"
                                     >“
                                 </span>
                                 <p
@@ -38,7 +38,7 @@
                                 </p>
                                 <span
                                     id="quote"
-                                    class="font-catamaran indicator-item indicator-bottom text-white lg:text-[96px] md:text-[45px]"
+                                    class="font-catamaran invisible indicator-item indicator-bottom md:invisible sm:invisible lg:invisible xl:visible text-white lg:text-[96px] md:text-[45px]"
                                     >”</span
                                 >
                             </div>
