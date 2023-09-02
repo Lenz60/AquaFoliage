@@ -48,6 +48,9 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         setcookie('userData', null);
+        if(isset($_COOKIE['offlineState'])){
+            setcookie('offlineState', null);
+        }
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
