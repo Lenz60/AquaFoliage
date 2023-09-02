@@ -79,10 +79,7 @@ class LoginRequest extends FormRequest
 
                 // 'email_verified_at' => $data->email_verified_at
                 ];
-                $token = JWT::encode($data,env('JWT_SECRET'),'HS256');
-
                 setcookie('rememberEmail', $credentials['email']);
-                setcookie('userData', $token);
             }else{
                 $data = [
                 'id' => $data->id,
@@ -90,10 +87,14 @@ class LoginRequest extends FormRequest
                 'exp' => time()+3600,
                 // 'email_verified_at' => $data->email_verified_at
                 ];
-                $token = JWT::encode($data,config('app.jwt_secret'),'HS256');
                 setcookie('rememberEmail', null);
-                setcookie('userData', $token);
+            }
+            $token = JWT::encode($data,config('app.jwt_secret'),'HS256');
+            setcookie('userData', $token);
 
+            // Remove the offline state when user is login
+            if(isset($_COOKIE['offlineState'])){
+                setcookie('offlineState', null);
             }
         }
 
