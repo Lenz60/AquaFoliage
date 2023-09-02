@@ -52,13 +52,22 @@ class PlantCharacteristicController extends Controller
                 return redirect()->to('/');
             }
         }else{
-            return Inertia::render('Components/Plants/PlantCharacteristic',[
+            if(isset($payload)){
+                    return Inertia::render('Components/Plants/PlantCharacteristic',[
                         'plants' => $plants,
                         'algae' => $algae,
                         'nutrientDef' => $nutrientDef,
                         'content' => $contentDesc,
                         'payload' => $payload,
-            ]);
+                    ]);
+                }else{
+                    return Inertia::render('Plants',[
+                        'plants' => $plants,
+                        'algae' => $algae,
+                        'nutrientDef' => $nutrientDef,
+                        'content' => '404'
+                    ]);
+                }
         }
         //v ////////////////////////////
     }
@@ -99,10 +108,12 @@ class PlantCharacteristicController extends Controller
         $state = request('state');
 
         if($state === 'offline'){
-            //? Insert Alert box that indicates that the user is offline
-            //? and remind the bookmarked item will only saved in cookies
-            //? by returning a value indicating the state of the user
+            //? I̶n̶s̶e̶r̶t̶ A̶l̶e̶r̶t̶ b̶o̶x̶ t̶h̶a̶t̶ i̶n̶d̶i̶c̶a̶t̶e̶s̶ t̶h̶a̶t̶ t̶h̶e̶ u̶s̶e̶r̶ i̶s̶ o̶f̶f̶l̶i̶n̶e̶
+            //? a̶n̶d̶ r̶e̶m̶i̶n̶d̶ t̶h̶e̶ b̶o̶o̶k̶m̶a̶r̶k̶e̶d̶ i̶t̶e̶m̶ w̶i̶l̶l̶ o̶n̶l̶y̶ s̶a̶v̶e̶d̶ i̶n̶ c̶o̶o̶k̶i̶e̶s̶
+            //? b̶y̶ r̶e̶t̶u̶r̶n̶i̶n̶g̶ a̶ v̶a̶l̶u̶e̶ i̶n̶d̶i̶c̶a̶t̶i̶n̶g̶ t̶h̶e̶ s̶t̶a̶t̶e̶ o̶f̶ t̶h̶e̶ u̶s̶e̶r̶
+            //v The alert is message is in the component of each descriptions
             // dd('You are offline');
+
 
         }else{
             $user = Auth::user();
