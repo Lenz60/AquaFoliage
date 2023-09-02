@@ -67,14 +67,16 @@
 </template>
 
 <script>
-import { computed, onMounted, onUpdated, ref } from "vue";
-import { $ } from "jquery";
+import { onMounted, ref } from "vue";
+// import { $ } from "jquery";
 import VueCookies from "vue-cookies";
+import Swal from "sweetalert2";
 export default {
     props: ["Payload", "Content"],
     setup(props) {
         const isFavorite = ref(false);
         const Cookie = VueCookies.get("FavId");
+        let confirmState = VueCookies.get("offlineState");
 
         onMounted(() => {
             // console.log("on Mounted");
@@ -84,10 +86,8 @@ export default {
                 if (Cookie.includes(props.Payload["id"])) {
                     isFavorite.value = true;
                     // console.log(Cookie.length);
-                } else {
-                    if (Cookie.length <= 10) {
-                        VueCookies.set("FavId", "");
-                    }
+                } else if (Cookie.length <= 10) {
+                    VueCookies.set("FavId", "");
                 }
             } else {
                 VueCookies.set("FavId", "");
@@ -95,27 +95,53 @@ export default {
         });
 
         // console.log(props.Payload["name"]);
-        return { isFavorite };
+        return { isFavorite, confirmState };
     },
     methods: {
         toggleFav(id, content) {
             //Everytime button is clicked, change the value of the isFavorite to manipulate button style
             // console.log("Current Favourited ID = " + VueCookies.get("FavId"));
+            let state = "";
             this.isFavorite = !this.isFavorite;
             const isLogin = VueCookies.get("userData");
             if (isLogin) {
-                const state = "online";
+                state = "online";
                 this.saveFav(id, content, state);
             } else {
-                const state = "offline";
+                state = "offline";
                 this.saveFav(id, content, state);
             }
         },
         saveFav(id, content, state) {
-            //check if it is favorite
             const currentCookies = [VueCookies.get("FavId")];
             let arrayCookies = [];
-
+            //Check if the state of the user
+            //if its offline then show an alert with the confirmation message that data is saved locally
+            if (state == "offline") {
+                if (!this.confirmState) {
+                    Swal.fire({
+                        title: "You are offline",
+                        text: "Your data is saved locally, if you want to save your bookmarks online please login",
+                        icon: "info",
+                        reverseButtons: true,
+                        showCancelButton: true,
+                        cancelButtonColor: "#049806",
+                        confirmButtonColor: "#0B1C11",
+                        cancelButtonText: "Login",
+                        confirmButtonText: "Stay offline",
+                        allowOutsideClick: false,
+                    }).then((result) => {
+                        if (result["isConfirmed"]) {
+                            // console.log("Confirmed");
+                            // this.confirmState = "offline";
+                            VueCookies.set("offlineState", "true");
+                        } else {
+                            this.$inertia.get(this.route("login"));
+                        }
+                    });
+                }
+            }
+            //check if it is favorite
             if (this.isFavorite) {
                 let favorite = true;
                 //set the cookie to id passed
