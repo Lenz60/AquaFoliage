@@ -20,7 +20,6 @@
                 <p>Light : {{ Payload["light"] }}</p>
                 <p>Recommended temperature : {{ Payload["temp"] }}</p>
                 <p>Usage : {{ Payload["usage"] }}</p>
-                <p>Usage : {{ $page.props.confirmState.state }}</p>
                 <div class="mt-10">
                     <!-- T̶O̶D̶O̶:̶ C̶h̶e̶c̶k̶ t̶h̶e̶ u̶s̶e̶r̶ i̶f̶ i̶t̶s̶ r̶e̶g̶i̶s̶t̶e̶r̶,̶ i̶f̶ r̶e̶g̶i̶s̶t̶e̶r̶e̶d̶,̶ -->
                     <!-- T̶O̶D̶O̶:̶ I̶n̶s̶t̶e̶a̶d̶ u̶s̶i̶n̶g̶ B̶u̶t̶t̶o̶n̶,̶ u̶s̶e̶ L̶i̶n̶k̶ t̶o̶ A̶P̶I̶ t̶o̶ t̶h̶e̶ C̶o̶n̶t̶r̶o̶l̶l̶e̶r̶ f̶u̶n̶c̶t̶i̶o̶n̶ t̶o̶ i̶n̶s̶e̶r̶t̶ i̶s̶ F̶a̶v̶o̶r̶i̶t̶e̶d̶ t̶o̶ a̶n̶o̶t̶h̶e̶r̶ t̶a̶b̶l̶e̶  -->
