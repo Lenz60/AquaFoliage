@@ -41,19 +41,19 @@ class PlantCharacteristicController extends Controller
     }
 
     public function index(){
+        $user = Auth::user();
         $plants = $this->getTableKey('plants');
         $algae = $this->getTableKey('algae');
         $nutrientDef = $this->getTableKey('nutrient_deficiencies');
-        $favPlants = $this->getFavTable('fav_plant');
-        $favNutDefs = $this->getFavTable('fav_nutdef');
-        $favAlgaes = $this->getFavTable('fav_algae');
         $contentId = request('id');
         $contentDesc = request('content');
         $payload = $this->checkContent($contentId, $contentDesc);
-        $user = Auth::user();
 
         if($payload){
             if($user){
+                $favPlants = $this->getFavTable('fav_plant',$user);
+                $favNutDefs = $this->getFavTable('fav_nutdef',$user);
+                $favAlgaes = $this->getFavTable('fav_algae',$user);
 
                 $favData = $this->getFavData($favPlants, $favNutDefs, $favAlgaes);
                 return $this->commonLogic($plants, $algae, $nutrientDef,
@@ -77,20 +77,20 @@ class PlantCharacteristicController extends Controller
     }
 
     public function indexFav(){
+        $user = Auth::user();
         $plants = $this->getTableKey('plants');
         $algae = $this->getTableKey('algae');
         $nutrientDef = $this->getTableKey('nutrient_deficiencies');
-        $favPlants = $this->getFavTable('fav_plant');
-        $favNutDefs = $this->getFavTable('fav_nutdef');
-        $favAlgaes = $this->getFavTable('fav_algae');
         $contentId = request('id');
         $contentDesc = request('content');
         $payload = $this->checkContent($contentId, $contentDesc);
-        $user = Auth::user();
 
 
         if($payload){
             if($user){
+                $favPlants = $this->getFavTable('fav_plant', $user);
+                $favNutDefs = $this->getFavTable('fav_nutdef', $user);
+                $favAlgaes = $this->getFavTable('fav_algae', $user);
                 $favData = $this->getFavData($favPlants, $favNutDefs, $favAlgaes);
                 return $this->commonLogic($plants, $algae, $nutrientDef,
                 $favData,
@@ -131,6 +131,7 @@ class PlantCharacteristicController extends Controller
                         'nutrientDef' => $nutrientDef,
                         'content' => $contentDesc,
                         'payload' => $payload,
+                        'favData' => $favData,
                         'state' => "offline"
                     ]);
         }
@@ -143,8 +144,7 @@ class PlantCharacteristicController extends Controller
         ->get();
     }
 
-    public function getFavTable($tableName){
-        $user = Auth::user();
+    public function getFavTable($tableName, $user){
         if($tableName == 'fav_plant'){
             return DB::table('fav_plant')
             ->select('id','plants_id')
@@ -202,9 +202,6 @@ class PlantCharacteristicController extends Controller
         $plants = $this->getTableKey('plants');
         $algae = $this->getTableKey('algae');
         $nutrientDef = $this->getTableKey('nutrient_deficiencies');
-        $favPlants = $this->getFavTable('fav_plant');
-        $favNutDefs = $this->getFavTable('fav_nutdef');
-        $favAlgaes = $this->getFavTable('fav_algae');
         $payload = $this->checkContent($id, $content);
         $user = Auth::user();
 
@@ -216,6 +213,10 @@ class PlantCharacteristicController extends Controller
             return $this->redirectDesc($plants,$algae,$nutrientDef, $favData, $content,$payload);
             // return redirect()->back();
         }else{
+            $favPlants = $this->getFavTable('fav_plant', $user);
+            $favNutDefs = $this->getFavTable('fav_nutdef', $user);
+            $favAlgaes = $this->getFavTable('fav_algae', $user);
+
             if($this->checkFavorite($content, $user, $id)){
                 dd('This Plants is already in the favorites list');
 
@@ -284,11 +285,11 @@ class PlantCharacteristicController extends Controller
         $plants = $this->getTableKey('plants');
         $algae = $this->getTableKey('algae');
         $nutrientDef = $this->getTableKey('nutrient_deficiencies');
-        $favPlants = $this->getFavTable('fav_plant');
-        $favNutDefs = $this->getFavTable('fav_nutdef');
-        $favAlgaes = $this->getFavTable('fav_algae');
         $payload = $this->checkContent($id, $content);
         $user = Auth::user();
+        $favPlants = $this->getFavTable('fav_plant', $user);
+        $favNutDefs = $this->getFavTable('fav_nutdef', $user);
+        $favAlgaes = $this->getFavTable('fav_algae', $user);
         if($content === "plants"){
             DB::table('fav_plant')
             ->where([
