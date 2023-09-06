@@ -20,13 +20,20 @@
                 <p>Light : {{ Payload["light"] }}</p>
                 <p>Recommended temperature : {{ Payload["temp"] }}</p>
                 <p>Usage : {{ Payload["usage"] }}</p>
+                <!-- <div v-for="FavData in fav">
+                    <p>{{ fav }}</p>
+                </div> -->
+                <p>Usage : {{ checkFav(Payload["id"]) }}</p>
+                <!-- <div v-if="checkFav(Payload['id'])">
+                    <p>{{ checkFav() }}</p>
+                </div> -->
                 <div class="mt-10">
                     <!-- T̶O̶D̶O̶:̶ C̶h̶e̶c̶k̶ t̶h̶e̶ u̶s̶e̶r̶ i̶f̶ i̶t̶s̶ r̶e̶g̶i̶s̶t̶e̶r̶,̶ i̶f̶ r̶e̶g̶i̶s̶t̶e̶r̶e̶d̶,̶ -->
                     <!-- T̶O̶D̶O̶:̶ I̶n̶s̶t̶e̶a̶d̶ u̶s̶i̶n̶g̶ B̶u̶t̶t̶o̶n̶,̶ u̶s̶e̶ L̶i̶n̶k̶ t̶o̶ A̶P̶I̶ t̶o̶ t̶h̶e̶ C̶o̶n̶t̶r̶o̶l̶l̶e̶r̶ f̶u̶n̶c̶t̶i̶o̶n̶ t̶o̶ i̶n̶s̶e̶r̶t̶ i̶s̶ F̶a̶v̶o̶r̶i̶t̶e̶d̶ t̶o̶ a̶n̶o̶t̶h̶e̶r̶ t̶a̶b̶l̶e̶  -->
                     <!-- T̶O̶D̶O̶:̶ T̶h̶e̶ t̶a̶b̶l̶e̶ i̶s̶ r̶e̶l̶a̶t̶i̶o̶n̶ b̶e̶t̶w̶e̶e̶n̶ t̶h̶e̶ p̶l̶a̶n̶t̶s̶,̶a̶l̶g̶a̶e̶,̶n̶u̶t̶d̶e̶f̶ a̶n̶d̶ U̶s̶e̶r̶ -->
-                    <!-- TODO: Make an Alert box to indicate that offline user can save favorite by login. -->
-                    <!-- TODO: If user decided not to, he still can be used as offline mode and save the favorite to cookies -->
-                    <!-- TODO: Check the favorited items of signed in user and apply to button -->
+                    <!-- T̶O̶D̶O̶:̶ M̶a̶k̶e̶ a̶n̶ A̶l̶e̶r̶t̶ b̶o̶x̶ t̶o̶ i̶n̶d̶i̶c̶a̶t̶e̶ t̶h̶a̶t̶ o̶f̶f̶l̶i̶n̶e̶ u̶s̶e̶r̶ c̶a̶n̶ s̶a̶v̶e̶ f̶a̶v̶o̶r̶i̶t̶e̶ b̶y̶ l̶o̶g̶i̶n̶.̶ -->
+                    <!-- T̶O̶D̶O̶:̶ I̶f̶ u̶s̶e̶r̶ d̶e̶c̶i̶d̶e̶d̶ n̶o̶t̶ t̶o̶,̶ h̶e̶ s̶t̶i̶l̶l̶ c̶a̶n̶ b̶e̶ u̶s̶e̶d̶ a̶s̶ o̶f̶f̶l̶i̶n̶e̶ m̶o̶d̶e̶ a̶n̶d̶ s̶a̶v̶e̶ t̶h̶e̶ f̶a̶v̶o̶r̶i̶t̶e̶ t̶o̶ c̶o̶o̶k̶i̶e̶s̶ -->
+                    <!-- T̶O̶D̶O̶:̶ C̶h̶e̶c̶k̶ t̶h̶e̶ f̶a̶v̶o̶r̶i̶t̶e̶d̶ i̶t̶e̶m̶s̶ o̶f̶ s̶i̶g̶n̶e̶d̶ i̶n̶ u̶s̶e̶r̶ a̶n̶d̶ a̶p̶p̶l̶y̶ t̶o̶ b̶u̶t̶t̶o̶n̶ -->
                     <div v-if="isFavorite">
                         <button
                             @click="toggleFav(Payload['id'], Content)"
@@ -79,11 +86,13 @@ import Swal from "sweetalert2";
 // import Swal from "sweetalert2/dist/sweetalert2.js";
 // import { router } from "@inertiajs/vue3";
 export default {
-    props: ["Payload", "Content"],
+    props: ["Payload", "Content", "State", "FavData"],
     setup(props) {
         const isFavorite = ref(false);
         const Cookie = VueCookies.get("FavId");
         let confirmState = VueCookies.get("offlineState");
+        let state = props.State;
+        const favData = props.FavData;
 
         // console.log(props.Content);
         // const token: ref('{{csrf_token()}}')
@@ -105,75 +114,84 @@ export default {
         });
 
         // console.log(props.Payload["name"]);
-        return { isFavorite, confirmState };
+        return { isFavorite, confirmState, state, favData };
     },
     methods: {
         toggleFav(id, content) {
             //Everytime button is clicked, change the value of the isFavorite to manipulate button style
-            // console.log("Current Favourited ID = " + VueCookies.get("FavId"));
-            let state = "";
             this.isFavorite = !this.isFavorite;
-            const isLogin = VueCookies.get("userData");
-            if (isLogin) {
-                state = "online";
-                this.saveFav(id, content, state);
-            } else {
-                state = "offline";
-                this.saveFav(id, content, state);
-            }
+            // console.log(this.state);
+            this.saveFav(id, content, this.state);
         },
-        saveFav(id, content, state) {
-            const currentCookies = [VueCookies.get("FavId")];
-            let arrayCookies = [];
-            //Check if the state of the user
-            //if its offline then show an alert with the confirmation message that data is saved locally
-            if (state == "offline") {
-                if (!this.confirmState) {
-                    Swal.fire({
-                        title: "You are offline",
-                        text: "Your data is saved locally, if you want to save your bookmarks online please login",
-                        icon: "info",
-                        reverseButtons: true,
-                        showCancelButton: true,
-                        cancelButtonColor: "#049806",
-                        confirmButtonColor: "#0B1C11",
-                        cancelButtonText: "Login",
-                        confirmButtonText: "Stay offline",
-                        allowOutsideClick: false,
-                    }).then((result) => {
-                        if (result["isConfirmed"]) {
-                            // console.log("Confirmed");
-                            // this.confirmState = "offline";
-                            VueCookies.set("offlineState", "true");
-                            location.reload();
-                        } else {
-                            this.$inertia.get(this.route("login"));
-                        }
-                    });
+        async saveFav(id, content, state) {
+            const currentCookies = VueCookies.get("FavId") || "";
+            const favoriteIds = decodeURI(currentCookies).split(",");
+            // console.log(state);
+
+            //Check if the state of the user is offline
+            if (state == "offline" && !this.confirmState) {
+                // Wait for the input of the sweetalert
+                const result = await Swal.fire({
+                    title: "You are offline",
+                    text: "Your data is saved locally, if you want to save your bookmarks online please login",
+                    icon: "info",
+                    reverseButtons: true,
+                    showCancelButton: true,
+                    cancelButtonColor: "#049806",
+                    confirmButtonColor: "#0B1C11",
+                    cancelButtonText: "Login",
+                    confirmButtonText: "Stay offline",
+                    allowOutsideClick: false,
+                });
+                if (result.isConfirmed) {
+                    VueCookies.set("offlineState", "true");
+                    location.reload();
+                } else {
+                    this.$inertia.get(this.route("login"));
                 }
             }
-            //check if it is favorite
+
+            //Toggle favorite status
             if (this.isFavorite) {
-                let favorite = true;
-                //set the cookie to id passed
-                arrayCookies.push(currentCookies);
-                arrayCookies.push(id);
-                VueCookies.set("FavId", decodeURI(arrayCookies));
-                const fav = this.$inertia.post(
-                    this.route("addfavDB", [content, id, favorite, state])
-                );
-                // console.log("UID : " + id + " Favourited");
+                if (state === "offline") {
+                    // Add the current ID to the existing favorites in the cookie
+                    favoriteIds.push(id);
+                    VueCookies.set("FavId", decodeURI(favoriteIds.join(",")));
+                } else {
+                    // Make a request to add the favorite to the database
+                    this.$inertia.post(this.route("addfavDB", [content, id]));
+                }
+                console.log("UID : " + id + " Favourited");
             } else {
-                let favorite = false;
-                //if the favorite button pressed again it will remove the current id in the cookie
-                //without removing all the cookies
-                const removeCookies = currentCookies.toString();
-                const removed = removeCookies.replace(id, "");
-                VueCookies.set("FavId", decodeURI(removed));
-                this.$inertia.post(
-                    this.route("addfavDB", [content, id, favorite, state])
-                );
-                // console.log("UID : " + id + " UnFavorited");
+                if (state === "offline") {
+                    // Remove the current ID from the list of favorites in the cookie
+                    const updatedFavoriteIds = favoriteIds.filter(
+                        (cookieId) => cookieId !== id,
+                    );
+
+                    // Update the cookie with the updated list of favorited IDs
+                    VueCookies.set(
+                        "FavId",
+                        decodeURI(updatedFavoriteIds.join(",")),
+                    );
+                } else {
+                    // Make a request to remove the favorite from the database
+                    this.$inertia.post(
+                        this.route("removefavDB", [content, id]),
+                    );
+                }
+                console.log("UID : " + id + " UnFavorited");
+            }
+        },
+        checkFav(id) {
+            let plants = [];
+            this.favData["favPlant"].forEach((fav) => {
+                plants = fav["plants_id"];
+            });
+            if (plants.includes(id)) {
+                this.isFavorite = !this.isFavorite;
+            } else {
+                this.isFavorite = !this.isFavorite;
             }
         },
     },
