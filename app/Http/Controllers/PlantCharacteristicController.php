@@ -16,66 +16,161 @@ use Inertia\Inertia;
 
 class PlantCharacteristicController extends Controller
 {
-    public function index(){
-        $plants = $this->getTableName('plants');
-        $algae = $this->getTableName('algae');
-        $nutrientDef = $this->getTableName('nutrient_deficiencies');
+    private function commonLogic($plants, $algae, $nutrientDef, $favData, $contentDesc,  $payload){
+        //Check if a JWT token exists
+        $token = $_COOKIE['userData'] ?? null;
+        //Validate the token with helper if the token exists
+        $validate = $token ? validateJWT($token) : null;
 
-        $contentId = request('id');
-        $contentDesc = request('content');
-
-        $payload = $this->checkContent($contentId,$contentDesc);
-
-        //v Checking the JWT token using helper function
-        if(isset($_COOKIE['userData'])){
-            $token = $_COOKIE['userData'];
-            $validate = validateJWT($token);
-
-            if($validate){
-                if(isset($payload)){
-                    return Inertia::render('Components/Plants/PlantCharacteristic',[
-                        'plants' => $plants,
-                        'algae' => $algae,
-                        'nutrientDef' => $nutrientDef,
-                        'content' => $contentDesc,
-                        'payload' => $payload,
-                    ]);
-                }else{
-                    return Inertia::render('Plants',[
-                        'plants' => $plants,
-                        'algae' => $algae,
-                        'nutrientDef' => $nutrientDef,
-                        'content' => '404'
-                    ]);
-                }
-            }else{
-                return redirect()->to('/');
-            }
-        }else{
-            if(isset($payload)){
-                    return Inertia::render('Components/Plants/PlantCharacteristic',[
-                        'plants' => $plants,
-                        'algae' => $algae,
-                        'nutrientDef' => $nutrientDef,
-                        'content' => $contentDesc,
-                        'payload' => $payload,
-                    ]);
-                }else{
-                    return Inertia::render('Plants',[
-                        'plants' => $plants,
-                        'algae' => $algae,
-                        'nutrientDef' => $nutrientDef,
-                        'content' => '404'
-                    ]);
-                }
+        //If token is valid and there is payload, redirect to description page
+        if ($validate && $payload) {
+            return $this->redirectDesc($plants, $algae, $nutrientDef,
+             $favData,
+             $contentDesc, $payload);
         }
-        //v ////////////////////////////
+        //If token is exists but not valid, redirect to home
+        if ($token && !$validate) {
+            return redirect()->to('/');
+        }
+
+        return redirect('docs')->with([
+            'plants' => $plants,
+            'algae' => $algae,
+            'nutrientDef' => $nutrientDef,
+        ]);
     }
 
-    public function getTableName($tableName){
+    public function index(){
+        $plants = $this->getTableKey('plants');
+        $algae = $this->getTableKey('algae');
+        $nutrientDef = $this->getTableKey('nutrient_deficiencies');
+        $favPlants = $this->getFavTable('fav_plant');
+        $favNutDefs = $this->getFavTable('fav_nutdef');
+        $favAlgaes = $this->getFavTable('fav_algae');
+        $contentId = request('id');
+        $contentDesc = request('content');
+        $payload = $this->checkContent($contentId, $contentDesc);
+        $user = Auth::user();
+
+        if($payload){
+            if($user){
+
+                $favData = $this->getFavData($favPlants, $favNutDefs, $favAlgaes);
+                return $this->commonLogic($plants, $algae, $nutrientDef,
+                $favData,
+                $contentDesc, $payload);
+            }
+            else{
+                $favData = null;
+                return $this->redirectDesc($plants, $algae, $nutrientDef,
+                $favData,
+                $contentDesc, $payload);
+            }
+        }else{
+            return redirect('/docs')->with([
+                'plants' => $plants,
+                'algae' => $algae,
+                'nutrientDef' => $nutrientDef,
+                ]);
+            }
+
+    }
+
+    public function indexFav(){
+        $plants = $this->getTableKey('plants');
+        $algae = $this->getTableKey('algae');
+        $nutrientDef = $this->getTableKey('nutrient_deficiencies');
+        $favPlants = $this->getFavTable('fav_plant');
+        $favNutDefs = $this->getFavTable('fav_nutdef');
+        $favAlgaes = $this->getFavTable('fav_algae');
+        $contentId = request('id');
+        $contentDesc = request('content');
+        $payload = $this->checkContent($contentId, $contentDesc);
+        $user = Auth::user();
+
+
+        if($payload){
+            if($user){
+                $favData = $this->getFavData($favPlants, $favNutDefs, $favAlgaes);
+                return $this->commonLogic($plants, $algae, $nutrientDef,
+                $favData,
+                $contentDesc, $payload);
+            }
+            else{
+                $favData = null;
+                return $this->redirectDesc($plants, $algae, $nutrientDef,
+                $favData,
+                $contentDesc, $payload);
+            }
+        }else{
+            return redirect('/docs')->with([
+                'plants' => $plants,
+                'algae' => $algae,
+                'nutrientDef' => $nutrientDef,
+            ]);
+        }
+    }
+
+
+    public function redirectDesc($plants, $algae, $nutrientDef,$favData = null, $contentDesc, $payload){
+        $user = Auth::user();
+        if($user){
+            return Inertia::render('Components/Plants/PlantCharacteristic', [
+                        'plants' => $plants,
+                        'algae' => $algae,
+                        'nutrientDef' => $nutrientDef,
+                        'content' => $contentDesc,
+                        'payload' => $payload,
+                        'favData' => $favData,
+                        'state' => "online"
+                    ]);
+        }else{
+            return Inertia::render('Components/Plants/PlantCharacteristic', [
+                        'plants' => $plants,
+                        'algae' => $algae,
+                        'nutrientDef' => $nutrientDef,
+                        'content' => $contentDesc,
+                        'payload' => $payload,
+                        'state' => "offline"
+                    ]);
+        }
+    }
+
+
+    public function getTableKey($tableName){
         return DB::table($tableName)
         ->select('id','name')
         ->get();
+    }
+
+    public function getFavTable($tableName){
+        $user = Auth::user();
+        if($tableName == 'fav_plant'){
+            return DB::table('fav_plant')
+            ->select('id','plants_id')
+            ->where('user_id', $user->id)
+            ->get();
+        }elseif($tableName == 'fav_nutdef'){
+            return DB::table('fav_nutdef')
+            ->select('id','nutdef_id')
+            ->where('user_id', $user->id)
+            ->get();
+        }elseif($tableName == 'fav_algae'){
+            return DB::table('fav_algae')
+            ->select('id','algae_id')
+            ->where('user_id', $user->id)
+            ->get();
+        }
+    }
+
+
+    private function getFavData($favPlants, $favNutDefs, $favAlgaes){
+        // dd($favPlants);
+        return [
+            'favPlant' => $favPlants,
+            'favNutDef' => $favNutDefs,
+            'favAlgaes' => $favAlgaes,
+        ];
     }
 
     public function checkContent($id,$table){
@@ -102,44 +197,39 @@ class PlantCharacteristicController extends Controller
 
     public function addFav(){
         $id = request('id');
-        // dd('function stopped');
         $content = request('content');
-        $favorite = filter_var(request('favorite'), FILTER_VALIDATE_BOOLEAN) ;
-        $state = request('state');
+        // $favorite = filter_var(request('favorite'), FILTER_VALIDATE_BOOLEAN) ;
+        $plants = $this->getTableKey('plants');
+        $algae = $this->getTableKey('algae');
+        $nutrientDef = $this->getTableKey('nutrient_deficiencies');
+        $favPlants = $this->getFavTable('fav_plant');
+        $favNutDefs = $this->getFavTable('fav_nutdef');
+        $favAlgaes = $this->getFavTable('fav_algae');
+        $payload = $this->checkContent($id, $content);
+        $user = Auth::user();
 
-        if($state === 'offline'){
-            //? I̶n̶s̶e̶r̶t̶ A̶l̶e̶r̶t̶ b̶o̶x̶ t̶h̶a̶t̶ i̶n̶d̶i̶c̶a̶t̶e̶s̶ t̶h̶a̶t̶ t̶h̶e̶ u̶s̶e̶r̶ i̶s̶ o̶f̶f̶l̶i̶n̶e̶
-            //? a̶n̶d̶ r̶e̶m̶i̶n̶d̶ t̶h̶e̶ b̶o̶o̶k̶m̶a̶r̶k̶e̶d̶ i̶t̶e̶m̶ w̶i̶l̶l̶ o̶n̶l̶y̶ s̶a̶v̶e̶d̶ i̶n̶ c̶o̶o̶k̶i̶e̶s̶
-            //? b̶y̶ r̶e̶t̶u̶r̶n̶i̶n̶g̶ a̶ v̶a̶l̶u̶e̶ i̶n̶d̶i̶c̶a̶t̶i̶n̶g̶ t̶h̶e̶ s̶t̶a̶t̶e̶ o̶f̶ t̶h̶e̶ u̶s̶e̶r̶
-            //v The alert is message is in the component of each descriptions
+        // dd($user);
+
+        if(!$user){
             // dd('You are offline');
-
-
+            $favData = null;
+            return $this->redirectDesc($plants,$algae,$nutrientDef, $favData, $content,$payload);
+            // return redirect()->back();
         }else{
-            $user = Auth::user();
-            if($favorite){
-
-                if($this->checkFavorite($content, $user, $id)){
-                    //? Create alert that indicates that user is already favorites this item
-                    //? by returning a value indicating the plant is already favorited
-                    dd('This Plants is already in the favorites list');
-
-                }else{
-                    $this->addFavorite($content, $user, $id);
-                    //? Create alert box that indicates that the user is successfully added items to the favorites list
-                    //? by returning a value indicating the plant is added to db
-                    dd('added to db');
-                }
+            if($this->checkFavorite($content, $user, $id)){
+                dd('This Plants is already in the favorites list');
 
             }else{
-                $this->removeFavorite($content, $user, $id);
-                //? Create alert box that indicates that the user is successfully remove item from favorites list
-                //? by returning a value indicating the item is removed from db
-                dd('removed from db');
-
+                $this->addFavorite($content, $user, $id);
+                // dd('added to db');
+                $favData = $this->getFavData($favPlants, $favNutDefs, $favAlgaes);
+                return $this->redirectDesc($plants, $algae, $nutrientDef,
+                $favData,
+                $content, $payload);
             }
         }
     }
+
 
     public function addFavorite($content, $user, $id){
         if($content === "plants"){
@@ -188,28 +278,50 @@ class PlantCharacteristicController extends Controller
         }
     }
 
-    public function removeFavorite($content, $user, $id){
+    public function removeFav(){
+        $id = request('id');
+        $content = request('content');
+        $plants = $this->getTableKey('plants');
+        $algae = $this->getTableKey('algae');
+        $nutrientDef = $this->getTableKey('nutrient_deficiencies');
+        $favPlants = $this->getFavTable('fav_plant');
+        $favNutDefs = $this->getFavTable('fav_nutdef');
+        $favAlgaes = $this->getFavTable('fav_algae');
+        $payload = $this->checkContent($id, $content);
+        $user = Auth::user();
         if($content === "plants"){
-            return DB::table('fav_plant')
+            DB::table('fav_plant')
             ->where([
                 ['user_id', '=', $user->id],
                 ['plants_id', '=', $id],
             ])
             ->delete();
+            $favData = $this->getFavData($favPlants, $favNutDefs, $favAlgaes);
+            return $this->redirectDesc($plants, $algae, $nutrientDef,
+                $favData,
+                $content, $payload);
         }elseif($content === "nutDef"){
-            return DB::table('fav_nutdef')
+            DB::table('fav_nutdef')
             ->where([
                 ['user_id', '=', $user->id],
                 ['nutdef_id', '=', $id],
             ])
             ->delete();
+            $favData = $this->getFavData($favPlants, $favNutDefs, $favAlgaes);
+            return $this->redirectDesc($plants, $algae, $nutrientDef,
+                $favData,
+                $content, $payload);
         }elseif($content === "algae"){
-            return DB::table('fav_algae')
+            DB::table('fav_algae')
             ->where([
                 ['user_id', '=', $user->id],
                 ['algae_id', '=', $id],
             ])
             ->delete();
+            $favData = $this->getFavData($favPlants, $favNutDefs, $favAlgaes);
+            return $this->redirectDesc($plants, $algae, $nutrientDef,
+                $favData,
+                $content, $payload);
         }
     }
 }

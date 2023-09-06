@@ -49,14 +49,18 @@ Route::controller(ContentExcerptController::class)->group(function () {
 });
 Route::get('docs', [PlantsController::class, "index"])->name('plants');
 Route::post('docs', [PlantsController::class, "index"])->name('plants');
-Route::get('loginOld', [UserController::class, "indexLogin"])->name('login');
-Route::post('login/auth', [UserController::class, "login"])->name('loginAuth');
-Route::get('registerOld', [UserController::class, "register"])->name('register');
 Route::controller(PlantCharacteristicController::class)->group(function () {
-    Route::get('docs/plants', [PlantCharacteristicController::class, "index"])->name('plantCharacteristic');
-    Route::post('docs/plants/{content}&{id}&{favorite}&{state}', [PlantCharacteristicController::class, "addFav"])->name('addfavDB');
+    Route::get('docs/desc', [PlantCharacteristicController::class, "index"])->name('plantCharacteristic');
+    // Route::post('docs/desc', [PlantCharacteristicController::class, "index"])->name('plantCharacteristic');
+    Route::get('docs/desc/1/content={content}&id={id}', [PlantCharacteristicController::class, "indexFav"])->name('favGet');
+    Route::post('docs/desc/1/content={content}&id={id}', [PlantCharacteristicController::class, "addFav"])->name('addfavDB');
+    Route::get('docs/desc/0/content={content}&id={id}', [PlantCharacteristicController::class, "indexFav"])->name('unfavGet');
+    Route::post('docs/desc/0/content={content}&id={id}', [PlantCharacteristicController::class, "removeFav"])->name('removefavDB');
 
 });
+// Route::get('loginOld', [UserController::class, "indexLogin"])->name('login');
+// Route::post('login/auth', [UserController::class, "login"])->name('loginAuth');
+// Route::get('registerOld', [UserController::class, "register"])->name('register');
 // Route::post('docs/plants', [PlantCharacteristicController::class, "index"])->name('plantDesc');
 // Route::get('detail', [DetailPlantsController::class, "index"])->name('detailplants');
 // Route::post('detail', [DetailPlantsController::class, "index"]);
