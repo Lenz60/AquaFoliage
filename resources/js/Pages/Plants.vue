@@ -4,30 +4,47 @@
         <Header class="fixed top-0 z-50">
             <Navbar class="sticky top-0 z-50 w-screen"></Navbar>
         </Header>
-        <body class="mt-14">
+        <body class="mt-20">
             <div class="flex h-screen w-screen">
                 <div v-if="content == '404'">
                     <div
-                        class="flex flex-col justify-center items-center h-screen w-screen"
+                        class="flex w-screen flex-row justify-center items-center"
                     >
-                        <div class="items-center justify-center text-center">
-                            <h1
-                                class="text-[200px] font-montserrat text-center text-primary"
-                            >
-                                404
-                            </h1>
-                            <h2
-                                class="text-[40px] font-montserrat text-primary pb-5"
-                            >
-                                Not Found
-                            </h2>
+                        <div class="w-[30%] h-screen overflow-x-visible">
+                            <Menu
+                                :Plants="plants"
+                                :Algaes="algae"
+                                :NutDefs="nutrientDef"
+                            ></Menu>
                         </div>
-                        <div class="items-center justify-content-center">
-                            <h3
-                                class="text-[20px] font-montserrat text-center text-primary"
+                        <div class="w-[70%] h-screen">
+                            <div
+                                class="flex flex-col items-center justify-center h-screen w-full overflow-x-auto no-scrollbar"
                             >
-                                The page you requested is not found
-                            </h3>
+                                <div
+                                    class="items-center justify-center text-center"
+                                >
+                                    <h1
+                                        class="text-[200px] font-montserrat text-center text-primary"
+                                    >
+                                        404
+                                    </h1>
+                                    <h2
+                                        class="text-[40px] font-montserrat text-primary pb-5"
+                                    >
+                                        Not Found
+                                    </h2>
+                                </div>
+                                <div
+                                    class="items-center justify-content-center"
+                                >
+                                    <h3
+                                        class="text-[20px] font-montserrat text-center text-primary"
+                                    >
+                                        The page you requested is not found
+                                    </h3>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
