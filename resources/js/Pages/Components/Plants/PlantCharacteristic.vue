@@ -19,6 +19,8 @@
                 <Detail
                     :Desc="content"
                     :Payload="payload"
+                    :FavData="favData"
+                    :State="state"
                     class="bg-primary-focus text-neutral-focus"
                 ></Detail>
             </div>
@@ -31,7 +33,15 @@ import Navbar from "../Home/Navbar.vue";
 import Menu from "./Menu.vue";
 import Detail from "./Content/DetailPlants.vue";
 export default {
-    props: ["content", "plants", "algae", "nutrientDef", "payload"],
+    props: [
+        "content",
+        "plants",
+        "algae",
+        "nutrientDef",
+        "payload",
+        "state",
+        "favData",
+    ],
     components: {
         Menu,
         Detail,
