@@ -139,6 +139,7 @@ export default {
                             // console.log("Confirmed");
                             // this.confirmState = "offline";
                             VueCookies.set("offlineState", "true");
+                            location.reload();
                         } else {
                             this.$inertia.get(this.route("login"));
                         }
