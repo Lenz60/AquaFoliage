@@ -94,6 +94,8 @@ export default {
         let state = props.State;
         const favData = props.FavData;
 
+        console.log(favData);
+
         // console.log(props.Content);
         // const token: ref('{{csrf_token()}}')
 
@@ -184,15 +186,16 @@ export default {
             }
         },
         checkFav(id) {
-            let plants = [];
-            this.favData["favPlant"].forEach((fav) => {
-                plants = fav["plants_id"];
-            });
-            if (plants.includes(id)) {
-                this.isFavorite = !this.isFavorite;
-            } else {
-                this.isFavorite = !this.isFavorite;
-            }
+            //TODO: Fix this bug
+            // let plants = [];
+            // this.favData["favPlant"].forEach((fav) => {
+            //     plants = fav["plants_id"];
+            // });
+            // if (plants.includes(id)) {
+            //     this.isFavorite = !this.isFavorite;
+            // } else {
+            //     this.isFavorite = !this.isFavorite;
+            // }
         },
     },
 };
