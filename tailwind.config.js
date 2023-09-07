@@ -24,7 +24,7 @@ export default {
             },
         },
     },
-    plugins: [require("daisyui"), forms],
+    plugins: [require("daisyui"), forms, require("tailwind-scrollbar")],
     daisyui: {
         themes: [
             "light",
