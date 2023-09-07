@@ -20,20 +20,7 @@
                 <p>Light : {{ Payload["light"] }}</p>
                 <p>Recommended temperature : {{ Payload["temp"] }}</p>
                 <p>Usage : {{ Payload["usage"] }}</p>
-                <!-- <div v-for="FavData in fav">
-                    <p>{{ fav }}</p>
-                </div> -->
-                <p>Usage : {{ checkFav(Payload["id"]) }}</p>
-                <!-- <div v-if="checkFav(Payload['id'])">
-                    <p>{{ checkFav() }}</p>
-                </div> -->
                 <div class="mt-10">
-                    <!-- T̶O̶D̶O̶:̶ C̶h̶e̶c̶k̶ t̶h̶e̶ u̶s̶e̶r̶ i̶f̶ i̶t̶s̶ r̶e̶g̶i̶s̶t̶e̶r̶,̶ i̶f̶ r̶e̶g̶i̶s̶t̶e̶r̶e̶d̶,̶ -->
-                    <!-- T̶O̶D̶O̶:̶ I̶n̶s̶t̶e̶a̶d̶ u̶s̶i̶n̶g̶ B̶u̶t̶t̶o̶n̶,̶ u̶s̶e̶ L̶i̶n̶k̶ t̶o̶ A̶P̶I̶ t̶o̶ t̶h̶e̶ C̶o̶n̶t̶r̶o̶l̶l̶e̶r̶ f̶u̶n̶c̶t̶i̶o̶n̶ t̶o̶ i̶n̶s̶e̶r̶t̶ i̶s̶ F̶a̶v̶o̶r̶i̶t̶e̶d̶ t̶o̶ a̶n̶o̶t̶h̶e̶r̶ t̶a̶b̶l̶e̶  -->
-                    <!-- T̶O̶D̶O̶:̶ T̶h̶e̶ t̶a̶b̶l̶e̶ i̶s̶ r̶e̶l̶a̶t̶i̶o̶n̶ b̶e̶t̶w̶e̶e̶n̶ t̶h̶e̶ p̶l̶a̶n̶t̶s̶,̶a̶l̶g̶a̶e̶,̶n̶u̶t̶d̶e̶f̶ a̶n̶d̶ U̶s̶e̶r̶ -->
-                    <!-- T̶O̶D̶O̶:̶ M̶a̶k̶e̶ a̶n̶ A̶l̶e̶r̶t̶ b̶o̶x̶ t̶o̶ i̶n̶d̶i̶c̶a̶t̶e̶ t̶h̶a̶t̶ o̶f̶f̶l̶i̶n̶e̶ u̶s̶e̶r̶ c̶a̶n̶ s̶a̶v̶e̶ f̶a̶v̶o̶r̶i̶t̶e̶ b̶y̶ l̶o̶g̶i̶n̶.̶ -->
-                    <!-- T̶O̶D̶O̶:̶ I̶f̶ u̶s̶e̶r̶ d̶e̶c̶i̶d̶e̶d̶ n̶o̶t̶ t̶o̶,̶ h̶e̶ s̶t̶i̶l̶l̶ c̶a̶n̶ b̶e̶ u̶s̶e̶d̶ a̶s̶ o̶f̶f̶l̶i̶n̶e̶ m̶o̶d̶e̶ a̶n̶d̶ s̶a̶v̶e̶ t̶h̶e̶ f̶a̶v̶o̶r̶i̶t̶e̶ t̶o̶ c̶o̶o̶k̶i̶e̶s̶ -->
-                    <!-- T̶O̶D̶O̶:̶ C̶h̶e̶c̶k̶ t̶h̶e̶ f̶a̶v̶o̶r̶i̶t̶e̶d̶ i̶t̶e̶m̶s̶ o̶f̶ s̶i̶g̶n̶e̶d̶ i̶n̶ u̶s̶e̶r̶ a̶n̶d̶ a̶p̶p̶l̶y̶ t̶o̶ b̶u̶t̶t̶o̶n̶ -->
                     <div v-if="isFavorite">
                         <button
                             @click="toggleFav(Payload['id'], Content)"
@@ -92,31 +79,38 @@ export default {
         const Cookie = VueCookies.get("FavId");
         let confirmState = VueCookies.get("offlineState");
         let state = props.State;
-        const favData = props.FavData;
-
-        console.log(favData);
-
-        // console.log(props.Content);
-        // const token: ref('{{csrf_token()}}')
 
         onMounted(() => {
-            // console.log("on Mounted");
-            // console.log(Cookie);
-
-            if (Cookie != null) {
-                if (Cookie.includes(props.Payload["id"])) {
-                    isFavorite.value = true;
-                    // console.log(Cookie.length);
-                } else if (Cookie.length <= 30) {
+            //Check if the user is online or offline
+            if (state == "online") {
+                //Set the button to favorited if the user has favorited the plant
+                const favData = Object.values(props.FavData["favPlant"]);
+                const containsId =
+                    Array.isArray(favData) &&
+                    favData.some((favdata) =>
+                        favdata["plants_id"].includes(props.Payload["id"]),
+                    );
+                isFavorite.value = containsId;
+            } else if (state == "offline") {
+                //Set the favorited value based on cookies
+                if (Cookie != null) {
+                    if (Cookie.includes(props.Payload["id"])) {
+                        isFavorite.value = true;
+                        // console.log(Cookie.length);
+                    } else if (Cookie.length <= 30) {
+                        VueCookies.set("FavId", "");
+                    }
+                } else {
                     VueCookies.set("FavId", "");
                 }
             } else {
-                VueCookies.set("FavId", "");
+                //If state is other than online or offline, set the favorite to false
+                isFavorite.value = false;
             }
         });
 
         // console.log(props.Payload["name"]);
-        return { isFavorite, confirmState, state, favData };
+        return { isFavorite, confirmState };
     },
     methods: {
         toggleFav(id, content) {
@@ -184,18 +178,6 @@ export default {
                 }
                 console.log("UID : " + id + " UnFavorited");
             }
-        },
-        checkFav(id) {
-            //TODO: Fix this bug
-            // let plants = [];
-            // this.favData["favPlant"].forEach((fav) => {
-            //     plants = fav["plants_id"];
-            // });
-            // if (plants.includes(id)) {
-            //     this.isFavorite = !this.isFavorite;
-            // } else {
-            //     this.isFavorite = !this.isFavorite;
-            // }
         },
     },
 };

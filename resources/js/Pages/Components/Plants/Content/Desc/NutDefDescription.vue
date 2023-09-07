@@ -72,25 +72,39 @@ import { onMounted, ref } from "vue";
 import VueCookies from "vue-cookies";
 import Swal from "sweetalert2";
 export default {
-    props: ["Payload", "Content"],
+    props: ["Payload", "Content", "State", "FavData"],
     setup(props) {
         const isFavorite = ref(false);
         const Cookie = VueCookies.get("FavId");
         let confirmState = VueCookies.get("offlineState");
+        let state = props.State;
 
         onMounted(() => {
-            // console.log("on Mounted");
-            // console.log(Cookie);
-
-            if (Cookie != null) {
-                if (Cookie.includes(props.Payload["id"])) {
-                    isFavorite.value = true;
-                    // console.log(Cookie.length);
-                } else if (Cookie.length <= 10) {
+            //Check if the user is online or offline
+            if (state == "online") {
+                //Set the button to favorited if the user has favorited the plant
+                const favData = Object.values(props.FavData["favNutDef"]);
+                const containsId =
+                    Array.isArray(favData) &&
+                    favData.some((favdata) =>
+                        favdata["nutdef_id"].includes(props.Payload["id"]),
+                    );
+                isFavorite.value = containsId;
+            } else if (state == "offline") {
+                //Set the favorited value based on cookies
+                if (Cookie != null) {
+                    if (Cookie.includes(props.Payload["id"])) {
+                        isFavorite.value = true;
+                        // console.log(Cookie.length);
+                    } else if (Cookie.length <= 30) {
+                        VueCookies.set("FavId", "");
+                    }
+                } else {
                     VueCookies.set("FavId", "");
                 }
             } else {
-                VueCookies.set("FavId", "");
+                //If state is other than online or offline, set the favorite to false
+                isFavorite.value = false;
             }
         });
 
@@ -100,70 +114,68 @@ export default {
     methods: {
         toggleFav(id, content) {
             //Everytime button is clicked, change the value of the isFavorite to manipulate button style
-            // console.log("Current Favourited ID = " + VueCookies.get("FavId"));
-            let state = "";
             this.isFavorite = !this.isFavorite;
-            const isLogin = VueCookies.get("userData");
-            if (isLogin) {
-                state = "online";
-                this.saveFav(id, content, state);
-            } else {
-                state = "offline";
-                this.saveFav(id, content, state);
-            }
+            // console.log(this.state);
+            this.saveFav(id, content, this.state);
         },
-        saveFav(id, content, state) {
-            const currentCookies = [VueCookies.get("FavId")];
-            let arrayCookies = [];
-            //Check if the state of the user
-            //if its offline then show an alert with the confirmation message that data is saved locally
-            if (state == "offline") {
-                if (!this.confirmState) {
-                    Swal.fire({
-                        title: "You are offline",
-                        text: "Your data is saved locally, if you want to save your bookmarks online please login",
-                        icon: "info",
-                        reverseButtons: true,
-                        showCancelButton: true,
-                        cancelButtonColor: "#049806",
-                        confirmButtonColor: "#0B1C11",
-                        cancelButtonText: "Login",
-                        confirmButtonText: "Stay offline",
-                        allowOutsideClick: false,
-                    }).then((result) => {
-                        if (result["isConfirmed"]) {
-                            // console.log("Confirmed");
-                            // this.confirmState = "offline";
-                            VueCookies.set("offlineState", "true");
-                            location.reload();
-                        } else {
-                            this.$inertia.get(this.route("login"));
-                        }
-                    });
+        async saveFav(id, content, state) {
+            const currentCookies = VueCookies.get("FavId") || "";
+            const favoriteIds = decodeURI(currentCookies).split(",");
+            // console.log(state);
+
+            //Check if the state of the user is offline
+            if (state == "offline" && !this.confirmState) {
+                // Wait for the input of the sweetalert
+                const result = await Swal.fire({
+                    title: "You are offline",
+                    text: "Your data is saved locally, if you want to save your bookmarks online please login",
+                    icon: "info",
+                    reverseButtons: true,
+                    showCancelButton: true,
+                    cancelButtonColor: "#049806",
+                    confirmButtonColor: "#0B1C11",
+                    cancelButtonText: "Login",
+                    confirmButtonText: "Stay offline",
+                    allowOutsideClick: false,
+                });
+                if (result.isConfirmed) {
+                    VueCookies.set("offlineState", "true");
+                    location.reload();
+                } else {
+                    this.$inertia.get(this.route("login"));
                 }
             }
-            //check if it is favorite
+
+            //Toggle favorite status
             if (this.isFavorite) {
-                let favorite = true;
-                //set the cookie to id passed
-                arrayCookies.push(currentCookies);
-                arrayCookies.push(id);
-                VueCookies.set("FavId", decodeURI(arrayCookies));
-                this.$inertia.post(
-                    this.route("addfavDB", [content, id, favorite, state])
-                );
-                // console.log("UID : " + id + " Favourited");
+                if (state === "offline") {
+                    // Add the current ID to the existing favorites in the cookie
+                    favoriteIds.push(id);
+                    VueCookies.set("FavId", decodeURI(favoriteIds.join(",")));
+                } else {
+                    // Make a request to add the favorite to the database
+                    this.$inertia.post(this.route("addfavDB", [content, id]));
+                }
+                console.log("UID : " + id + " Favourited");
             } else {
-                let favorite = false;
-                //if the favorite button pressed again it will remove the current id in the cookie
-                //without removing all the cookies
-                const removeCookies = currentCookies.toString();
-                const removed = removeCookies.replace(id, "");
-                VueCookies.set("FavId", decodeURI(removed));
-                this.$inertia.post(
-                    this.route("addfavDB", [content, id, favorite, state])
-                );
-                // console.log("UID : " + id + " UnFavorited");
+                if (state === "offline") {
+                    // Remove the current ID from the list of favorites in the cookie
+                    const updatedFavoriteIds = favoriteIds.filter(
+                        (cookieId) => cookieId !== id,
+                    );
+
+                    // Update the cookie with the updated list of favorited IDs
+                    VueCookies.set(
+                        "FavId",
+                        decodeURI(updatedFavoriteIds.join(",")),
+                    );
+                } else {
+                    // Make a request to remove the favorite from the database
+                    this.$inertia.post(
+                        this.route("removefavDB", [content, id]),
+                    );
+                }
+                console.log("UID : " + id + " UnFavorited");
             }
         },
     },
