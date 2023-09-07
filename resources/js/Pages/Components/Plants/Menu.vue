@@ -1,5 +1,5 @@
 <template>
-    <div class="card shadow-xl rounded-sm bg-neutral-focus">
+    <div class="shadow-xl bg-neutral-focus">
         <div
             class="font-montserrat text-primary h-screen overflow-x-auto no-scrollbar pb-10"
         >
