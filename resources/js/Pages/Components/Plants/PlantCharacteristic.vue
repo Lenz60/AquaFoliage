@@ -1,8 +1,8 @@
 <template>
-    <div class="relative bg-primary-focus overflow-x-hidden no-scrollbar">
+    <div class="bg-primary-focus h-screen">
         <Navbar class="sticky top-0 z-50"></Navbar>
-        <div class="flex h-screen w-screen">
-            <div class="w-[30%] h-screen overflow-x-visible">
+        <div class="flex flex-row h-screen">
+            <div class="w-[30%] h-full overflow-x-visible">
                 <Menu
                     :Payload="payload"
                     :Content="content"
@@ -11,7 +11,7 @@
                     :NutDefs="nutrientDef"
                 ></Menu>
             </div>
-            <div class="w-[70%] h-screen">
+            <div class="w-[70%]">
                 <!--? Use this alternate color for dark version   -->
                 <!-- bg-primary-focus text-neutral-focus -->
                 <!-- Apply both of the Detail Components and w-[70%] elements -->

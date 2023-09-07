@@ -1,5 +1,7 @@
 <template>
-    <div>
+    <div
+        class="overflow-auto w-full h-full scrollbar-thin scrollbar-track-neutral scrollbar-thumb-primary"
+    >
         <div v-if="Desc == 'plants'">
             <Head title="Plants Descriptions"></Head>
             <PlantsDesc
