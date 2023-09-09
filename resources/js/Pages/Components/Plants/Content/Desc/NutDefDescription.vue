@@ -109,7 +109,7 @@ export default {
         });
 
         // console.log(props.Payload["name"]);
-        return { isFavorite, confirmState };
+        return { isFavorite, confirmState, state };
     },
     methods: {
         toggleFav(id, content) {

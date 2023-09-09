@@ -62,6 +62,7 @@
         </div>
 
         <p class="text-sm p-5">{{ Payload["body"] }}</p>
+        <div id="custom-target"></div>
     </div>
 </template>
 
@@ -81,6 +82,7 @@ export default {
         let state = props.State;
 
         onMounted(() => {
+            console.log(props.Payload);
             //Check if the user is online or offline
             if (state == "online") {
                 //Set the button to favorited if the user has favorited the plant
@@ -110,12 +112,13 @@ export default {
         });
 
         // console.log(props.Payload["name"]);
-        return { isFavorite, confirmState };
+        return { isFavorite, confirmState, state };
     },
     methods: {
         toggleFav(id, content) {
             //Everytime button is clicked, change the value of the isFavorite to manipulate button style
             this.isFavorite = !this.isFavorite;
+            // console.log(props.Payload);
             // console.log(this.state);
             this.saveFav(id, content, this.state);
         },
@@ -149,18 +152,24 @@ export default {
 
             //Toggle favorite status
             if (this.isFavorite) {
-                if (state === "offline") {
-                    // Add the current ID to the existing favorites in the cookie
-                    favoriteIds.push(id);
-                    VueCookies.set("FavId", decodeURI(favoriteIds.join(",")));
-                } else {
+                if (state === "online") {
                     // Make a request to add the favorite to the database
                     this.$inertia.post(this.route("addfavDB", [content, id]));
+                } else {
+                    // Add the current ID to the existing favorites in the cookie (offline)
+                    favoriteIds.push(id);
+                    VueCookies.set("FavId", decodeURI(favoriteIds.join(",")));
+                    console.log("offline");
                 }
                 console.log("UID : " + id + " Favourited");
             } else {
-                if (state === "offline") {
-                    // Remove the current ID from the list of favorites in the cookie
+                if (state === "online") {
+                    // Make a request to remove the favorite from the database
+                    this.$inertia.post(
+                        this.route("removefavDB", [content, id]),
+                    );
+                } else {
+                    // Remove the current ID from the list of favorites in the cookie (offline)
                     const updatedFavoriteIds = favoriteIds.filter(
                         (cookieId) => cookieId !== id,
                     );
@@ -170,11 +179,7 @@ export default {
                         "FavId",
                         decodeURI(updatedFavoriteIds.join(",")),
                     );
-                } else {
-                    // Make a request to remove the favorite from the database
-                    this.$inertia.post(
-                        this.route("removefavDB", [content, id]),
-                    );
+                    console.log("offline");
                 }
                 console.log("UID : " + id + " UnFavorited");
             }
