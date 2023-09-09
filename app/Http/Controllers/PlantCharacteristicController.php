@@ -24,9 +24,7 @@ class PlantCharacteristicController extends Controller
 
         //If token is valid and there is payload, redirect to description page
         if ($validate && $payload) {
-            return $this->redirectDesc($plants, $algae, $nutrientDef,
-             $favData,
-             $contentDesc, $payload);
+            return $this->redirectDesc($plants, $algae, $nutrientDef, $contentDesc, $payload, $favData);
         }
         //If token is exists but not valid, redirect to home
         if ($token && !$validate) {
@@ -51,6 +49,7 @@ class PlantCharacteristicController extends Controller
 
         if($payload){
             if($user){
+                dd('break');
                 $favPlants = $this->getFavTable('fav_plant',$user);
                 $favNutDefs = $this->getFavTable('fav_nutdef',$user);
                 $favAlgaes = $this->getFavTable('fav_algae',$user);
@@ -62,9 +61,7 @@ class PlantCharacteristicController extends Controller
             }
             else{
                 $favData = null;
-                return $this->redirectDesc($plants, $algae, $nutrientDef,
-                $favData,
-                $contentDesc, $payload);
+                return $this->redirectDesc($plants, $algae, $nutrientDef, $contentDesc, $payload, $favData);
             }
         }else{
             return redirect('/docs')->with([
@@ -98,9 +95,7 @@ class PlantCharacteristicController extends Controller
             }
             else{
                 $favData = null;
-                return $this->redirectDesc($plants, $algae, $nutrientDef,
-                $favData,
-                $contentDesc, $payload);
+                return $this->redirectDesc($plants, $algae, $nutrientDef, $contentDesc, $payload, $favData);
             }
         }else{
             return redirect('/docs')->with([
@@ -112,7 +107,7 @@ class PlantCharacteristicController extends Controller
     }
 
 
-    public function redirectDesc($plants, $algae, $nutrientDef,$favData = null, $contentDesc, $payload){
+    public function redirectDesc($plants, $algae, $nutrientDef, $contentDesc, $payload, $favData = null){
         $user = Auth::user();
         if($user){
             return Inertia::render('Components/Plants/PlantCharacteristic', [
@@ -210,7 +205,7 @@ class PlantCharacteristicController extends Controller
         if(!$user){
             // dd('You are offline');
             $favData = null;
-            return $this->redirectDesc($plants,$algae,$nutrientDef, $favData, $content,$payload);
+            return $this->redirectDesc($plants, $algae, $nutrientDef, $content, $payload, $favData);
             // return redirect()->back();
         }else{
             $favPlants = $this->getFavTable('fav_plant', $user);
@@ -298,9 +293,7 @@ class PlantCharacteristicController extends Controller
             ])
             ->delete();
             $favData = $this->getFavData($favPlants, $favNutDefs, $favAlgaes);
-            return $this->redirectDesc($plants, $algae, $nutrientDef,
-                $favData,
-                $content, $payload);
+            return $this->redirectDesc($plants, $algae, $nutrientDef, $content, $payload, $favData);
         }elseif($content === "nutDef"){
             DB::table('fav_nutdef')
             ->where([
@@ -309,9 +302,7 @@ class PlantCharacteristicController extends Controller
             ])
             ->delete();
             $favData = $this->getFavData($favPlants, $favNutDefs, $favAlgaes);
-            return $this->redirectDesc($plants, $algae, $nutrientDef,
-                $favData,
-                $content, $payload);
+            return $this->redirectDesc($plants, $algae, $nutrientDef, $content, $payload, $favData);
         }elseif($content === "algae"){
             DB::table('fav_algae')
             ->where([
@@ -320,9 +311,7 @@ class PlantCharacteristicController extends Controller
             ])
             ->delete();
             $favData = $this->getFavData($favPlants, $favNutDefs, $favAlgaes);
-            return $this->redirectDesc($plants, $algae, $nutrientDef,
-                $favData,
-                $content, $payload);
+            return $this->redirectDesc($plants, $algae, $nutrientDef, $content, $payload, $favData);
         }
     }
 }
