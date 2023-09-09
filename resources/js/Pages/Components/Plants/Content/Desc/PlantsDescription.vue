@@ -1,5 +1,5 @@
 <template>
-    <div :key="componentKey">
+    <div class="w-full">
         <h3 class="font-montserrat font-semibold text-xl p-5">
             {{ Payload["name"] }}
         </h3>

@@ -1,9 +1,9 @@
 <template>
-    <div class="bg-primary-focus h-screen">
+    <div class="bg-primary-focus w-screen h-screen">
         <Navbar class="sticky top-0 z-50"></Navbar>
-        <div class="flex flex-row h-screen">
+        <div class="flex flex-row">
             <div
-                class="w-[40%] h-full overflow-x-visible"
+                class="h-screen overflow-x-visible"
                 :class="{
                     'w-[10%]': showTime == true,
                     'w-[40%]': showTime == false,
@@ -18,7 +18,7 @@
                     :NutDefs="nutrientDef"
                 ></Menu>
             </div>
-            <div class="w-full">
+            <div class="w-screen h-screen">
                 <!--? Use this alternate color for dark version   -->
                 <!-- bg-primary-focus text-neutral-focus -->
                 <!-- Apply both of the Detail Components and w-[70%] elements -->

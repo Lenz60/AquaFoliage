@@ -50,7 +50,7 @@
                     <div v-else>
                         <div class="flex flex-row">
                             <div
-                                class="w-[40%] h-screen overflow-x-visible"
+                                class="h-screen overflow-x-visible"
                                 :class="{
                                     'w-[10%]': showTime == true,
                                     'w-[40%]': showTime == false,
