@@ -66,6 +66,7 @@
         <p class="text-md font-montserrat pl-5">Why did it appear ?</p>
         <p class="text-sm p-5">{{ Payload["causes_desc"] }}</p>
         <p class="text-sm p-5">{{ Payload["body"] }}</p>
+        <div class="text-neutral-focus" id="custom-target"></div>
     </div>
 </template>
 
@@ -80,7 +81,7 @@ export default {
         const isFavorite = ref(false);
         const Cookie = VueCookies.get("FavId");
         let confirmState = VueCookies.get("offlineState");
-        let state = props.State;
+        const state = props.State;
 
         onMounted(() => {
             //Check if the user is online or offline
@@ -151,18 +152,51 @@ export default {
 
             //Toggle favorite status
             if (this.isFavorite) {
-                if (state === "offline") {
-                    // Add the current ID to the existing favorites in the cookie
-                    favoriteIds.push(id);
-                    VueCookies.set("FavId", decodeURI(favoriteIds.join(",")));
-                } else {
+                //Show toast
+                Swal.fire({
+                    text: "Added to favorites",
+                    target: "#custom-target",
+                    customClass: {
+                        container: "position-absolute",
+                    },
+                    confirmButtonColor: "#049806",
+                    toast: true,
+                    position: "bottom-right",
+                    timer: 2000, // 3000 milliseconds (3 seconds)
+                    timerProgressBar: true, // Display a progress bar
+                    showConfirmButton: false,
+                });
+                if (state === "online") {
                     // Make a request to add the favorite to the database
                     this.$inertia.post(this.route("addfavDB", [content, id]));
+                } else {
+                    // Add the current ID to the existing favorites in the cookie (offline)
+                    favoriteIds.push(id);
+                    VueCookies.set("FavId", decodeURI(favoriteIds.join(",")));
                 }
                 console.log("UID : " + id + " Favourited");
             } else {
-                if (state === "offline") {
-                    // Remove the current ID from the list of favorites in the cookie
+                //Show toast
+                Swal.fire({
+                    text: "Removed from favorites",
+                    target: "#custom-target",
+                    customClass: {
+                        container: "position-absolute",
+                    },
+                    confirmButtonColor: "#049806",
+                    toast: true,
+                    position: "bottom-right",
+                    timer: 2000, // 3000 milliseconds (3 seconds)
+                    timerProgressBar: true, // Display a progress bar
+                    showConfirmButton: false,
+                });
+                if (state === "online") {
+                    // Make a request to remove the favorite from the database
+                    this.$inertia.post(
+                        this.route("removefavDB", [content, id]),
+                    );
+                } else {
+                    // Remove the current ID from the list of favorites in the cookie (offline)
                     const updatedFavoriteIds = favoriteIds.filter(
                         (cookieId) => cookieId !== id,
                     );
@@ -172,11 +206,6 @@ export default {
                         "FavId",
                         decodeURI(updatedFavoriteIds.join(",")),
                     );
-                } else {
-                    // Make a request to remove the favorite from the database
-                    this.$inertia.post(
-                        this.route("removefavDB", [content, id]),
-                    );
                 }
                 console.log("UID : " + id + " UnFavorited");
             }
@@ -185,4 +214,15 @@ export default {
 };
 </script>
 
-<!-- <style lang="scss" scoped></style> -->
+<style scoped>
+#custom-target {
+    position: relative;
+    width: 600px;
+    height: 300px;
+    border-style: solid;
+}
+
+.position-absolute {
+    position: absolute !important;
+}
+</style>

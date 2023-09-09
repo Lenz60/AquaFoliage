@@ -62,7 +62,7 @@
         </div>
 
         <p class="text-sm p-5">{{ Payload["body"] }}</p>
-        <div id="custom-target"></div>
+        <div class="text-neutral-focus" id="custom-target"></div>
     </div>
 </template>
 
@@ -79,10 +79,10 @@ export default {
         const isFavorite = ref(false);
         const Cookie = VueCookies.get("FavId");
         let confirmState = VueCookies.get("offlineState");
-        let state = props.State;
+        const state = props.State;
 
         onMounted(() => {
-            console.log(props.Payload);
+            // console.log(props.Payload);
             //Check if the user is online or offline
             if (state == "online") {
                 //Set the button to favorited if the user has favorited the plant
@@ -152,6 +152,21 @@ export default {
 
             //Toggle favorite status
             if (this.isFavorite) {
+                //Show toasts
+                Swal.fire({
+                    text: "Added to favorites",
+                    target: "#custom-target",
+                    customClass: {
+                        container: "position-absolute",
+                    },
+                    confirmButtonColor: "#049806",
+                    toast: true,
+                    position: "bottom-right",
+                    timer: 2000, // 3000 milliseconds (3 seconds)
+                    timerProgressBar: true, // Display a progress bar
+                    showConfirmButton: false,
+                });
+
                 if (state === "online") {
                     // Make a request to add the favorite to the database
                     this.$inertia.post(this.route("addfavDB", [content, id]));
@@ -159,10 +174,23 @@ export default {
                     // Add the current ID to the existing favorites in the cookie (offline)
                     favoriteIds.push(id);
                     VueCookies.set("FavId", decodeURI(favoriteIds.join(",")));
-                    console.log("offline");
                 }
                 console.log("UID : " + id + " Favourited");
             } else {
+                //Show toasts
+                Swal.fire({
+                    text: "Removed from favorites",
+                    target: "#custom-target",
+                    customClass: {
+                        container: "position-absolute",
+                    },
+                    confirmButtonColor: "#049806",
+                    toast: true,
+                    position: "bottom-right",
+                    timer: 2000, // 3000 milliseconds (3 seconds)
+                    timerProgressBar: true, // Display a progress bar
+                    showConfirmButton: false,
+                });
                 if (state === "online") {
                     // Make a request to remove the favorite from the database
                     this.$inertia.post(
@@ -179,7 +207,6 @@ export default {
                         "FavId",
                         decodeURI(updatedFavoriteIds.join(",")),
                     );
-                    console.log("offline");
                 }
                 console.log("UID : " + id + " UnFavorited");
             }
@@ -189,5 +216,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@sweetalert2/themes/dark/dark.scss";
+#custom-target {
+    position: relative;
+    width: 600px;
+    height: 300px;
+    border-style: solid;
+}
+
+.position-absolute {
+    position: absolute !important;
+}
 </style>
