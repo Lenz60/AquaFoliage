@@ -1,7 +1,7 @@
 <template>
-    <div class="shadow-xl bg-neutral-focus">
+    <div class="w-fit flex flex-row">
         <div
-            class="font-montserrat text-primary h-screen overflow-x-auto no-scrollbar pb-10"
+            class="font-montserrat bg-neutral-focus text-primary h-screen overflow-x-auto no-scrollbar"
         >
             <ul class="menu p-5 w-full h-max">
                 <div v-if="!Payload">
@@ -140,11 +140,28 @@
                 </div>
             </ul>
         </div>
+        <div
+            class="h-fit bg-neutral mt-1.5 p-2 w-fit shadow-2xl -ml-5 rounded-lg overflow-hidden hover:cursor-pointer"
+            @click="showToggle()"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="25px"
+                viewBox="0 0 512 512"
+                class="fill-primary hideSidebar"
+            >
+                <path
+                    d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160zm352-160l-160 160c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L301.3 256 438.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0z"
+                />
+            </svg>
+        </div>
     </div>
 </template>
 
 <script>
 import { Link } from "@inertiajs/vue3";
+import { ref } from "vue";
+import { gsap } from "gsap";
 import PlantsMenu from "./Submenu/PlantsMenu.vue";
 import NutDefMenu from "./Submenu/NutDefMenu.vue";
 import AlgaeMenu from "./Submenu/AlgaeMenu.vue";
@@ -160,11 +177,25 @@ export default {
         Link,
     },
     setup() {
-        return {};
+        const isShow = ref(false);
+        return { isShow };
     },
     methods: {
         getDesc(data) {
             this.$emit("DashboardDesc", data);
+        },
+        showToggle() {
+            this.isShow = !this.isShow;
+
+            if (this.isShow) {
+                // gsap.to(".hideSidebar", { rotation: 180, duration: 1 });
+                gsap.to(".hideSidebar", { scaleX: -1 });
+            } else {
+                // gsap.to(".hideSidebar", { rotation: 0, duration: 1 });
+                gsap.to(".hideSidebar", { scaleX: 1 });
+            }
+
+            console.log(this.isShow);
         },
     },
 };
