@@ -1,76 +1,78 @@
 <template>
-    <Head title="Plants Databases"> </Head>
-    <div class="bg-neutral overflow-x-hidden no-scrollbar">
-        <Header class="fixed top-0 z-50">
-            <Navbar class="sticky top-0 z-50 w-screen"></Navbar>
-        </Header>
-        <body class="mt-20">
-            <div class="flex h-screen w-screen">
-                <div v-if="content == '404'">
-                    <div
-                        class="flex w-screen flex-row justify-center items-center"
-                    >
-                        <div class="w-[30%] h-screen overflow-x-visible">
-                            <Menu
-                                :Plants="plants"
-                                :Algaes="algae"
-                                :NutDefs="nutrientDef"
-                            ></Menu>
-                        </div>
-                        <div class="w-[70%] h-screen">
-                            <div
-                                class="flex flex-col items-center justify-center h-screen w-full overflow-x-auto no-scrollbar"
-                            >
+    <div class="absolute bg-neutral-focus">
+        <div class="bg-neutral-focus overflow-x-hidden no-scrollbar">
+            <Header class="top-0 z-50">
+                <Head title="Plants Databases"> </Head>
+                <Navbar class="sticky top-0 z-50 w-screen"></Navbar>
+            </Header>
+            <body class="bg-neutral">
+                <div class="flex h-screen w-screen">
+                    <div v-if="content == '404'">
+                        <div
+                            class="flex w-screen flex-row justify-center items-center"
+                        >
+                            <div class="w-[30%] h-screen overflow-x-visible">
+                                <Menu
+                                    :Plants="plants"
+                                    :Algaes="algae"
+                                    :NutDefs="nutrientDef"
+                                ></Menu>
+                            </div>
+                            <div class="w-[70%] h-screen">
                                 <div
-                                    class="items-center justify-center text-center"
+                                    class="flex flex-col items-center justify-center h-screen w-full overflow-x-auto no-scrollbar"
                                 >
-                                    <h1
-                                        class="text-[200px] font-montserrat text-center text-primary"
+                                    <div
+                                        class="items-center justify-center text-center"
                                     >
-                                        404
-                                    </h1>
-                                    <h2
-                                        class="text-[40px] font-montserrat text-primary pb-5"
+                                        <h1
+                                            class="text-[200px] font-montserrat text-center text-primary"
+                                        >
+                                            404
+                                        </h1>
+                                        <h2
+                                            class="text-[40px] font-montserrat text-primary pb-5"
+                                        >
+                                            Not Found
+                                        </h2>
+                                    </div>
+                                    <div
+                                        class="items-center justify-content-center"
                                     >
-                                        Not Found
-                                    </h2>
+                                        <h3
+                                            class="text-[20px] font-montserrat text-center text-primary"
+                                        >
+                                            The page you requested is not found
+                                        </h3>
+                                    </div>
                                 </div>
-                                <div
-                                    class="items-center justify-content-center"
-                                >
-                                    <h3
-                                        class="text-[20px] font-montserrat text-center text-primary"
-                                    >
-                                        The page you requested is not found
-                                    </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-else>
+                        <div
+                            class="flex w-screen flex-row justify-center items-center"
+                        >
+                            <div class="w-[30%] h-screen overflow-x-visible">
+                                <Menu
+                                    :Plants="plants"
+                                    :Algaes="algae"
+                                    :NutDefs="nutrientDef"
+                                ></Menu>
+                            </div>
+                            <div class="w-[70%] h-screen">
+                                <div v-if="excerpt == 'true'">
+                                    <ContentExcerpt></ContentExcerpt>
+                                </div>
+                                <div v-else>
+                                    <Section></Section>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div v-else>
-                    <div
-                        class="flex w-screen flex-row justify-center items-center"
-                    >
-                        <div class="w-[30%] h-screen overflow-x-visible">
-                            <Menu
-                                :Plants="plants"
-                                :Algaes="algae"
-                                :NutDefs="nutrientDef"
-                            ></Menu>
-                        </div>
-                        <div class="w-[70%] h-screen">
-                            <div v-if="excerpt == 'true'">
-                                <ContentExcerpt></ContentExcerpt>
-                            </div>
-                            <div v-else>
-                                <Section></Section>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </body>
+            </body>
+        </div>
     </div>
 </template>
 
