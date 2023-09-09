@@ -1,24 +1,22 @@
 <template>
-    <div class="absolute bg-neutral-focus">
-        <div class="bg-neutral-focus overflow-x-hidden no-scrollbar">
-            <Header class="top-0 z-50">
-                <Head title="Plants Databases"> </Head>
-                <Navbar class="sticky top-0 z-50 w-screen"></Navbar>
-            </Header>
-            <body class="bg-neutral">
-                <div class="flex h-screen w-screen">
+    <div class="bg-primary overflow-x-hidden no-scrollbar">
+        <Head title="Plants Databases"> </Head>
+        <Navbar class="sticky top-0 z-50 w-screen"></Navbar>
+        <div class="bg-primary overflow-x-hidden no-scrollbar">
+            <body class="bg-primary-focus">
+                <div class="h-screen w-screen">
                     <div v-if="content == '404'">
                         <div
-                            class="flex w-screen flex-row justify-center items-center"
+                            class="flex w-screen overflow-visible flex-row justify-center items-center"
                         >
-                            <div class="w-[30%] h-screen overflow-x-visible">
+                            <div class="w-[40%] h-screen overflow-x-visible">
                                 <Menu
                                     :Plants="plants"
                                     :Algaes="algae"
                                     :NutDefs="nutrientDef"
                                 ></Menu>
                             </div>
-                            <div class="w-[70%] h-screen">
+                            <div class="w-full h-screen">
                                 <div
                                     class="flex flex-col items-center justify-center h-screen w-full overflow-x-auto no-scrollbar"
                                 >
@@ -51,16 +49,23 @@
                     </div>
                     <div v-else>
                         <div
-                            class="flex w-screen flex-row justify-center items-center"
+                            class="flex flex-row border-2 border-green-600 overflow-visible"
                         >
-                            <div class="w-[30%] h-screen overflow-x-visible">
+                            <div
+                                class="w-[40%] h-screen overflow-x-visible border-2 border-purple-500"
+                                :class="{
+                                    'w-[10%]': showTime == true,
+                                    'w-[40%]': showTime == false,
+                                }"
+                            >
                                 <Menu
+                                    @SidebarShow="getSidebar($event)"
                                     :Plants="plants"
                                     :Algaes="algae"
                                     :NutDefs="nutrientDef"
                                 ></Menu>
                             </div>
-                            <div class="w-[70%] h-screen">
+                            <div class="w-screen h-screen">
                                 <div v-if="excerpt == 'true'">
                                     <ContentExcerpt></ContentExcerpt>
                                 </div>
@@ -101,11 +106,20 @@ export default {
     setup(props) {
         const show = ref(false);
         const id = ref("");
+        let showTime = ref(false);
         // const excerpt = "true";
         // console.log(props.excerpt);
-        return { show, id };
+        return { show, id, showTime };
     },
     methods: {
+        getSidebar(data) {
+            console.log(data);
+            if (data === "showTime") {
+                this.showTime = false;
+            } else {
+                this.showTime = true;
+            }
+        },
         // getPlant(id) {
         //     this.id = id;
         //     console.log(this.id);

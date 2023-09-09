@@ -1,7 +1,9 @@
 <template>
     <div data-themes="foliage">
-        <div class="flex flex-col h-screen w-full overflow-x-auto no-scrollbar">
-            <h3 class="p-5 text-2xl font-montserrat font-semibold text-primary">
+        <div
+            class="flex flex-col bg-primary-focus text-neutral-focus h-screen w-full overflow-x-auto no-scrollbar"
+        >
+            <h3 class="p-5 text-2xl font-montserrat font-semibold">
                 Plants Databases
             </h3>
             <div
@@ -13,7 +15,7 @@
                     :data="{ content: 'plants', excerpt: 'true' }"
                 >
                     <div
-                        class="card rounded-md lg:w-[400px] lg:h-fit md:w-[250px] md:h-[300px] hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
+                        class="card rounded-md lg:w-[400px] lg:h-fit md:w-[250px] md:h-[300px] hover:bg-neutral-900 hover:text-primary hover:-translate-y-1 hover:cursor-pointer"
                     >
                         <div class="flex-col">
                             <div class="flex justify-center items-center p-2">
@@ -25,7 +27,7 @@
                             <div class="p-1">
                                 <div>
                                     <h2
-                                        class="text-[20px] p-2 text-primary font-montserrat font-medium"
+                                        class="text-[20px] p-2 font-montserrat font-medium"
                                     >
                                         Plants Characteristics
                                     </h2>
@@ -47,7 +49,7 @@
                     :data="{ content: 'nutDef', excerpt: 'true' }"
                 >
                     <div
-                        class="card rounded-md lg:w-[400px] lg:h-fit md:w-[250px] md:h-[300px] hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
+                        class="card rounded-md lg:w-[400px] lg:h-fit md:w-[250px] md:h-[300px] hover:bg-neutral-900 hover:text-primary hover:-translate-y-1 hover:cursor-pointer"
                     >
                         <div class="flex-col">
                             <div class="flex justify-center items-center p-2">
@@ -58,7 +60,7 @@
                             </div>
                             <div>
                                 <h2
-                                    class="text-[20px] p-2 text-primary font-montserrat font-medium"
+                                    class="text-[20px] p-2 font-montserrat font-medium"
                                 >
                                     Nutrient Deficiencies
                                 </h2>
@@ -78,7 +80,7 @@
                     :data="{ content: 'algae', excerpt: 'true' }"
                 >
                     <div
-                        class="card rounded-md lg:w-[400px] lg:h-fit md:w-[250px] md:h-[300px] hover:bg-neutral-900 hover:-translate-y-1 hover:cursor-pointer"
+                        class="card rounded-md lg:w-[400px] lg:h-fit md:w-[250px] md:h-[300px] hover:bg-neutral-900 hover:text-primary hover:-translate-y-1 hover:cursor-pointer"
                     >
                         <div class="flex-col">
                             <div class="flex justify-center items-center p-2">
@@ -89,7 +91,7 @@
                             </div>
                             <div>
                                 <h2
-                                    class="text-[20px] p-2 text-primary font-montserrat font-medium"
+                                    class="text-[20px] p-2 font-montserrat font-medium"
                                 >
                                     Algae Characteristics
                                 </h2>

@@ -4,14 +4,18 @@
             <ul>
                 <li>
                     <details close>
-                        <summary class="w-full h-full text-lg">
+                        <summary class="w-full h-full text-lg visible">
                             <div>
                                 <img
                                     src="/icons/plantsico.png"
                                     class="w-[42px] h-[25px]"
                                 />
                             </div>
-                            <div>Plants Characteristics</div>
+                            <div
+                                class="visible sm:invisible xl:visible md:invisible"
+                            >
+                                Plants Characteristics
+                            </div>
                         </summary>
                         <ul>
                             <li v-for="plant in Plants">
@@ -73,7 +77,8 @@ export default {
     components: {
         Link,
     },
-    setup() {
+    setup(props) {
+        // console.log(props.Class);
         const isActive = false;
         return { isActive };
     },
