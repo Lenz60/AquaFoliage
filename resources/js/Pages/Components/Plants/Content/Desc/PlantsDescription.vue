@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full">
+    <div class="w-full h-full">
         <h3 class="font-montserrat font-semibold text-xl p-5">
             {{ Payload["name"] }}
         </h3>

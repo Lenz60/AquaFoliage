@@ -1,9 +1,12 @@
 <template>
     <div class="w-full flex flex-row">
+        <!-- Close the sidebar when the screen is md or sm  -->
         <div
             class="font-montserrat bg-neutral-focus text-primary h-screen overflow-x-auto no-scrollbar sidebar"
         >
-            <ul class="menu p-5 w-full h-max">
+            <ul
+                class="menu p-5 w-full h-max text-xs sm:text-xs md:text-sm xl:text-md"
+            >
                 <div v-if="!Payload">
                     <div v-if="Content == 'plants'">
                         <PlantsMenu Class="show" :Plants="Plants"></PlantsMenu>
@@ -39,7 +42,9 @@
                         ></AlgaeMenu>
                     </div>
                     <div v-else-if="Content == 'Dashboard'">
-                        <h3 class="text-xl p-5">Dashboard Menu</h3>
+                        <h3 class="sm:text-sm text-sm font-bold p-5">
+                            Dashboard
+                        </h3>
                         <DashboardMenu
                             @DashboardDesc="getDesc($event)"
                         ></DashboardMenu>
@@ -115,7 +120,9 @@
                         ></AlgaeMenu>
                     </div>
                     <div v-else-if="Content == 'Dashboard'">
-                        <h3 class="text-xl p-5">Dashboard Menu</h3>
+                        <h3 class="sm:text-sm text-sm font-bold p-5">
+                            Dashboard
+                        </h3>
                         <DashboardMenu
                             @DashboardDesc="getDesc($event)"
                         ></DashboardMenu>
@@ -168,6 +175,9 @@ import PlantsMenu from "./Submenu/PlantsMenu.vue";
 import NutDefMenu from "./Submenu/NutDefMenu.vue";
 import AlgaeMenu from "./Submenu/AlgaeMenu.vue";
 import DashboardMenu from "./Submenu/DashboardMenu.vue";
+import { watch } from "vue";
+import { onBeforeMount } from "vue";
+import { onBeforeUnmount } from "vue";
 
 export default {
     props: ["Content", "Plants", "Algaes", "NutDefs", "Payload"],
@@ -180,31 +190,73 @@ export default {
     },
     setup() {
         const isShow = ref(false);
+
         return { isShow };
+    },
+    mounted() {
+        const showToggle = () => {
+            this.isShow = !this.isShow;
+
+            if (this.isShow) {
+                gsap.to(".hideSidebar", { scaleX: -1 });
+                gsap.to(".sidebar", { width: "0%" });
+
+                this.$emit("SidebarShow", "hideTime");
+            } else {
+                gsap.to(".hideSidebar", { scaleX: 1 });
+                gsap.to(".sidebar", { width: "100%" });
+
+                this.$emit("SidebarShow", "showTime");
+            }
+
+            console.log(this.isShow);
+        };
+
+        // Add an event listener to window resize events
+        const resizeHandler = () => {
+            if (window.innerWidth <= 768) {
+                console.log("this is small");
+                showToggle(); // Call the showToggle method
+            }
+        };
+
+        window.addEventListener("resize", resizeHandler);
+
+        // Cleanup the event listener when the component is unmounted
+        const cleanup = () => {
+            window.removeEventListener("resize", resizeHandler);
+        };
+
+        // Use beforeUnmount to clean up the event listener
+        onBeforeUnmount(() => {
+            cleanup();
+        });
+        // Attach showToggle as a method
+        this.showToggle = showToggle;
     },
     methods: {
         getDesc(data) {
             this.$emit("DashboardDesc", data);
         },
-        showToggle() {
-            this.isShow = !this.isShow;
+        // showToggle() {
+        //     this.isShow = !this.isShow;
 
-            //TODO V-if is show is true then
+        //     //TODO V-if is show is true then
 
-            if (this.isShow) {
-                // gsap.to(".hideSidebar", { rotation: 180, duration: 1 });
-                gsap.to(".hideSidebar", { scaleX: -1 });
-                // gsap.to(".hideSidebar", { rotation: 0, duration: 1 });
-                gsap.to(".sidebar", { width: "0%" });
-                this.$emit("SidebarShow", "hideTime");
-            } else {
-                gsap.to(".hideSidebar", { scaleX: 1 });
-                gsap.to(".sidebar", { width: "100%" });
-                this.$emit("SidebarShow", "showTime");
-            }
+        //     if (this.isShow) {
+        //         // gsap.to(".hideSidebar", { rotation: 180, duration: 1 });
+        //         gsap.to(".hideSidebar", { scaleX: -1 });
+        //         // gsap.to(".hideSidebar", { rotation: 0, duration: 1 });
+        //         gsap.to(".sidebar", { width: "0%" });
+        //         this.$emit("SidebarShow", "hideTime");
+        //     } else {
+        //         gsap.to(".hideSidebar", { scaleX: 1 });
+        //         gsap.to(".sidebar", { width: "100%" });
+        //         this.$emit("SidebarShow", "showTime");
+        //     }
 
-            console.log(this.isShow);
-        },
+        //     console.log(this.isShow);
+        // },
         classProps(bool) {
             if (bool) {
                 return "show";

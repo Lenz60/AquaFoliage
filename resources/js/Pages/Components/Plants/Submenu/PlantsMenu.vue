@@ -4,15 +4,15 @@
             <ul>
                 <li>
                     <details close>
-                        <summary class="w-full h-full text-lg visible">
+                        <summary class="w-full h-full visible">
                             <div>
                                 <img
                                     src="/icons/plantsico.png"
-                                    class="w-[42px] h-[25px]"
+                                    class="w-[42px] h-[25px] hidden md:hidden sm:hidden lg:hidden xl:block"
                                 />
                             </div>
                             <div
-                                class="visible sm:invisible xl:visible md:invisible"
+                                class="visible text-xs sm:text-xs md:text-md lg:text-lg xl:text-lg"
                             >
                                 Plants Characteristics
                             </div>
@@ -35,14 +35,18 @@
             <ul>
                 <li>
                     <details open>
-                        <summary class="w-full h-full text-lg">
+                        <summary class="w-full h-full">
                             <div>
                                 <img
                                     src="/icons/plantsico.png"
-                                    class="w-[42px] h-[25px]"
+                                    class="w-[42px] h-[25px] hidden md:hidden sm:hidden lg:hidden xl:block"
                                 />
                             </div>
-                            <div>Plants Characteristics</div>
+                            <div
+                                class="text-xs sm:text-xs md:text-md lg:text-lg xl:text-lg"
+                            >
+                                Plants Characteristics
+                            </div>
                         </summary>
                         <ul>
                             <li v-for="plant in Plants">

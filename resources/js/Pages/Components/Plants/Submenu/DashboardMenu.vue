@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ul class="menu w-56 rounded-box">
+        <ul class="menu rounded-box w-full h-full visible">
             <li @click="$emit('DashboardDesc', 'Plants')">
                 <a>Favourite Plants</a>
             </li>

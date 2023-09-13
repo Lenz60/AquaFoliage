@@ -4,14 +4,18 @@
             <ul>
                 <li>
                     <details close>
-                        <summary class="w-full h-full text-lg">
+                        <summary class="w-full h-full">
                             <div>
                                 <img
                                     src="/icons/nutrientico.png"
-                                    class="w-[42px] h-[34.29px]"
+                                    class="w-[42px] h-[34.29px] hidden md:hidden sm:hidden lg:hidden xl:block"
                                 />
                             </div>
-                            <div>Nutrient Deficiencies</div>
+                            <div
+                                class="text-xs sm:text-xs md:text-md lg:text-lg xl:text-lg"
+                            >
+                                Nutrient Deficiencies
+                            </div>
                         </summary>
                         <ul>
                             <li v-for="nutDef in NutDefs">
@@ -31,14 +35,18 @@
             <ul>
                 <li>
                     <details open>
-                        <summary class="w-full h-full text-lg">
+                        <summary class="w-full h-full">
                             <div>
                                 <img
                                     src="/icons/nutrientico.png"
-                                    class="w-[42px] h-[34.29px]"
+                                    class="w-[42px] h-[34.29px] hidden md:hidden sm:hidden lg:hidden xl:block"
                                 />
                             </div>
-                            <div>Nutrient Deficiencies</div>
+                            <div
+                                class="text-xs sm:text-xs md:text-md lg:text-lg xl:text-lg"
+                            >
+                                Nutrient Deficiencies
+                            </div>
                         </summary>
                         <ul>
                             <li v-for="nutDef in NutDefs">

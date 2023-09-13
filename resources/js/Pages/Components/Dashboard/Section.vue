@@ -2,7 +2,7 @@
     <div>
         <div data-themes="foliage">
             <div
-                class="flex flex-col h-screen overflow-x-auto no-scrollbar p-2"
+                class="flex flex-col h-full w-full overflow-x-hidden no-scrollbar p-2"
             >
                 <div class="p-5">
                     <div v-if="sectionContent == 'Plants'">
@@ -14,7 +14,7 @@
                                 class="table"
                             >
                                 <!-- head -->
-                                <thead>
+                                <thead class="text-neutral">
                                     <tr>
                                         <th>No</th>
                                         <th>Plant Name</th>
@@ -24,7 +24,7 @@
                                 <tbody>
                                     <tr
                                         v-for="(favPlant, no) in favPlants"
-                                        class="hover:bg-neutral-focus"
+                                        class="hover:bg-neutral hover:text-primary"
                                     >
                                         <td>{{ no + 1 }}</td>
                                         <td>
@@ -35,7 +35,7 @@
                                                 @click="
                                                     removeFav(
                                                         'plants',
-                                                        favPlant.id
+                                                        favPlant.id,
                                                     )
                                                 "
                                                 class="btn btn-outline btn-accent"
@@ -56,7 +56,7 @@
                                 class="table"
                             >
                                 <!-- head -->
-                                <thead>
+                                <thead class="text-neutral">
                                     <tr>
                                         <th>No</th>
                                         <th>Nutrient Deficiencies Name</th>
@@ -66,7 +66,7 @@
                                 <tbody>
                                     <tr
                                         v-for="(favNutDef, no) in favNutDefs"
-                                        class="hover:bg-neutral-focus"
+                                        class="hover:bg-neutral hover:text-primary"
                                     >
                                         <td>{{ no + 1 }}</td>
                                         <td>
@@ -77,7 +77,7 @@
                                                 @click="
                                                     removeFav(
                                                         'nutDef',
-                                                        favNutDef.id
+                                                        favNutDef.id,
                                                     )
                                                 "
                                                 class="btn btn-outline btn-accent"
@@ -95,7 +95,7 @@
                         <div class="overflow-x-auto">
                             <table aria-label="table of algaes" class="table">
                                 <!-- head -->
-                                <thead>
+                                <thead class="text-neutral">
                                     <tr>
                                         <th>No</th>
                                         <th>Algaes Name</th>
@@ -105,7 +105,7 @@
                                 <tbody>
                                     <tr
                                         v-for="(favAlgae, no) in favAlgaes"
-                                        class="hover:bg-neutral-focus"
+                                        class="hover:bg-neutral hover:text-primary"
                                     >
                                         <td>{{ no + 1 }}</td>
                                         <td>
@@ -116,7 +116,7 @@
                                                 @click="
                                                     removeFav(
                                                         'algae',
-                                                        favAlgae.id
+                                                        favAlgae.id,
                                                     )
                                                 "
                                                 class="btn btn-outline btn-accent"
@@ -154,7 +154,7 @@ export default {
         removeFav(content, id) {
             // console.log($content, $id);
             this.$inertia.post(
-                this.route("dashboard.removeFav", [content, id])
+                this.route("dashboard.removeFav", [content, id]),
             );
         },
     },

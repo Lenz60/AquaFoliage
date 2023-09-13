@@ -1,6 +1,6 @@
 <template>
     <div data-themes="foliage">
-        <header class="navbar bg-base-200">
+        <header class="navbar bg-base-200 w-screen">
             <div class="flex-none">
                 <div class="drawer">
                     <input

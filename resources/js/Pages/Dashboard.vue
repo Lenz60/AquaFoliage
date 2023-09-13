@@ -2,16 +2,23 @@
     <Head title="Dashboard" />
 
     <AuthenticatedLayout data-theme="foliage">
-        <div class="flex">
-            <div class="w-[30%]">
+        <div class="flex flex-row w-full overflow-x-hidden">
+            <div
+                :class="{
+                    'w-[10%]': showTime == true,
+                    'w-[40%]': showTime == false,
+                }"
+            >
                 <Menu
+                    class=""
                     :Content="Content"
+                    @SidebarShow="getSidebar($event)"
                     @DashboardDesc="getDesc($event)"
                 ></Menu>
             </div>
-            <div class="w-[70%]">
+            <div class="w-full">
                 <h3
-                    class="text-primary font-montserrat font-semibold text-xl p-5 hover:cursor-pointer"
+                    class="font-montserrat font-semibold text-xl p-5 hover:cursor-pointer"
                     @click="SectionContent = null"
                 >
                     Favourites
@@ -45,12 +52,20 @@ export default {
     setup(props) {
         const Content = ref("Dashboard");
         let SectionContent = ref("");
+        let showTime = ref(false);
 
-        return { Content, SectionContent };
+        return { Content, SectionContent, showTime };
     },
     methods: {
         getDesc(data) {
             this.SectionContent = data;
+        },
+        getSidebar(data) {
+            if (data === "showTime") {
+                this.showTime = false;
+            } else {
+                this.showTime = true;
+            }
         },
     },
 };

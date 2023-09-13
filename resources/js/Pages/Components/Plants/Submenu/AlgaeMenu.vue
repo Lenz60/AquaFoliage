@@ -4,14 +4,18 @@
             <ul>
                 <li>
                     <details close>
-                        <summary class="w-full h-full text-lg">
+                        <summary class="w-full h-full">
                             <div>
                                 <img
                                     src="/icons/algaeico.png"
-                                    class="w-[42px] h-[35.72px]"
+                                    class="w-[42px] h-[35.72px] hidden md:hidden sm:hidden lg:hidden xl:block"
                                 />
                             </div>
-                            <div>Algae Characteristics</div>
+                            <div
+                                class="text-xs sm:text-xs md:text-md lg:text-lg xl:text-lg"
+                            >
+                                Algae Characteristics
+                            </div>
                         </summary>
                         <ul>
                             <li v-for="algae in Algaes">
@@ -30,14 +34,18 @@
             <ul>
                 <li>
                     <details open>
-                        <summary class="w-full h-full text-lg">
+                        <summary class="w-full h-full">
                             <div>
                                 <img
                                     src="/icons/algaeico.png"
-                                    class="w-[42px] h-[35.72px]"
+                                    class="w-[42px] h-[35.72px] hidden md:hidden sm:hidden lg:hidden xl:block"
                                 />
                             </div>
-                            <div>Algae Characteristics</div>
+                            <div
+                                class="text-xs sm:text-xs md:text-md lg:text-lg xl:text-lg"
+                            >
+                                Algae Characteristics
+                            </div>
                         </summary>
                         <ul>
                             <li v-for="algae in Algaes">

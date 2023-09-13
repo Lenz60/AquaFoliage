@@ -1,7 +1,9 @@
 <template>
     <div>
         <div>
-            <div class="min-h-screen bg-neutral dark:bg-gray-900">
+            <div
+                class="min-h-screen bg-primary-focus text-neutral-focus dark:bg-gray-900"
+            >
                 <Navbar class="sticky top-0 z-50"></Navbar>
 
                 <header
