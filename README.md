@@ -40,3 +40,17 @@ If you register on our site, you can save your favorite plants, nutrient deficie
 #### 3. Forget Password Recovery
 
 You can reset your password by accessing the forgot password menu, enter the registered email and we will send you a email to reset your password
+
+## The Technology 
+
+#### 1. Laravel
+
+This project is using laravel as the backend and laravel breeze as the authentication
+    
+#### 2. JWT
+
+This project is using JWT 
+
+#### 3. Vue + Tailwindcss
+
+This project is built with vuejs and tailwindcss as the frontend
