@@ -42,6 +42,18 @@ defineProps({
                 >
                     <UpdatePasswordForm class="max-w-xl" />
                 </div>
+                <div
+                    class="p-4 sm:p-8 bg-primary dark:bg-gray-800 shadow sm:rounded-lg"
+                >
+                    <h2>User role</h2>
+                    <div v-if="$page.props.auth.user.role == 1">
+                        <h3>You are admin</h3>
+                    </div>
+                    <div v-else>
+                        <h3>You are user</h3>
+                    </div>
+                    <!-- <h2>{{ $page.props.auth.user.role }}</h2> -->
+                </div>
 
                 <div
                     class="p-4 sm:p-8 bg-primary dark:bg-gray-800 shadow sm:rounded-lg"
