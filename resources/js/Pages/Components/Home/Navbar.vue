@@ -12,7 +12,7 @@
                         <!-- Page content here -->
                         <label
                             for="my-drawer"
-                            class="btn btn-square btn-ghost drawer-button"
+                            class="btn btn-square drawer-button"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -93,6 +93,16 @@
                                         </li>
                                         <li>
                                             <Link
+                                                :href="route('dashboard.admin')"
+                                                method="get"
+                                            >
+                                                <p class="text-sm text-center">
+                                                    Dashboard Admin
+                                                </p>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link
                                                 :href="route('profile.edit')"
                                                 method="get"
                                             >
@@ -136,7 +146,7 @@ export default {
     props: {
         NoAuthLink: Object,
     },
-    setup() {
+    setup(props) {
         return {};
     },
 };

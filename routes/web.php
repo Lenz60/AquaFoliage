@@ -32,6 +32,7 @@ Route::get('/', function () {
 
 Route::controller(DashboardController::class)->group(function (){
     Route::get('/dashboard', "index")->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('/dashboard/admin', "admin")->middleware(['auth', 'verified'])->name('dashboard.admin');
     Route::post('/dashboard/{content}&{id}', "removeFav")->middleware(['auth', 'verified'])->name('dashboard.removeFav');
 } );
 
