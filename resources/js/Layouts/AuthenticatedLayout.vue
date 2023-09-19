@@ -7,7 +7,7 @@
                 <Navbar class="sticky top-0 z-50"></Navbar>
 
                 <header
-                    class="bg-neutral-focus rounded-md font-montserrat text-primary shadow"
+                    class="bg-neutral-focus font-montserrat text-primary shadow"
                     v-if="$slots.header"
                 >
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
