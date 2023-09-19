@@ -11,6 +11,7 @@
                     class="md:shrink-0 xl:w-[40%] items-center p-5 m-5 justify-center"
                 >
                     <img
+                        id="img1"
                         class="h-48 w-full object-cover md:h-full md:w-48 xl:w-full card rounded-md"
                         src="/images/section2/hairAlgae.jpg"
                         alt="Modern building architecture"
@@ -135,53 +136,55 @@ export default {
                 },
             });
 
-            tl1.from("#title1", {
-                color: "transparent",
-                duration: 1,
+            tl1.from("#img1", {
+                opacity: 0,
                 stagger: 0.05,
+                duration: 1,
             })
+                .from("#title1", {
+                    color: "transparent",
+                    duration: 1,
+                    stagger: 0.05,
+                })
                 .from("#desc1", {
                     x: 100,
                     color: "transparent",
                     stagger: 0.05,
                     duration: 1,
-                })
-                .from("#img1", {
-                    opacity: 0,
-                    stagger: 0.05,
-                    duration: 2,
                 });
-            tl2.from("#title2", {
-                color: "transparent",
-                duration: 1,
+
+            tl2.from("#img2", {
+                opacity: 0,
                 stagger: 0.05,
+                duration: 1,
             })
+                .from("#title2", {
+                    color: "transparent",
+                    duration: 1,
+                    stagger: 0.05,
+                })
                 .from("#desc2", {
                     x: -100,
                     color: "transparent",
                     stagger: 0.05,
                     duration: 1,
-                })
-                .from("#img2", {
-                    opacity: 0,
-                    stagger: 0.05,
-                    duration: 2,
                 });
-            tl3.from("#title3", {
-                color: "transparent",
-                duration: 1,
+
+            tl3.from("#img3", {
+                opacity: 0,
                 stagger: 0.05,
+                duration: 1,
             })
+                .from("#title3", {
+                    color: "transparent",
+                    duration: 1,
+                    stagger: 0.05,
+                })
                 .from("#desc3", {
                     x: 100,
                     color: "transparent",
                     stagger: 0.05,
                     duration: 1,
-                })
-                .from("#img3", {
-                    opacity: 0,
-                    stagger: 0.05,
-                    duration: 2,
                 });
         });
         return {};
