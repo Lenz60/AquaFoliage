@@ -100,4 +100,8 @@ class DashboardController extends Controller
 
 
     }
+
+    public function admin(){
+        return Inertia::render('AdminDashboard');
+    }
 }

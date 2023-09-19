@@ -24,7 +24,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): Response
     {
-        return Inertia::render('Auth/Register');
+        return Inertia::render('Components/Auth/Register');
     }
 
     /**
@@ -60,7 +60,7 @@ class RegisteredUserController extends Controller
 
                 // 'email_verified_at' => $data->email_verified_at
                 ];
-                $token = JWT::encode($data,env('JWT_SECRET'),'HS256');
+                $token = JWT::encode($data,config('app.jwt_secret'),'HS256');
 
                 setcookie('userData', $token);
         Auth::login($user);

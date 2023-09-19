@@ -24,7 +24,7 @@ class ProfileController extends Controller
             $validate = validateJWT($token);
 
             if($validate){
-                return Inertia::render('Profile/Edit', [
+                return Inertia::render('Components/Profile/Edit', [
                     'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
                     'status' => session('status'),
                 ]);
@@ -32,7 +32,7 @@ class ProfileController extends Controller
                 return redirect()->to('/');
             }
         }else{
-            return Inertia::render('Profile/Edit', [
+            return Inertia::render('Components/Profile/Edit', [
                 'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
                 'status' => session('status'),
             ]);
