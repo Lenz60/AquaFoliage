@@ -7,67 +7,7 @@
             <ul
                 class="menu p-5 w-full h-max text-xs sm:text-xs md:text-sm xl:text-md"
             >
-                <div v-if="!Payload">
-                    <div v-if="Content == 'plants'">
-                        <PlantsMenu Class="show" :Plants="Plants"></PlantsMenu>
-                        <NutDefMenu
-                            Class="nutdef"
-                            :NutDefs="NutDefs"
-                        ></NutDefMenu>
-                        <AlgaeMenu Class="algae" :Algaes="Algaes"></AlgaeMenu>
-                    </div>
-                    <div v-else-if="Content == 'nutDef'">
-                        <PlantsMenu Class="hide" :Plants="Plants"></PlantsMenu>
-                        <NutDefMenu
-                            Class="show"
-                            :NutDefs="NutDefs"
-                        ></NutDefMenu>
-                        <AlgaeMenu Class="hide" :Algaes="Algaes"></AlgaeMenu>
-                    </div>
-                    <div v-else-if="Content == 'algae'">
-                        <PlantsMenu
-                            Class="hide"
-                            :Plants="Plants"
-                            :Payload="Payload"
-                        ></PlantsMenu>
-                        <NutDefMenu
-                            Class="hide"
-                            :NutDefs="NutDefs"
-                            :Payload="Payload"
-                        ></NutDefMenu>
-                        <AlgaeMenu
-                            Class="show"
-                            :Algaes="Algaes"
-                            :Payload="Payload"
-                        ></AlgaeMenu>
-                    </div>
-                    <div v-else-if="Content == 'Dashboard'">
-                        <h3 class="sm:text-sm text-sm font-bold p-5">
-                            Dashboard
-                        </h3>
-                        <DashboardMenu
-                            @DashboardDesc="getDesc($event)"
-                        ></DashboardMenu>
-                    </div>
-                    <div v-else>
-                        <PlantsMenu
-                            Class="hide"
-                            :Plants="Plants"
-                            :Payload="Payload"
-                        ></PlantsMenu>
-                        <NutDefMenu
-                            Class="hide"
-                            :NutDefs="NutDefs"
-                            :Payload="Payload"
-                        ></NutDefMenu>
-                        <AlgaeMenu
-                            Class="hide"
-                            :Algaes="Algaes"
-                            :Payload="Payload"
-                        ></AlgaeMenu>
-                    </div>
-                </div>
-                <div v-else>
+                <div>
                     <div v-if="Content == 'plants'">
                         <PlantsMenu
                             Class="show"
@@ -126,6 +66,14 @@
                         <DashboardMenu
                             @DashboardDesc="getDesc($event)"
                         ></DashboardMenu>
+                    </div>
+                    <div v-else-if="Content == 'DashboardAdmin'">
+                        <h3 class="sm:text-sm text-sm font-bold p-5">
+                            Dashboard Admin
+                        </h3>
+                        <DashboardAdminMenu
+                            @DashboardDesc="getDesc($event)"
+                        ></DashboardAdminMenu>
                     </div>
                     <div v-else>
                         <PlantsMenu
@@ -175,6 +123,7 @@ import PlantsMenu from "./Submenu/PlantsMenu.vue";
 import NutDefMenu from "./Submenu/NutDefMenu.vue";
 import AlgaeMenu from "./Submenu/AlgaeMenu.vue";
 import DashboardMenu from "./Submenu/DashboardMenu.vue";
+import DashboardAdminMenu from "./Submenu/DashboardAdminMenu.vue";
 import { watch } from "vue";
 import { onBeforeMount } from "vue";
 import { onBeforeUnmount } from "vue";
@@ -187,6 +136,7 @@ export default {
         AlgaeMenu,
         DashboardMenu,
         Link,
+        DashboardAdminMenu,
     },
     setup() {
         const isShow = ref(false);
