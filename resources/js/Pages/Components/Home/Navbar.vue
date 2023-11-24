@@ -63,10 +63,7 @@
                 </a>
             </div>
             <div v-if="!NoAuthLink" class="px-5">
-                <div
-                    v-if="$page.props.auth.user?.name"
-                    class="menu flex-row-reverse"
-                >
+                <div v-if="$page.props.auth.user" class="menu flex-row-reverse">
                     <div class="flex">
                         <ul class="menu menu-horizontal px-1">
                             <li>
