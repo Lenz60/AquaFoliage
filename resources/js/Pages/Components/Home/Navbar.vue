@@ -2,14 +2,13 @@
     <div data-themes="foliage">
         <header class="navbar bg-base-200 w-screen">
             <div class="flex-none">
-                <div class="drawer">
+                <!-- <div class="drawer">
                     <input
                         id="my-drawer"
                         type="checkbox"
                         class="drawer-toggle"
                     />
                     <div class="drawer-content">
-                        <!-- Page content here -->
                         <label
                             for="my-drawer"
                             class="btn btn-square drawer-button"
@@ -35,10 +34,12 @@
                             class="menu h-full w-80 bg-base-200 text-base-content"
                         >
                             <div>
-                                <img
-                                    src="/images/logo.png"
-                                    class="btn rounded-md btn-ghost normal-case"
-                                />
+                                <a href="/">
+                                    <img
+                                        src="/images/logo.png"
+                                        class="btn rounded-md btn-ghost normal-case"
+                                    />
+                                </a>
                             </div>
                             <ul
                                 class="menu p-5 text-primary text-base font-normal font-montserrat"
@@ -51,7 +52,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="flex-1">
                 <a href="/">
