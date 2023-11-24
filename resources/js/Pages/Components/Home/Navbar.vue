@@ -91,7 +91,7 @@
                                                 </p>
                                             </Link>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <Link
                                                 :href="route('dashboard.admin')"
                                                 method="get"
@@ -100,7 +100,7 @@
                                                     Dashboard Admin
                                                 </p>
                                             </Link>
-                                        </li>
+                                        </li> -->
                                         <li>
                                             <Link
                                                 :href="route('profile.edit')"
