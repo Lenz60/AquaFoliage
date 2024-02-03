@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Models\FavPlant;
-use App\Models\Plants;
-use Firebase\JWT\ExpiredException;
+use Inertia\Inertia;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
-use Firebase\JWT\SignatureInvalidException;
+use App\Models\Plants;
+use App\Models\FavPlant;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Firebase\JWT\ExpiredException;
 use Illuminate\Support\Facades\DB;
-use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
+use Firebase\JWT\SignatureInvalidException;
+use Symfony\Component\HttpFoundation\Session\Session;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 
 class DashboardController extends Controller
@@ -41,8 +42,17 @@ class DashboardController extends Controller
 
 
         //v Checking the JWT token using helper function
-        $token = $_COOKIE['userData'];
-        $validate = validateJWT($token);
+        if(!isset($_COOKIE['userData'])){
+        Auth::guard('web')->logout();
+
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        return redirect()->to('/');
+        }else{
+            $token = $_COOKIE['userData'];
+            $validate = validateJWT($token);
+        }
 
         // dd($validate);
 
